@@ -18,11 +18,11 @@
 						<!-- portfolio Nav -->
 						<div class="portfolio-nav">
 							<ul>
-								<li class="active" data-filter="*"><span>06</span><i class="fa fa-tasks"></i>All Works</li>
-								<li data-filter=".development"><span>03</span><i class="fa fa-pencil"></i>Web Development</li>
-								<li data-filter=".design"><span>02</span><i class="fa fa-paint-brush"></i>Web Design</li>
-								<li data-filter=".html5"><span>03</span><i class="fa fa-html5"></i>HTML5</li>
-								<li data-filter=".wordpress"><span>02</span><i class="fa fa-wordpress"></i>Wordpress</li>
+								<li class="active" data-filter="*"><span>{% for carr in carreras %}{{forloop.counter}}{%endfor%}</span><i class="fa fa-tasks"></i>All Works</li>
+								{% for carr in carreras %}
+								<li data-filter=".{{carr.id}}"><span>01</span><i class="fa fa-pencil"></i>{{carr.Nombre}}</li>
+								{% endfor %}
+								
 							</ul>
 						</div>
 						<!--/ End portfolio Nav -->
@@ -32,109 +32,26 @@
 				<div class="portfolio-inner">
 					<div class="row stylex">	
 						<div class="isotop-active">
+							{% for serv in servicio %}
 							<!-- Single portfolio -->
-							<div class="mix development html5 col-md-4 col-sm-6 col-xs-12 col-fix ">
+							<div class="mix {{serv.Carrera.id}} col-md-4 col-sm-6 col-xs-12 col-fix ">
 								<div class="portfolio-single">
 									<div class="portfolio-head">
-										<img src="http://via.placeholder.com/1500x1000" alt=""/>
+										<img width="1500" height="350" src="{{serv.Convocatoria.url}}" alt=""/>
 									</div>
 									<div class="portfolio-hover">
-										<h4><span>Web Design</span><a href="#">Project Name Here</a></h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum tincidunt vulputate. </p>
+										<h4><span>{{serv.Carrera.Nombre}}</span><a href="#">{{serv.Nombre}}</a></h4>
+										<p>{{serv.Descripcion|truncatewords:"50"}}. </p>
 										<div class="button">
-											<a data-fancybox="gallery" href="http://via.placeholder.com/1500x1000"><i class="fa fa-search"></i></a>
-											<a href="portfolio-single.html" class="primary"><i class="fa fa-link"></i></a>
+											<a  href="/servicios/{{serv.id}}/"><i class="fa fa-search"></i></a>
+											
 										</div>
 									</div>
 								</div>
 							</div>
 							<!--/ End portfolio -->					
-							<!-- Single portfolio -->
-							<div class="mix design development col-md-4 col-sm-6 col-xs-12 col-fix">
-								<div class="portfolio-single">
-									<div class="portfolio-head">
-										<img src="http://via.placeholder.com/1500x1000" alt=""/>
-									</div>
-									<div class="portfolio-hover">
-										<h4><span>Html Website</span><a href="#">Project Name Here</a></h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum tincidunt vulputate. </p>
-										<div class="button">
-											<a data-fancybox="gallery" href="http://via.placeholder.com/1500x1000"><i class="fa fa-search"></i></a>
-											<a href="portfolio-single.html" class="primary"><i class="fa fa-link"></i></a>
-										</div> 
-									</div>
-								</div>
-							</div>
-							<!--/ End portfolio -->
-						
-							<!-- Single portfolio -->
-							<div class="mix wordpress html5 col-md-4 col-sm-6 col-xs-12 col-fix">
-								<div class="portfolio-single">
-									<div class="portfolio-head">
-										<img src="http://via.placeholder.com/1500x1000" alt=""/>
-									</div>
-									<div class="portfolio-hover">
-										<h4><span>Wordpress</span><a href="#">Project Name Here</a></h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum tincidunt vulputate. </p>
-										<div class="button">
-											<a data-fancybox="gallery" href="http://via.placeholder.com/1500x1000"><i class="fa fa-search"></i></a>
-											<a href="portfolio-single.html" class="primary"><i class="fa fa-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--/ End portfolio -->
-							<!-- Single portfolio -->
-							<div class="mix wordpress col-md-4 col-sm-6 col-xs-12 col-fix">
-								<div class="portfolio-single">
-									<div class="portfolio-head">
-										<img src="http://via.placeholder.com/1500x1000" alt=""/>
-									</div>
-									<div class="portfolio-hover">
-										<h4><span>Wordpress</span><a href="#">Project Name Here</a></h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum tincidunt vulputate. </p>
-										<div class="button">
-											<a data-fancybox="gallery" href="http://via.placeholder.com/1500x1000"><i class="fa fa-search"></i></a>
-											<a href="portfolio-single.html" class="primary"><i class="fa fa-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--/ End portfolio -->	
-							<!-- Single portfolio -->
-							<div class="mix design html5 col-md-4 col-sm-6 col-xs-12 col-fix">
-								<div class="portfolio-single">
-									<div class="portfolio-head">
-										<img src="http://via.placeholder.com/1500x1000" alt=""/>
-									</div>
-									<div class="portfolio-hover">
-										<h4><span>HTML5</span><a href="#">Project Name Here</a></h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum tincidunt vulputate. </p>
-										<div class="button">
-											<a data-fancybox="gallery" href="http://via.placeholder.com/1500x1000"><i class="fa fa-search"></i></a>
-											<a href="portfolio-single.html" class="primary"><i class="fa fa-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--/ End portfolio -->
-							<!-- Single portfolio -->
-							<div class="mix development col-md-4 col-sm-6 col-xs-12 col-fix">
-								<div class="portfolio-single">
-									<div class="portfolio-head">
-										<img src="http://via.placeholder.com/1500x1000" alt=""/>
-									</div>
-									<div class="portfolio-hover">
-										<h4><span>Web Design</span><a href="#">Project Name</a></h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum tincidunt vulputate. </p>
-										<div class="button">
-											<a data-fancybox="gallery" href="http://via.placeholder.com/1500x1000"><i class="fa fa-search"></i></a>
-											<a href="portfolio-single.html" class="primary"><i class="fa fa-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--/ End portfolio -->		
+							{% endfor %}
+							
 							
 						</div>
 					</div>

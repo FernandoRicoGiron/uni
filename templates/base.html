@@ -11,10 +11,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">	
 		
 		<!-- Title Tag -->
-        <title>Meheraj &minus; Creative Personal Portfolio Template</title>
+        <title>Unipymes</title>
 		
 		<!-- Favicon -->
-		<link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">	
+		<link rel="icon"  href="{% static 'images/unipimesicon.jpg'%}">	
 		
         <!-- Google Font -->
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet"> 
@@ -85,7 +85,7 @@
 					<div class="col-md-2 col-sm-12 col-xs-12">
 						<!-- Logo -->
 						<div class="logo">
-							<img src="{% static 'images/uni.png' %}">
+							<img id="logounipy" src="{% static 'images/uni.png' %}">
 						</div>
 						<!--/ End Logo -->
 						<div class="mobile-nav"></div>
@@ -104,17 +104,20 @@
 												
 										<li><a href="#blog"><i class="fa fa-pencil"></i>Contactanos</a>
 											
-										</li>		
-										<li><a href="#contact"><i class="fa fa-address-book"></i>Iniciar Sesion</a>
+										</li>
+										{% if 'sesion' in request.session %}	
+										<li><a href="#contact"><i class="fa fa-address-book"></i>{{ request.session.sesion }}</a>
 											<ul>
-												<li><a href="blog-grid.html"><i class="fa fa-angle-double-right"></i>Blog Grid Style</a></li>
-												<li><a href="blog-grid-sidebar.html"><i class="fa fa-angle-double-right"></i>Blog Grid With Sidebar</a></li>
-												<li><a href="blog-list.html"><i class="fa fa-angle-double-right"></i>Blog List Style</a></li>
-												<li><a href="blog-list-sidebar.html"><i class="fa fa-angle-double-right"></i>Blog List With Sidebar</a></li>
-												<li><a href="blog-single.html"><i class="fa fa-angle-double-right"></i>Blog Single</a></li>
-												<li><a href="blog-single-sidebar.html"><i class="fa fa-angle-double-right"></i>Blog Single With Sidebar</a></li>
+												<li><a href="blog-grid.html"><i class="fa fa-angle-double-right"></i>Editar Perfil</a></li>
+												<li><a href="/cerrarsesion/"><i class="fa fa-angle-double-right"></i>Salir</a></li>
+												
 											</ul>
-										</li>		
+										</li>
+										{% else %}
+										<li><a href="/inisiarsesion/"><i class="fa fa-pencil"></i>Iniciar Sesion</a>
+											
+										</li>	
+										{% endif %}	
 									</ul>
 									<ul class="social-icon">
 										<li><a href="#header"><i class="fa fa-plus"></i></a></li>

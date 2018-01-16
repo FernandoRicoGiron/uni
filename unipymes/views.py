@@ -17,7 +17,8 @@ def evaluacion(request):
 def servicios(request):
 	servicio = Servicio.objects.all()
 	escuela = Escuela.objects.all()
-	return render(request, 'servicios.html', {'servicio':servicio, 'escuela':escuela})
+	carreras = Carrera.objects.all()
+	return render(request, 'servicios.html', {'servicio':servicio, 'escuela':escuela, 'carreras':carreras})
 
 def quienessomos(request):
 	return render(request, 'services.html', {})
@@ -47,10 +48,12 @@ def registro(request):
 	return render(request, 'registro.html', {})
 
 @csrf_exempt
-def servicio(request):
-	servicio = Servicio.objects.get(Nombre=request.POST.get('nombre'))
+def servicio(request, id):
+	servicio = Servicio.objects.get(id=id)
+	servicios = Servicio.objects.filter(Carrera=servicio.Carrera)
+	print(servicio)
 	escuela = Escuela.objects.all()
-	return render(request, 'servicio.html', {'servicio':servicio})
+	return render(request, 'servicio.html', {'servicio':servicio, 'servicios':servicios})
 
 @csrf_exempt
 def registrar(request):
@@ -87,14 +90,14 @@ def cerrarsesion(request):
 @csrf_exempt
 def solicitado(request):
 	if 'sesion' in request.session:
-		usuario = Usuario.objects.get(Usuario=request.GET.get('sesion'))
+		usuario = Usuario.objects.get(Usuario=request.POST.get('sesion'))
 		empresa = Empresa.objects.get(DenominacionSocial=usuario.Empresas_idEmpresas)
-		servicio = Servicio.objects.get(Nombre=request.GET.get('nombreser'))
-		if 'espera' in request.GET:
+		servicio = Servicio.objects.get(Nombre=request.POST.get('nombreser'))
+		if 'espera' in request.POST:
 			Espera.objects.create(Usuarios_idUsuario=usuario, Empresas_idEmpresa = empresa,Servicios_idServicios=servicio)
 		else:
 			Solicitude.objects.create(Usuarios_idUsuario=usuario, Empresas_idEmpresa = empresa,Servicios_idServicios=servicio, Estado="En Proceso")
-		email = EmailMessage('Solicitud de Servicio', 'El usuario '+ request.GET.get('sesion') +' a solicitado un ' + request.GET.get('nombreser'), to = ['strokemax28@gmail.com'])
+		email = EmailMessage('Solicitud de Servicio', 'El usuario '+ request.POST.get('sesion') +' a solicitado un ' + request.POST.get('nombreser'), to = ['strokemax28@gmail.com'])
 		email.send()
 		return render(request, 'solicitado.html', {})
 	else:
@@ -115,8 +118,8 @@ def nuevacontraseña(request):
 	correo = Usuario.objects.filter(Correo=request.POST.get("email")).exists()
 	if correo==True:
 		usuario = Usuario.objects.get(Correo=request.POST.get("email"))
-		sesion = "Se ha enviado un enlace a su correo para que recupere sun contraseña"
-		email = EmailMessage('Recuperar contraseña de Unipymes', 'Para poder ingresar de nuevo a unipymes de click en el siguiente enlace\nhttp://www.unipymes.com.mx/salto/?Usuario='+usuario.Usuario,to = [request.POST.get("email")])
+		sesion = "Se ha enviado un enlace a su correo para que recupere su contraseña"
+		email = EmailMessage('Recuperar contraseña de Unipymes', 'Para poder ingresar de nuevo a unipymes de click en el siguiente enlace\nhttp://www.unipymes.com.mx/salto/'+usuario.Usuario+"/",to = [request.POST.get("email")])
 		email.send()
 		return render(request, 'olvidocontra.html', {'sesion':sesion,})
 	else:
@@ -127,8 +130,7 @@ def nuevacontraseña(request):
 def olvidocontraseña(request):
 	return render(request, 'olvidocontra.html', {})
 
-def salto(request):
-	usuario = request.GET.get("Usuario")
+def salto(request, usuario):
 	return render(request, 'salto.html', {'usuario':usuario})
 
 def crearnuevacontra(request):

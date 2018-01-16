@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+   {% block content %}
+   <section id="portfolio" class="section">
+	<div class="contact">
+		<div class="container">
+			<div class="text-center">
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
+					<h1>Inicia Sesión</h1>
+					<br><br>
+					<div id="datos"></div>
+					<!--
+						
+					{%if sesion%}
+					<h2>{{sesion}}</h2>
+					{%elif usucon%}
+					<h2>{{usucon}}</h2>
+					{%endif%}-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="contact-form">
+		<div class="container">
+		    <div class="col-md-8 col-md-offset-2">
+    		    
+                <form action="/iniciosesion/" id="login" method="POST" role="form" class="contactForm">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="usuario" class="form-control" id="usuario" placeholder="Usuario" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" data-rule="password" data-msg="Please enter a valid password" />
+                        <div class="validation"></div>
+                    </div>
+
+                    {%if sesion%}
+					<input type="hidden" name="regreso" value="regreso"></input>
+					{%endif%}
+					<br><br>
+					<div class="text-center"><p>Si no tienes una cuenta <a style="color: red;" href="/registro/">Registrate</a> o si olvidaste la contraseña has <a style="color: red;" href="/olvidocontraseña/">Clic Aqui</a></p></div>
+					<br>
+                    <div class="button"><button type="submit" class="btn btn-primary btn-lg">Iniciar Sesión</button></div>
+
+                </form>
+            </div>
+        </div>
+	</div>
+	</section>
+<br>
+			<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+		 <script>
+
+		//For getting CSRF token
+		function getCookie(name) {
+		       var cookieValue = null;
+		       if (document.cookie && document.cookie != '') {
+		         var cookies = document.cookie.split(';');
+		         for (var i = 0; i < cookies.length; i++) {
+		         var cookie = jQuery.trim(cookies[i]);
+		         // Does this cookie string begin with the name we want?
+		         if (cookie.substring(0, name.length + 1) == (name + '=')) {
+		             cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		             break;
+		          }
+		     }
+		 }
+		 return cookieValue;
+		}
+
+
+		//For doing AJAX post
+		 $("#login").submit(function(e) {
+
+		 e.preventDefault();
+
+		 var csrftoken = getCookie('csrftoken');
+
+		 var email = $('#usuario').val();
+
+		 var password = $('#password').val();
+
+		//This is the Ajax post.Observe carefully. It is nothing but details of where_to_post,what_to_post
+		 
+		 $.ajax({
+		         url : '/inisiarsesion/', // the endpoint,commonly same url
+		         type : "POST", // http method
+		         data : { csrfmiddlewaretoken : csrftoken, 
+		         email : email,
+		         password : password
+		 }, // data sent with the post request
+
+		 // handle a successful response
+		 success : function(json) {
+		      console.log(json); // another sanity check
+		      //On success show the data posted to server as a message
+		      //alert('Hi '+json['email'] +'!.' + ' You have entered password:'+      json['password']);
+		      if (json['usucon'] == 'mal') {
+			      var html = '<h2>El usuario o la contraseña es incorrecto<h2>'
+			      $('#datos').html(html);
+		  		}
+		  	else{
+		  		$('#login').submit()
+		  	}
+		 },
+
+		 // handle a non-successful response
+		 error : function(xhr,errmsg,err) {
+		 console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+		 }
+		 });
+		});
+
+		</script>
+
+	{% endblock %}

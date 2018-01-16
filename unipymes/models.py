@@ -52,7 +52,14 @@ class Servicio(models.Model):
     Disponible = models.IntegerField(default=0)
     Convocatoria = models.ImageField(upload_to = 'Convocatorias')
     Precio = models.CharField(max_length=30)
-    Escuela = models.ManyToManyField(Escuela)
+    Carrera = models.ForeignKey('Carrera', on_delete=models.CASCADE)
+    Escuela = models.ForeignKey('Escuela', on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return str(self.id) + " " + self.Nombre
+
+class Carrera(models.Model):
+    Nombre = models.CharField(max_length=100)
 
     def __str__(self):
         return str(self.id) + " " + self.Nombre

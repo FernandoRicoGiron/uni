@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+   {% block content %}
+<section id="portfolio" class="section">
+	<div class="contact">
+		<div class="container">
+			<div class="text-center">
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
+					<h2>Recuperar contraseña</h2>
+					<br>
+					<br>
+					{%if sesion%}
+					<h2>{{sesion}}</h2>
+					{%elif usucon%}
+					<h2>{{usucon}}</h2>
+					{%endif%}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="contact-form">
+		<div class="container">
+		    <div class="col-md-8 col-md-offset-2">
+    		    <br><br>
+                <form action="/nuevacontraseña/" method="POST" role="form" class="contactForm">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" id="usuario" placeholder="Correo" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                        <div class="validation"></div>
+                    </div>
+
+                    <div class="button"><button type="submit" class="btn btn-primary btn-lg">Enviar</button></div>
+                    <br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+                </form>
+            </div>
+        </div>
+	</div>
+	</section>
+	{% endblock %}

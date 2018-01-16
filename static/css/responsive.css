@@ -1,5 +1,9 @@
 /* Tablet Layout */
 @media (min-width: 768px) and (max-width: 991px) {
+#logounipy{
+	width: 100px;
+}
+
 .section-title{
 	padding:0 50px;
 }
@@ -7,8 +11,9 @@
 	font-size:25px;
 }
 #header{
-	background:rgba(0, 0, 0, 0.70);
+	background:#ffffff;
 	padding:10px 0;
+	position: inherit;
 }
 #header .logo{
 	padding-top:0px;
@@ -26,9 +31,9 @@
 	padding: 0;
 }
 #header .slicknav_btn {
-	background: transparent;
+	background: #ff0000;
 	padding: 6px;
-	margin: -31px 0px 0 0px;
+	margin: -25px 0px 0 0px;
 }
 #header .slicknav_menutxt {
 	text-shadow:none;
@@ -39,11 +44,11 @@
 #header .slicknav_nav a{
 	padding:5px 0;
 	margin:0;
-	color:#fff;
+	color: #000000;
 	background:transparent;
 }
 #header .slicknav_nav a:hover,
-#header .slicknav_nav a:focus
+#header .slicknav_nav a:focus,
 #header .slicknav_nav a:active{
 	color:#ED5F55;
 }
@@ -122,6 +127,9 @@
 }
 }
 @media only screen and (max-width: 767px) {
+#logounipy{
+	width: 100px;
+}
 .section-title{
 	padding:0 50px;
 }
@@ -134,8 +142,9 @@
 	font-size: 28px;
 }
 #header{
-	background:rgba(0, 0, 0, 0.70);
+	background:#ffffff;
 	padding:10px 0;
+	position: inherit;
 }
 #header .logo{
 	padding-top:0px;
@@ -154,9 +163,10 @@
 	padding: 0;
 }
 #header .slicknav_btn {
-	background: transparent;
+	padding-top: 5px;
+	background: #ff0000;
 	padding: 6px;
-	margin: -31px 0px 0 0px;
+	margin: -25px 0px 0 0px;
 }
 #header .slicknav_menutxt {
 	text-shadow:none;
@@ -167,11 +177,11 @@
 #header .slicknav_nav a{
 	padding:5px 0;
 	margin:0;
-	color:#fff;
+	color: #000000;
 	background:transparent;
 }
 #header .slicknav_nav a:hover,
-#header .slicknav_nav a:focus
+#header .slicknav_nav a:focus,
 #header .slicknav_nav a:active{
 	color:#ED5F55;
 }
