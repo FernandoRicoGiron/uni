@@ -1,0 +1,143 @@
+from django.shortcuts import render
+from django.utils import timezone
+from .models import *
+from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import EmailMessage
+from django.http import JsonResponse
+
+def index(request):
+	return render(request, 'index.html', {})
+
+def contactanos(request):
+	return render(request, 'contact.html', {})
+def evaluacion(request):
+	return render(request,'eval1.html',{})
+
+@csrf_exempt
+def servicios(request):
+	servicio = Servicio.objects.all()
+	escuela = Escuela.objects.all()
+	return render(request, 'servicios.html', {'servicio':servicio, 'escuela':escuela})
+
+def quienessomos(request):
+	return render(request, 'services.html', {})
+
+def login(request):
+	if request.method == 'POST':
+	#POST goes here . is_ajax is must to capture ajax requests. Beginner's pit.
+		if request.is_ajax():
+			usuario = Usuario.objects.filter(Usuario=request.POST.get("email"),Contraseña=request.POST.get("password")).exists()
+			if usuario==True:
+				request.session ['sesion'] = request.POST.get("usuario")
+				if 'regreso' in request.POST:
+					servicio = Servicio.objects.all()
+					escuela = Escuela.objects.all()
+					return render(request, 'servicios.html', {'servicio':servicio, 'escuela':escuela})
+				else:
+					return render(request, 'index.html', {})
+			else:
+				usucon = "mal"
+				data = {"usucon":usucon}
+				#Returning same data back to browser.It is not possible with Normal submit
+				return JsonResponse(data)
+   				 #Get goes here
+	return render(request, 'login.html')
+
+def registro(request):
+	return render(request, 'registro.html', {})
+
+@csrf_exempt
+def servicio(request):
+	servicio = Servicio.objects.get(Nombre=request.POST.get('nombre'))
+	escuela = Escuela.objects.all()
+	return render(request, 'servicio.html', {'servicio':servicio})
+
+@csrf_exempt
+def registrar(request):
+	Empresa.objects.create(DenominacionSocial=request.POST.get("densocial"), RFC=request.POST.get("rfc"), Telefono=request.POST.get("telempresa"),
+		Calle=request.POST.get("calleempresa"),NumExterior=request.POST.get("numexteemp"), NumInterior=request.POST.get("numinteemp"), CodigoPostal=request.POST.get("codigopostalemp"),
+		SitioWeb=request.POST.get("sitio"))
+
+	densocial = Empresa.objects.get(DenominacionSocial=request.POST.get("densocial"))
+	Usuario.objects.create(Empresas_idEmpresas=densocial, Nombre=request.POST.get("name"), ApellidoP=request.POST.get("apellidoP"),
+		ApellidoM=request.POST.get("apellidoM"),FechaNacimiento=request.POST.get("fecha"), NumTelefono=request.POST.get("telefono"), EstadoCivil=request.POST.get("ecivil"),
+		Sexo=request.POST.get("sexo"),Escolaridad=request.POST.get("escolaridad"),Estado=request.POST.get("estado"),Municipio=request.POST.get("municipio"),
+		Domicilio=request.POST.get("domicilio"),NumExterior=request.POST.get("numexterior"),NumInterior=request.POST.get("numinterior"),CodigoPostal=request.POST.get("codigopostal"),
+		Correo=request.POST.get("correo"),Usuario=request.POST.get("usuario"),Contraseña=request.POST.get("contraseña"))
+	return render(request, 'login.html', {})
+
+def iniciarsesion(request):
+	usuario = Usuario.objects.filter(Usuario=request.POST.get("usuario"),Contraseña=request.POST.get("password")).exists()
+	if usuario==True:
+		request.session ['sesion'] = request.POST.get("usuario")
+		if 'regreso' in request.POST:
+			servicio = Servicio.objects.all()
+			escuela = Escuela.objects.all()
+			return render(request, 'servicios.html', {'servicio':servicio, 'escuela':escuela})
+		else:
+			return render(request, 'index.html', {})
+	else:
+		usucon = "El usuario o la contraseña es incorrecto"
+		return render(request, 'login.html', {'usucon':usucon})
+
+def cerrarsesion(request):
+	request.session.flush()
+	return render(request, 'index.html', {})
+
+@csrf_exempt
+def solicitado(request):
+	if 'sesion' in request.session:
+		usuario = Usuario.objects.get(Usuario=request.GET.get('sesion'))
+		empresa = Empresa.objects.get(DenominacionSocial=usuario.Empresas_idEmpresas)
+		servicio = Servicio.objects.get(Nombre=request.GET.get('nombreser'))
+		if 'espera' in request.GET:
+			Espera.objects.create(Usuarios_idUsuario=usuario, Empresas_idEmpresa = empresa,Servicios_idServicios=servicio)
+		else:
+			Solicitude.objects.create(Usuarios_idUsuario=usuario, Empresas_idEmpresa = empresa,Servicios_idServicios=servicio, Estado="En Proceso")
+		email = EmailMessage('Solicitud de Servicio', 'El usuario '+ request.GET.get('sesion') +' a solicitado un ' + request.GET.get('nombreser'), to = ['strokemax28@gmail.com'])
+		email.send()
+		return render(request, 'solicitado.html', {})
+	else:
+		sesion = "Debe iniciar sesion para continuar"
+		return render(request, 'login.html', {'sesion':sesion})
+
+@csrf_exempt
+def mensaje(request):
+	Mensaje.objects.create(Nombre=request.POST.get("nombre"), Correo=request.POST.get("correo"), Empresa=request.POST.get("empresa"),
+		Asunto=request.POST.get("asunto"),Texto=request.POST.get("mensaje"))
+
+	email = EmailMessage('Contacto', 'La persona '+ request.POST.get("nombre") +' de la empresa ' + request.POST.get("empresa") + ' con el correo '+request.POST.get("correo")+" desea saber la siguiente informacion:\n"+request.POST.get("asunto") +'\n' +request.POST.get("mensaje"),to = ['strokemax28@gmail.com'])
+	email.send()
+	return render(request, 'mensaje.html', {})
+
+@csrf_exempt
+def nuevacontraseña(request):
+	correo = Usuario.objects.filter(Correo=request.POST.get("email")).exists()
+	if correo==True:
+		usuario = Usuario.objects.get(Correo=request.POST.get("email"))
+		sesion = "Se ha enviado un enlace a su correo para que recupere sun contraseña"
+		email = EmailMessage('Recuperar contraseña de Unipymes', 'Para poder ingresar de nuevo a unipymes de click en el siguiente enlace\nhttp://www.unipymes.com.mx/salto/?Usuario='+usuario.Usuario,to = [request.POST.get("email")])
+		email.send()
+		return render(request, 'olvidocontra.html', {'sesion':sesion,})
+	else:
+		sesion = "El correo que a ingresado no tiene una cuenta"
+		return render(request, 'olvidocontra.html', {'sesion':sesion})
+
+@csrf_exempt
+def olvidocontraseña(request):
+	return render(request, 'olvidocontra.html', {})
+
+def salto(request):
+	usuario = request.GET.get("Usuario")
+	return render(request, 'salto.html', {'usuario':usuario})
+
+def crearnuevacontra(request):
+	usuario = request.POST.get("usuario")
+	return render(request, 'nuevacontraseña.html', {'usuario':usuario})
+
+
+def modificarcontraseña(request):
+	usuario = Usuario.objects.get(Usuario=request.POST.get('usuario'))
+	usuario.Contraseña = request.POST.get("nuevacontraseña")
+	usuario.save()
+	return render(request, 'login.html', {'usuario':usuario})
