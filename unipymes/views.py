@@ -96,7 +96,7 @@ def solicitado(request):
 		if 'espera' in request.POST:
 			Espera.objects.create(Usuarios_idUsuario=usuario, Empresas_idEmpresa = empresa,Servicios_idServicios=servicio)
 		else:
-			Solicitude.objects.create(Usuarios_idUsuario=usuario, Empresas_idEmpresa = empresa,Servicios_idServicios=servicio, Estado="En Proceso")
+			Solicitude.objects.create(Usuarios_idUsuario=usuario, Empresas_idEmpresa = empresa,Servicios_idServicios=servicio, Estado="0")
 		email = EmailMessage('Solicitud de Servicio', 'El usuario '+ request.POST.get('sesion') +' a solicitado un ' + request.POST.get('nombreser'), to = ['strokemax28@gmail.com'])
 		email.send()
 		return render(request, 'solicitado.html', {})
@@ -143,3 +143,47 @@ def modificarcontraseña(request):
 	usuario.Contraseña = request.POST.get("nuevacontraseña")
 	usuario.save()
 	return render(request, 'login.html', {'usuario':usuario})
+
+def modificarperfil(request):
+	usuario = Usuario.objects.get(Usuario=request.session['sesion'])
+	return render(request, 'moddatos.html', {'usuario':usuario})
+
+@csrf_exempt
+def editar_perfil(request):
+	empresa = Empresa.objects.get(DenominacionSocial=request.POST.get("densocial"))
+	empresa.DenominacionSocial=request.POST.get("densocial")
+	empresa.RFC=request.POST.get("rfc")
+	empresa.Telefono=request.POST.get("telempresa")
+	empresa.Calle=request.POST.get("calleempresa")
+	empresa.NumExterior=request.POST.get("numexteemp")
+	empresa.NumInterior=request.POST.get("numinteemp")
+	empresa.CodigoPostal=request.POST.get("codigopostalemp")
+	empresa.SitioWeb=request.POST.get("sitio")
+	empresa.save()
+
+	usuario = Usuario.objects.get(Usuario=request.session["sesion"])
+	usuario.Empresas_idEmpresas=empresa
+	usuario.Nombre=request.POST.get("name")
+	usuario.ApellidoP=request.POST.get("apellidoP")
+	usuario.ApellidoM=request.POST.get("apellidoM")
+	usuario.FechaNacimiento=request.POST.get("fecha")
+	usuario.NumTelefono=request.POST.get("telefono")
+	usuario.EstadoCivil=request.POST.get("ecivil")
+	usuario.Sexo=request.POST.get("sexo")
+	usuario.Escolaridad=request.POST.get("escolaridad")
+	usuario.Estado=request.POST.get("estado")
+	usuario.Municipio=request.POST.get("municipio")
+	usuario.Domicilio=request.POST.get("domicilio")
+	usuario.NumExterior=request.POST.get("numexterior")
+	usuario.NumInterior=request.POST.get("numinterior")
+	usuario.CodigoPostal=request.POST.get("codigopostal")
+	usuario.Correo=request.POST.get("correo")
+	usuario.Usuario=request.POST.get("usuario")
+	usuario.Contraseña=request.POST.get("contraseña")
+	usuario.save()
+
+	return render(request, 'index.html', {})
+
+def estadosoli(request):
+	solicitudes = Solicitude.objects.filter(Usuarios_idUsuario__Usuario=request.session["sesion"])
+	return render(request, 'estadosoli.html', {"solicitudes":solicitudes})

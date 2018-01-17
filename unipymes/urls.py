@@ -22,4 +22,7 @@ urlpatterns = [
     path('crearnuevacontra/', views.crearnuevacontra),
     re_path('salto/(?P<usuario>[\w.@+-]+)/', views.salto),
     path('modificarcontraseña/', views.modificarcontraseña),
+    path('moddatos/', views.modificarperfil),
+    path('editperfil/', views.editar_perfil),
+    path('estadosoli/', views.estadosoli),
 ]

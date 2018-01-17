@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% csrf_token %}
+   {% block content %}
+   <section id="portfolio" class="section">
+	<div class="contact">
+		<div class="container">
+			<div class="text-center">
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
+					<h2>Modificar Perfil</h2>
+				</div>
+                <br>
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.6s">
+					<h3>Modifica los datos de tu Perfil</h3>
+				</div><br>
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.6s">
+					<h2>Datos Personales</h2>
+				</div><br>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="contact-form">
+		<div class="container">
+		    <div class="col-md-8 col-md-offset-2">
+    		    
+                <form action="/editperfil/" method="POST" role="form" class="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{usuario.Nombre}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="apellidoP" id="apellido" placeholder="Apellido Paterno" data-rule="apellido" data-msg="Please enter a valid apellido" value="{{usuario.ApellidoP}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="apellidoM" id="Apellido" placeholder="Apellido Materno" data-rule="minlen:4" data-msg="Please enter at least 8 chars of Apellido" value="{{usuario.ApellidoM}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="fecha" id="fecha" placeholder="Fecha de nacimiento" data-rule="minlen:4" data-msg="Ingrese una fecha correcta" onfocus="(this.type='date')" onblur="(this.type='text')" value="{{usuario.FechaNacimiento|date:'Y-m-d'}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Numero de Telefono" data-rule="minlen:4" data-msg="Ingrese un numero de telefono valido" value="{{usuario.NumTelefono}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <select name="ecivil" class="form-control" id="ecivil" required>
+                          <option value="" disabled selected>Estado civil</option>
+						  <option value="soltero">Soltero</option>
+						  <option value="casado">Casado</option>
+						  <option value="divorsiado">Divorsiado</option>
+						  <option value="viudo">Viudo</option>
+						</select>
+                    </div>
+                    <div class="form-group">
+                        <select name="sexo" class="form-control" id="sexo" required>
+                          <option value="" disabled selected>Sexo</option>
+						  <option value="masculino">Masculino</option>
+						  <option value="femenino">Femenino</option>
+						</select>
+                    </div>
+                   <div class="form-group">
+                        <select name="escolaridad" class="form-control" id="escolaridad" required>
+                          <option value="" disabled selected>Escolaridad</option>
+						  <option value="ninguna">Ninguna</option>
+						  <option value="primaria">Primaria</option>
+						  <option value="secundaria">Secundaria</option>
+						  <option value="preparatoria">Preparatoria</option>
+						  <option value="carrtecnica">Carrera Tecnica</option>
+						  <option value="universidad">Universidad</option>
+						  <option value="maestria">Maestria</option>
+						  <option value="doctorado">Doctorado</option>
+						</select>
+                    </div>
+                    <div class="form-group">
+                        <select name="estado" class="form-control" id="estado" required>
+                        	<option value="" disabled selected>Estado</option>
+                          	<option value="Aguascalientes">Aguascalientes</option>
+							<option value="BajaCalifornia" >Baja California </option>
+							<option value="BajaCaliforniaSur">Baja California Sur </option>
+							<option value="Campeche">Campeche </option>
+							<option value="Chiapas">Chiapas </option>
+							<option value="Chihuahua">Chihuahua </option>
+							<option value="Coahuila">Coahuila </option>
+							<option value="Colima">Colima </option>
+							<option value="DistritoFederal">Distrito Federal</option>
+							<option value="Durango">Durango </option>
+							<option value="EstadodeMexico">Estado de México </option>
+							<option value="Guanajuato">Guanajuato </option>
+							<option value="Guerrero">Guerrero </option>
+							<option value="Hidalgo">Hidalgo </option>
+							<option value="Jalisco">Jalisco </option>
+							<option value="Michoacán">Michoacán </option>
+							<option value="Morelos">Morelos </option>
+							<option value="Nayarit">Nayarit </option>
+							<option value="NuevoLeon">Nuevo León </option>
+							<option value="Oaxaca">Oaxaca </option>
+							<option value="Puebla">Puebla </option>
+							<option value="Querétaro">Querétaro </option>
+							<option value="QuintanaRoo">Quintana Roo </option>
+							<option value="SanLuisPotosí">San Luis Potosí </option>
+							<option value="Sinaloa">Sinaloa </option>
+							<option value="Sonora">Sonora </option>
+							<option value="Tabasco">Tabasco </option>
+							<option value="Tamaulipas">Tamaulipas </option>
+							<option value="Tlaxcala">Tlaxcala </option>
+							<option value="Veracruz">Veracruz </option>
+							<option value="Yucatán">Yucatán </option>
+							<option value="Zacatecas">Zacatecas</option>
+						</select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="municipio" id="municipio" placeholder="Municipio" data-rule="minlen:4" data-msg="Ingrese un municipio valido" value="{{usuario.Municipio}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="domicilio" id="domicilio" placeholder="Domicilio" data-rule="minlen:4" data-msg="Por favor ingrese un domicilio valido" value="{{usuario.Domicilio}}" required/>
+                        <div class="validation" ></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="numexterior" id="numexterior" placeholder="Numero exterior" data-rule="minlen:4" value="{{usuario.NumExterior}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="numinterior" id="numinterior" placeholder="Numero interior" data-rule="minlen:4" value="{{usuario.NumInterior}}"/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="codigopostal" id="codigopostal" placeholder="Codigo Postal" data-rule="minlen:4" value="{{usuario.CodigoPostal}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo Electronico" data-rule="minlen:4" value="{{usuario.Correo}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="correo2" id="correo2" placeholder="Confirmar Correo Electronico" data-rule="minlen:4" value="{{usuario.Correo}}" required/>
+                        <div class="validation"></div>
+                    </div>
+
+
+							<div class="text-center">
+								<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.6s">
+									<h2>Datos de la Empresa</h2>
+								</div><br>
+							</div>
+
+
+                   <div class="form-group">
+                        <input type="text" name="densocial" class="form-control" id="densocial" placeholder=" Nombre, Denominacion o Razon Social" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{usuario.Empresas_idEmpresas.DenominacionSocial}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="rfc" class="form-control" id="rfc" placeholder="RFC" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{usuario.Empresas_idEmpresas.RFC}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="telempresa" class="form-control" id="telempresa" placeholder="Telefono" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{usuario.Empresas_idEmpresas.Telefono}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="calleempresa" class="form-control" id="calleempresa" placeholder="Calle" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{usuario.Empresas_idEmpresas.Calle}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="numexteemp" class="form-control" id="numexteemp" placeholder="Numero Exterior" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{usuario.Empresas_idEmpresas.NumExterior}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="numinteemp" class="form-control" id="numinteemp" placeholder="Numero Interior" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{usuario.Empresas_idEmpresas.NumInterior}}" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="codigopostalemp" class="form-control" id="codigopostalemp" placeholder="Codigo Postal" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{usuario.Empresas_idEmpresas.CodigoPostal}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="sitio" class="form-control" id="sitio" placeholder="Sitio Web" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{usuario.Empresas_idEmpresas.SitioWeb}}" />
+                        <div class="validation"></div>
+                    </div>
+
+                    <div class="text-center">
+								<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.6s">
+									<h2>Datos de Usuario</h2>
+								</div>
+							</div><br>
+
+					<div class="form-group">
+                        <input type="text" name="usuario" class="form-control" id="usuario" placeholder="Usuario" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{usuario.Usuario}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="contraseña" class="form-control" id="password" placeholder="Contraseña" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{usuario.Contraseña}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="contraseña2" class="form-control" id="confirm_password" placeholder="Confirmar Contraseña" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{usuario.Contraseña}}" required/>
+                        <div class="validation"></div>
+                    </div>
+
+
+                    <div class="button"><button type="submit" class="btn btn-primary btn-lg">Modificar</button></div>
+                </form>
+            </div>
+        </div>
+	</div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
+        var correo = document.getElementById("correo"), correo2 = document.getElementById("correo2");
+
+        function validatePassword(){
+          if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Las contraseñas no coinciden");
+          } else {
+            confirm_password.setCustomValidity('');
+          }
+        }
+
+        function validateCorreo(){
+          if(correo.value != correo2.value) {
+            correo2.setCustomValidity("Los correos no coinciden");
+          } else {
+            correo2.setCustomValidity('');
+          }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+        correo.onchange = validateCorreo;
+        correo2.onkeyup = validateCorreo;
+
+        
+        $(document).ready(function() {
+            $("#ecivil > option[value='{{usuario.EstadoCivil}}']").attr('selected',true);
+            $("#sexo > option[value='{{usuario.Sexo}}']").attr('selected',true);
+            $("#escolaridad > option[value='{{usuario.Escolaridad}}']").attr('selected',true);
+            $("#estado > option[value='{{usuario.Estado}}']").attr('selected',true);
+        });
+    </script>
+
+	{% endblock %}
