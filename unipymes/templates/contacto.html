@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% csrf_token %}
+
+   {% block content %}
+
+	<div class="contact">
+		<div class="container">
+			<div class="text-center">
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
+					<h2>Contáctanos</h2>
+				</div>
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.6s">
+					<p>Gracias por mantenerte en contacto con nosotros, esperamos que nuestros servicios esten cumpliendo con tus espectativas.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="col-md-7">
+			<div class="map">
+				<div
+
+				 id="google-map" data-latitude="16.75706406788453" data-longitude="-93.17240953445435"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15282.860594674743!2d-93.12830513145603!3d16.741058863839044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ecd85def5618c7%3A0x5051d7288d944402!2sSan+Francisco%2C+29000+Tuxtla+Guti%C3%A9rrez%2C+Chiapas!5e0!3m2!1ses-419!2smx!4v1514918224838"></div>
+			</div>
+		</div>
+
+		<div class="contact-info">
+			<div class="col-md-5">
+				<h2>Nosotros somos Unipymes</h2>
+				<h3>Inspirado en las experiencias laborales de los alumnos universitarios</h3>
+				<ul>
+					<li><i class="fa fa-home fa-2x"></i> KM 29020, Carr. Panamericana 1080, Boulevares, Tuxtla Gutiérrez, Chis.</li>
+					<li><i class="fa fa-phone fa-2x"></i> +52 961 1002890</li>
+					<li><i class="fa fa-envelope fa-2x"></i> riicoo28@gmail.com</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="contact-form">
+		<div class="container">
+		    <div class="col-md-8 col-md-offset-2">
+    		    <div id="sendmessage">Your message has been sent. Thank you!</div>
+                <div id="errormessage"></div>
+                <form action="/mensaje/" method="post" role="form" class="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Tu Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="correo" id="correo" placeholder="Tu Correo" data-rule="email" data-msg="Please enter a valid email" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="empresa" id="empresa" placeholder="Empresa" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="asunto" id="asunto" placeholder="Asunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="mensaje" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Describe en que podemos ayudarte"></textarea>
+                        <div class="validation"></div>
+                    </div>
+
+                    <div class="text-center"><button type="submit" class="btn btn-primary btn-lg">Enviar Mensaje</button></div>
+                </form>
+            </div>
+        </div>
+	</div>
+	{% endblock %}

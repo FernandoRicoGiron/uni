@@ -9,7 +9,7 @@ def index(request):
 	return render(request, 'index.html', {})
 
 def contactanos(request):
-	return render(request, 'contact.html', {})
+	return render(request, 'contacto.html', {})
 def evaluacion(request):
 	return render(request,'eval1.html',{})
 
