@@ -391,7 +391,7 @@ Version:	1.1
 	Personal CSS
 =========================*/  
 #personal-area {
-	background-image: url('http://via.placeholder.com/1500x800');
+	/*background-image: url('http://via.placeholder.com/1500x800');*/
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 680px;
@@ -504,7 +504,7 @@ Version:	1.1
 
 /* Personal Particle */
 #personal-area.particle {
-	background-image: url('http://via.placeholder.com/1500x800');
+	/*background-image: url('http://via.placeholder.com/1500x800');*/
 	z-index:100;
 	width:100%;
 	height:100%;
@@ -1327,7 +1327,7 @@ Version:	1.1
 	CountDown CSS
 =========================*/
 #countdown {
-	background-image: url(http://via.placeholder.com/1500x800);
+	/*background-image: url(http://via.placeholder.com/1500x800);*/
 	background-size: cover;
 	background-position: center center;
 	position: relative;
@@ -2375,7 +2375,7 @@ Version:	1.1
 #call-action {
 	position: relative;
 	overflow: hidden;
-	background-image: url('http://via.placeholder.com/1500x800');
+	/*background-image: url('http://via.placeholder.com/1500x800');*/
 	background-size: cover;
 	background-position: center;
 	z-index: 1;
@@ -2579,7 +2579,7 @@ Version:	1.1
 	padding: 200px 0 70px;
 	background: #F8F8F8;
 	border-top: 3px solid;
-	background: url('http://via.placeholder.com/1500x800');
+	/*background: url('http://via.placeholder.com/1500x800');*/
 	background-size: cover;
 	background-repeat: no-repeat;
 	position: relative;
