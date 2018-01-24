@@ -2,23 +2,23 @@
 {% load staticfiles %}
    {% block content %}
 
-		
+
 		<!-- Start portfolio -->
 		<section id="portfolio" class="section single">
 			<div class="container">
-				<div class="row">	
+				<div class="row">
 					<!-- Single portfolio -->
 					<img height="400" width="1200" src="{{servicio.Convocatoria.url }}">
 					<!--/ End portfolio -->
 				</div>
-				<div class="row">	
+				<div class="row">
 					<!-- Portfolio Content -->
 					<div class="col-md-8 col-sm-8 col-xs-12">
 						<div class="content">
 							<h2>{{ servicio.Nombre }}</h2>
 							<p> {{ servicio.Descripcion }} </p>
 
-							
+
 						</div>
 					</div>
 					<!--/ End portfolio Content -->
@@ -39,16 +39,16 @@
 							</div>
 							<!--/ End Single Widget -->
 							<!-- Single Widget -->
-						    
+
 						    <!--/ End Single Widget -->
 						</div>
-						
+
 
 					<form action="/solicitado/" method="POST">
 					<input type="hidden" name="nombreser" value="{{servicio.Nombre}}">
 					<input type="hidden" name="sesion" value="{{request.session.sesion}}">
 					<div class="text-center">
-					
+
 					{% if servicio.Disponible != 0 %}
 					<div class="button">
 					<input type="submit" class="btn" value="Solicitar Servicio"></input>
@@ -66,8 +66,8 @@
 					</div>
 
 				</div>
-				
-				<div class="row">	
+
+				<div class="row">
 					<div class="col-md-12">
 						<div class="portfolio-related">
 							{% for serv in servicios %}
@@ -79,22 +79,22 @@
 									<h4><span>{{ serv.Carrera.Nombre }}</span><a href="#">{{ serv.Nombre }}</a></h4>
 									<p>{{serv.Descripcion|truncatewords:"30"}} </p>
 									<div class="button">
-										<a data-fancybox="gallery" href="http://via.placeholder.com/1200x800"><i class="fa fa-search"></i></a>
-										<a href="portfolio-single.html" class="primary"><i class="fa fa-link"></i></a>
+										<a href="/servicios/{{serv.id}}/"><i class="fa fa-search"></i></a>
+
 									</div>
 								</div>
 							</div>
 							{% endfor %}
 
-							
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 		<!--/ End portfolio -->
-		
-		
+
+
 
 
    {% endblock %}

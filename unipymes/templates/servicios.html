@@ -12,25 +12,25 @@
 						</div>
 					</div>
 				</div>
-						
+
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<!-- portfolio Nav -->
 						<div class="portfolio-nav">
 							<ul>
-								<li class="active" data-filter="*"><span>{% for carr in carreras %}{{forloop.counter}}{%endfor%}</span><i class="fa fa-tasks"></i>All Works</li>
+								<li class="active" data-filter="*"><span>05</span><i class="fa fa-tasks"></i>All Works</li>
 								{% for carr in carreras %}
-								<li data-filter=".{{carr.id}}"><span>01</span><i class="fa fa-pencil"></i>{{carr.Nombre}}</li>
+								<li data-filter=".{{carr.id}}"><span>05</span><i class="fa fa-pencil"></i>{{carr.Nombre}}</li>
 								{% endfor %}
-								
+
 							</ul>
 						</div>
 						<!--/ End portfolio Nav -->
 					</div>
 				</div>
-						
+
 				<div class="portfolio-inner">
-					<div class="row stylex">	
+					<div class="row stylex">
 						<div class="isotop-active">
 							{% for serv in servicio %}
 							<!-- Single portfolio -->
@@ -44,15 +44,15 @@
 										<p>{{serv.Descripcion|truncatewords:"50"}}. </p>
 										<div class="button">
 											<a  href="/servicios/{{serv.id}}/"><i class="fa fa-search"></i></a>
-											
+
 										</div>
 									</div>
 								</div>
 							</div>
-							<!--/ End portfolio -->					
+							<!--/ End portfolio -->
 							{% endfor %}
-							
-							
+
+
 						</div>
 					</div>
 				</div>
@@ -66,6 +66,6 @@
 			</div>
 		</section>
 		<!--/ End portfolio -->
-		
-		
+
+
    {% endblock %}
