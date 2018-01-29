@@ -17,6 +17,7 @@ urlpatterns = [
     re_path('servicios/(?P<id>\d+)/', views.servicio),
     path('solicitado/', views.solicitado),
     path('mensaje/', views.mensaje),
+    path('mensaje_encuesta/', views.encuesta),
     path('olvidocontraseña/', views.olvidocontraseña),
     path('nuevacontraseña/', views.nuevacontraseña),
     path('crearnuevacontra/', views.crearnuevacontra),

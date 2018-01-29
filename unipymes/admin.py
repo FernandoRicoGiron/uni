@@ -3,6 +3,7 @@ from .models import *
 
 admin.site.register(Usuario)
 admin.site.register(Empresa)
+admin.site.register(Encuesta)
 admin.site.register(Escuela)
 admin.site.register(Solicitude)
 admin.site.register(Servicio)

@@ -114,6 +114,16 @@ def mensaje(request):
 	return render(request, 'mensaje.html', {})
 
 @csrf_exempt
+def encuesta(request):
+	Encuesta.objects.create(Respuesta=request.POST.get("uno"), Respuesta=request.POST.get("dos"))
+	#Encuesta.objects.create(Respuesta=request.POST.get("dos"))
+	#Encuesta.objects.create(Respuesta=request.POST.get("tres"))
+	#Encuesta.objects.create(Respuesta=request.POST.get("cuatro"))
+	#Encuesta.objects.create(Respuesta=request.POST.get("cinco"))
+
+	return render(request, 'mensaje_encuesta.html', {})
+
+@csrf_exempt
 def nuevacontraseña(request):
 	correo = Usuario.objects.filter(Correo=request.POST.get("email")).exists()
 	if correo==True:
