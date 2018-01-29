@@ -115,7 +115,8 @@ def mensaje(request):
 
 @csrf_exempt
 def encuesta(request):
-	Encuesta.objects.create(Respuesta=request.POST.get("uno"), Respuesta=request.POST.get("dos"))
+	
+	Encuesta.objects.create(Uno=request.POST.get("uno"), Dos=request.POST.get("dos"), Tres=request.POST.get("tres"), Cuatro=request.POST.get("cuatro"), Cinco=request.POST.get("cinco"))
 	#Encuesta.objects.create(Respuesta=request.POST.get("dos"))
 	#Encuesta.objects.create(Respuesta=request.POST.get("tres"))
 	#Encuesta.objects.create(Respuesta=request.POST.get("cuatro"))
