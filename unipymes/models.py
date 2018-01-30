@@ -1,6 +1,23 @@
 from django.db import models
 from django.utils import timezone
 
+ESTADO_SOLICITUDES = (
+    ('0','Solicitud Enviada'),
+    ('10','Solicitud Recibida'),
+    ("20",'Se Realizó la Primera Reunión'),
+    ("40",'Se Realizó la primer Revisión'),
+    ("60",'Se Realizó la segunda Revisión'),
+    ("80",'Se Realizó la tercera Revisión'),
+    ("90",'Se Realizó la Entrega'),
+    ("100",'Finalizado'),
+)
+
+ESTADO_MENSAJES = (
+    ('Sin Responder','Sin Responder'),
+    ('Respondido','Respondido'),
+)
+
+
 class Empresa(models.Model):
     DenominacionSocial = models.CharField(max_length=50, blank=False, unique=True)
     RFC = models.CharField(max_length=30)
@@ -69,7 +86,7 @@ class Solicitude(models.Model):
 	Usuarios_idUsuario = models.ForeignKey('Usuario', on_delete=models.CASCADE)
 	Empresas_idEmpresa = models.ForeignKey('Empresa', on_delete=models.CASCADE)
 	Servicios_idServicios = models.ForeignKey('Servicio', on_delete=models.CASCADE)
-	Estado = models.CharField(max_length=30)
+	Estado = models.CharField(max_length=50, choices=ESTADO_SOLICITUDES)
 
 	def __str__(self):
 		return "Solicitud = " + str(self.id) + " Usuario = " + str(self.Usuarios_idUsuario) + " Empresa = " + str(self.Empresas_idEmpresa) + " Estado = " + self.Estado
@@ -80,7 +97,7 @@ class Mensaje(models.Model):
     Empresa = models.CharField(max_length=50)
     Asunto = models.CharField(max_length=30)
     Texto = models.TextField()
-    Estado = models.CharField(max_length=30, default="Sin Responder")
+    Estado = models.CharField(max_length=30, default="Sin Responder", choices=ESTADO_MENSAJES)
 
     def __str__(self):
         return self.Asunto + " " + self.Estado
