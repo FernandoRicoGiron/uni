@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% csrf_token %}
 
    {% block content %}
-<section id="about-me" class="section default">
+
+
+<section id="about-me" class="section default" id="personal-area" class="slider">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
@@ -74,8 +77,17 @@
 										{% endif %}
 
 										{% if soli.Estado == "100" %}
+
+										<div  style="padding-top: 5px">
+											<p style="color: #fff">Finalizado</p>
+											<div class="text-center" class="contenedor-modal" style="padding-top: 40px">
+												<div class="text-center"><button  data-toggle="modal" data-target="#encuesta" style="background: #E74C3C" type="submit" class="btn btn-primary btn-lg">Realizar Encuesta</button></div>
+											</div>
+
 										
-										<p style="color: #fff; padding-top: 15px;">Finalizado</p>
+
+											
+										</div>
 										
 										{% endif %}
 
@@ -85,19 +97,89 @@
 											<!--/ End Single Skill -->
 										</div>
 										
-										{% endfor %}
-
-										
+										{% endfor %}								
 								</div>
 								<!--/ End Single Tab -->
-								
 							</div>
 						</div>
 						<!--/ End About Tab -->
+
 					</div>
+
 				</div>
+
 			</div>
-		</section>		
+
+			
+		</section>	
 		<!--/ End About Me -->	
+
+		<!-- Comienza el modal para encuesta-->
+		
+
+										<div class="modal fade" id="encuesta" role="dialog" >
+    										<div class="modal-dialog" >
+    											<div class="modal-content">
+       										 <div class="modal-header">
+    											<button type="button" class="close" data-dismiss="modal">&times;</button>
+          										<center><h5 class="modal-title">Por favor, seleccione una respuesta</h5></center>
+          									</div>
+
+          										<!-- <center> -->
+          											<div class="sec" data-sec="basic-information">
+														<div class="be-large-post">
+															<div class="be-large-post-align">
+																<div class="row-uno"> 
+																	
+																	<form action="/mensaje_encuesta/" method="post">
+
+																		<label id="pregunta1">  1.- ¿Cómo considera el servicio?</label> <br />
+																		<input type="radio" name="uno" value="Malo"> Malo<br />
+																		<input type="radio" name="uno" value="Bueno"> Bueno<br />
+																		<input type="radio" name="uno" value="Muy bueno"> Muy Bueno<br />
+																		<input type="radio" name="uno" value="Excelente"> Excelente<br />
+																		
+																		<label id="pregunta2">  2.- ¿Qué aspecto cree que debe mejorarse?</label><br />
+																		<input type="radio" name="dos" value="La presentacion"> La presentación<br />
+																		<input type="radio" name="dos" value="El tiempo de respuesta"> El tiempo de respuesta<br />
+																		<input type="radio" name="dos" value="La atencion"> La atención<br />
+
+																		<label id="pregunta3">  3.- ¿Qué porcentaje pondría al producto entregado?</label><br />
+																		<input type="radio" name="tres" value="25%"> 25%<br />
+																		<input type="radio" name="tres" value="50%"> 50%<br />
+																		<input type="radio" name="tres" value="75%"> 75%<br />
+																		<input type="radio" name="tres" value="100%"> 100%<br />
+
+																		<label id="pregunta4">  4.- ¿En qué cree que debe mejorar UNIPYMES?</label><br />
+																		<input type="radio" name="cuatro" value="Su recurso humano"> Su recurso humano<br />
+																		<input type="radio" name="cuatro" value="Etica"> Ética<br />
+																		<input type="radio" name="cuatro" value="Profesionalismo"> Profesionalismo<br />
+																		<input type="radio" name="cuatro" value="Calidad"> Calidad<br />
+
+																		<label id="pregunta5">  5.- ¿Recomendaría a UNIPYMES?</label><br />
+																		<input type="radio" name="cinco" value="Si"> Si<br />
+																		<input type="radio" name="cinco" value="No"> No<br />
+																		<input type="radio" name="cinco" value="Talves"> Talvés<br />
+																		<input type="radio" name="cinco" value="No lo se"> No lo sé<br />
+
+																			<div class="text-center modal-footer">
+																			<div class="text-center">
+																				<input type="submit" style="background: #E74C3C"class="btn btn-primary btn-lg value="Enviar">
+																			</div>
+																			</div>
+																	</form>
+                    				
+																</div>
+															</div>
+														</div>
+													</div>
+          										<!-- </center> -->
+
+          										
+          										</div>
+    										</div>
+  										</div>
+  		
+  		<!--/ Termina el modal -->
 
 {% endblock %}

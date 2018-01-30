@@ -92,3 +92,16 @@ class Espera(models.Model):
 
     def __str__(self):
         return str(self.Servicios_idServicios) + " " + str(self.Usuarios_idUsuario) + " " + str(self.Empresas_idEmpresa)
+
+class Encuesta(models.Model):
+    Uno = models.CharField(max_length=30)
+    Dos = models.CharField(max_length=30)
+    Tres = models.CharField(max_length=30)
+    Cuatro = models.CharField(max_length=30)
+    Cinco = models.CharField(max_length=30)
+    #Respuesta = models.CharField(max_length=200)
+
+    def __str__(self):
+        return " Encuesta No. " + str(self.id)
+
+
