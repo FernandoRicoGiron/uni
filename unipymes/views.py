@@ -97,7 +97,7 @@ def solicitado(request):
 			Espera.objects.create(Usuarios_idUsuario=usuario, Empresas_idEmpresa = empresa,Servicios_idServicios=servicio)
 		else:
 			Solicitude.objects.create(Usuarios_idUsuario=usuario, Empresas_idEmpresa = empresa,Servicios_idServicios=servicio, Estado="0")
-		email = EmailMessage('Solicitud de Servicio', 'El usuario '+ request.POST.get('sesion') +' a solicitado un ' + request.POST.get('nombreser'), to = ['strokemax28@gmail.com'])
+		email = EmailMessage('Solicitud de Servicio', 'El usuario '+ request.POST.get('sesion') +' a solicitado un ' + request.POST.get('nombreser'), to = ['riicoo28@gmail.com'])
 		email.send()
 		return render(request, 'solicitado.html', {})
 	else:
@@ -109,7 +109,7 @@ def mensaje(request):
 	Mensaje.objects.create(Nombre=request.POST.get("nombre"), Correo=request.POST.get("correo"), Empresa=request.POST.get("empresa"),
 		Asunto=request.POST.get("asunto"),Texto=request.POST.get("mensaje"))
 
-	email = EmailMessage('Contacto', 'La persona '+ request.POST.get("nombre") +' de la empresa ' + request.POST.get("empresa") + ' con el correo '+request.POST.get("correo")+" desea saber la siguiente informacion:\n"+request.POST.get("asunto") +'\n' +request.POST.get("mensaje"),to = ['strokemax28@gmail.com'])
+	email = EmailMessage('Contacto', 'La persona '+ request.POST.get("nombre") +' de la empresa ' + request.POST.get("empresa") + ' con el correo '+request.POST.get("correo")+" desea saber la siguiente informacion:\n"+request.POST.get("asunto") +'\n' +request.POST.get("mensaje"),to = ['riicoo28@gmail.com'])
 	email.send()
 	return render(request, 'mensaje.html', {})
 
