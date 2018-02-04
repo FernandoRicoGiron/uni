@@ -1,5 +1,5 @@
-/* Customize the label (the container) */
-.container {
+/* Customize the label (the solicontainer) */
+.solicontainer {
   display: block;
   position: relative;
   padding-left: 25px;
@@ -13,7 +13,7 @@
 }
 
 /* Hide the browser's default radio button */
-.container input {
+.solicontainer input {
   position: absolute;
   opacity: 0;
 }
@@ -30,12 +30,12 @@
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
+.solicontainer:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
 /* When the radio button is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.solicontainer input:checked ~ .checkmark {
   background-color: #2196F3;
 }
 
@@ -47,12 +47,12 @@
 }
 
 /* Show the indicator (dot/circle) when checked */
-.container input:checked ~ .checkmark:after {
+.solicontainer input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the indicator (dot/circle) */
-.container .checkmark:after {
+.solicontainer .checkmark:after {
   top: 6px;
   left: 6px;
   width: 8px;

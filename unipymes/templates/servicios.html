@@ -18,7 +18,7 @@
 						<!-- portfolio Nav -->
 						<div class="portfolio-nav">
 							<ul>
-								<li class="active" data-filter="*"><span>05</span><i class="fa fa-tasks"></i>All Works</li>
+								<li class="active" data-filter="*"><span>05</span><i class="fa fa-tasks"></i>Todos Nuestros Servicios</li>
 								{% for carr in carreras %}
 								<li data-filter=".{{carr.id}}"><span>05</span><i class="fa fa-pencil"></i>{{carr.Nombre}}</li>
 								{% endfor %}
@@ -35,9 +35,21 @@
 							{% for serv in servicio %}
 							<!-- Single portfolio -->
 							<div class="mix {{serv.Carrera.id}} col-md-4 col-sm-6 col-xs-12 col-fix ">
+								
 								<div class="portfolio-single">
 									<div class="portfolio-head">
-										<img width="1500" height="350" src="{{serv.Convocatoria.url}}" alt=""/>
+										<img style="z-index:1" width="1500" height="350" src="{{serv.Convocatoria.url}}" alt=""/>
+										
+									</div>
+									<div style="position:absolute;
+										 z-index:1;
+										 color:#FFFFFF;
+										 background: rgba(0, 0, 0, 0.2);
+										 top:0px;
+										 width:100%;
+										 height:100%;">
+										 <center>
+										<h2 style="margin-top:150px">{{serv.Nombre}}</h2></center>
 									</div>
 									<div class="portfolio-hover">
 										<h4><span>{{serv.Carrera.Nombre}}</span><a href="/servicios/{{serv.id}}/">{{serv.Nombre}}</a></h4>
@@ -51,6 +63,8 @@
 							</div>
 							<!--/ End portfolio -->
 							{% endfor %}
+
+
 
 
 						</div>

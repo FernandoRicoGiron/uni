@@ -115,8 +115,13 @@ def mensaje(request):
 
 @csrf_exempt
 def encuesta(request):
-	empresa = Empresa.objects.get(DenominacionSocial=request.POST.get("densocial")) 
-	Encuesta.objects.create(Empresas_idEmpresa=empresa, Uno=request.POST.get("uno"), Dos=request.POST.get("dos"), Tres=request.POST.get("tres"), Cuatro=request.POST.get("cuatro"), Cinco=request.POST.get("cinco"))
+	usu = Usuario.objects.get(Usuario=request.session['sesion'])
+	Encuesta.objects.create(Empresas_idEmpresa=usu.Empresas_idEmpresas,
+		Uno=request.POST.get("uno"),
+		Dos=request.POST.get("dos"),
+		Tres=request.POST.get("tres"),
+		Cuatro=request.POST.get("cuatro"),
+		Cinco=request.POST.get("cinco"))
 	return render(request, 'mensaje_encuesta.html', {})	
 
 def nuevacontraseña(request):
