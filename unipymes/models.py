@@ -111,14 +111,12 @@ class Espera(models.Model):
         return str(self.Servicios_idServicios) + " " + str(self.Usuarios_idUsuario) + " " + str(self.Empresas_idEmpresa)
 
 class Encuesta(models.Model):
+    Empresas_idEmpresa = models.ForeignKey('Empresa', on_delete=models.CASCADE)
     Uno = models.CharField(max_length=30)
     Dos = models.CharField(max_length=30)
     Tres = models.CharField(max_length=30)
     Cuatro = models.CharField(max_length=30)
     Cinco = models.CharField(max_length=30)
-    #Respuesta = models.CharField(max_length=200)
 
     def __str__(self):
-        return " Encuesta No. " + str(self.id)
-
-
+        return " Encuesta No. " + str(self.id) + "Empresa: " + str(self.Empresas_idEmpresa)

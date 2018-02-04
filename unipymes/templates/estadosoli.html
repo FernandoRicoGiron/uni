@@ -77,34 +77,30 @@
 										{% endif %}
 
 										{% if soli.Estado == "100" %}
-										<br>
-										
-										<div  style="padding-top: 5px">
 											<p style="color: #fff">Finalizado</p>
-											<div class="text-center" class="contenedor-modal" style="padding-top: 40px">
-												
-												<div class="text-center"><button data-toggle="modal" data-target="#encuesta" style="background: #E74C3C; position: absolute;" type="submit" class="btn btn-primary btn-lg">Realizar Encuesta</button></div>
-											</div>
-
-										
-
-											
-										</div>
-										
 										{% endif %}
-
 												</div>
-
 											</div>
 											<!--/ End Single Skill -->
 										</div>
-										
 										{% endfor %}								
 								</div>
 								<!--/ End Single Tab -->
+
+
+							</div>
+
+						</div>
+						
+						<!--/ End About Tab -->
+						
+						<div class="text-center" class="contenedor-modal" style="padding-top: 1px">
+												
+							<div class="text-center"><button data-toggle="modal" data-target="#encuesta" style="background: #E74C3C; top: 20px" type="submit" class="btn btn-primary btn-lg">Realizar Encuesta</button>
 							</div>
 						</div>
-						<!--/ End About Tab -->
+						
+						
 
 					</div>
 
@@ -114,74 +110,128 @@
 
 			
 		</section>	
-		<!--/ End About Me -->	
+		<!--/ End About Me -->
+			<!-- Comienza el modal para encuesta -->
 
-		<!-- Comienza el modal para encuesta-->
-		
+						<div class="modal fade" id="encuesta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						  <div class="modal-dialog" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          	<span aria-hidden="true">&times;</span>
+						        </button>
 
-										<div class="modal fade" id="encuesta" role="dialog" >
-    										<div class="modal-dialog" >
-    											<div class="modal-content">
-       										 <div class="modal-header">
-    											<button type="button" class="close" data-dismiss="modal">&times;</button>
-          										<center><h5 class="modal-title">Por favor, seleccione una respuesta</h5></center>
-          									</div>
+						      		<div>
+						        		<center><font color="black" face="Comic Sans MS,arial"><h4 class="modal-title" id="myModalLabel">Por favor, seleccione una respuesta</h4> </font></center>
+						    		</div>
 
-          										<!-- <center> -->
-          											<div class="sec" data-sec="basic-information">
-														<div class="be-large-post">
-															<div class="be-large-post-align">
-																<div class="row-uno"> 
-																	
-																	<form action="/mensaje_encuesta/" method="post">
+						      		<div class="modal-body">
+          								<div class="sec" data-sec="basic-information">
+											<div class="be-large-post">
+												<div class="be-large-post-align">
 
-																		<label id="pregunta1">  1.- ¿Cómo considera el servicio?</label> <br />
-																		<input type="radio" name="uno" value="Malo"> Malo<br />
-																		<input type="radio" name="uno" value="Bueno"> Bueno<br />
-																		<input type="radio" name="uno" value="Muy bueno"> Muy Bueno<br />
-																		<input type="radio" name="uno" value="Excelente"> Excelente<br />
-																		
-																		<label id="pregunta2">  2.- ¿Qué aspecto cree que debe mejorarse?</label><br />
-																		<input type="radio" name="dos" value="La presentacion"> La presentación<br />
-																		<input type="radio" name="dos" value="El tiempo de respuesta"> El tiempo de respuesta<br />
-																		<input type="radio" name="dos" value="La atencion"> La atención<br />
+														<form action="/mensaje_encuesta/" method="post">
+															
+															<font color="#FF0C0D"> <h4> 1.- ¿Cómo considera el servicio? </h4></font><br/>
+															<label class="container"> Malo
+																<input type="radio" name="uno" value="Malo">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container"> Bueno
+																<input type="radio" name="uno" value="Bueno">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container"> Muy Bueno
+																<input type="radio" name="uno" value="Muy bueno">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container"> Excelente
+																<input type="radio" name="uno" value="Excelente">
+																<span class="checkmark"></span>
+															</label> <br>
 
-																		<label id="pregunta3">  3.- ¿Qué porcentaje pondría al producto entregado?</label><br />
-																		<input type="radio" name="tres" value="25%"> 25%<br />
-																		<input type="radio" name="tres" value="50%"> 50%<br />
-																		<input type="radio" name="tres" value="75%"> 75%<br />
-																		<input type="radio" name="tres" value="100%"> 100%<br />
+															<font color="FF0C0D"> <h4> 2.- ¿Qué aspecto cree que debe mejorarse? </h4></font><br/>
+															<label class="container"> La presentación
+																<input type="radio" name="dos" value="La presentacion">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container"> El tiempo de respuesta
+																<input type="radio" name="dos" value="el tiempo de respuesta">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container"> La atención
+																<input type="radio" name="dos" value="La atencion">
+																<span class="checkmark"></span>
+															</label><br>
+															
+															<font color="FF0C0D"> <h4> 3.- ¿Qué porcentaje pondría al producto entregado? </h4></font><br/>
+															<label class="container"> 25%
+																<input type="radio" name="tres" value="25%">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container"> 50%
+																<input type="radio" name="tres" value="50%">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container"> 75%
+																<input type="radio" name="tres" value="75%">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container"> 100%
+																<input type="radio" name="tres" value="100%">
+																<span class="checkmark"></span>
+															</label> <br>
 
-																		<label id="pregunta4">  4.- ¿En qué cree que debe mejorar UNIPYMES?</label><br />
-																		<input type="radio" name="cuatro" value="Su recurso humano"> Su recurso humano<br />
-																		<input type="radio" name="cuatro" value="Etica"> Ética<br />
-																		<input type="radio" name="cuatro" value="Profesionalismo"> Profesionalismo<br />
-																		<input type="radio" name="cuatro" value="Calidad"> Calidad<br />
+															<font color="FF0C0D"> <h4> 4.- ¿En qué cree que debe mejorar UNIPYMES? </h4></font><br/>
+															<label class="container"> Su recurso humano
+																<input type="radio" name="cuatro" value="Su recurso humano">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container"> Ética
+																<input type="radio" name="cuatro" value="Etica">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container"> Calidad
+																<input type="radio" name="cuatro" value="Calidad">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container"> Profesionalismo
+																<input type="radio" name="cuatro" value="Profesionalismo">
+																<span class="checkmark"></span>
+															</label><br>
 
-																		<label id="pregunta5">  5.- ¿Recomendaría a UNIPYMES?</label><br />
-																		<input type="radio" name="cinco" value="Si"> Si<br />
-																		<input type="radio" name="cinco" value="No"> No<br />
-																		<input type="radio" name="cinco" value="Talves"> Talvés<br />
-																		<input type="radio" name="cinco" value="No lo se"> No lo sé<br />
+															<font color="FF0C0D"> <h4> 5.- ¿Recomendaría a UNIPYMES? </h4></font><br/>
+															<label class="container"> Si
+																<input type="radio" name="cinco" value="Si">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container"> No
+																<input type="radio" name="cinco" value="No">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container"> Talvés
+																<input type="radio" name="cinco" value="Talves">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container"> No lo sé
+																<input type="radio" name="cinco" value="No lo se">
+																<span class="checkmark"></span>
+															</label>
 
-																			<div class="text-center modal-footer">
-																			<div class="text-center">
-																				<input type="submit" style="background: #E74C3C"class="btn btn-primary btn-lg value="Enviar">
-																			</div>
-																			</div>
-																	</form>
-                    				
-																</div>
+															<div class="text-center modal-footer">
+															<div class="text-center">
+															<input type="submit" style="background: #E74C3C"class="btn btn-primary btn-lg value="Enviar">
 															</div>
-														</div>
-													</div>
-          										<!-- </center> -->
+															</div>
 
-          										
-          										</div>
-    										</div>
-  										</div>
-  		
+														</form>													
+												</div> 
+											</div>
+						                </div>
+						    		</div>
+						 		 </div>
+							</div>	
+	
   		<!--/ Termina el modal -->
 
 {% endblock %}
