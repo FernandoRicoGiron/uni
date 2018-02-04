@@ -76,7 +76,7 @@
 									<img height="330" src="{{ serv.Convocatoria.url }}" alt=""/>
 								</div>
 								<div class="portfolio-hover">
-									<h4><span>{{ serv.Carrera.Nombre }}</span><a href="#">{{ serv.Nombre }}</a></h4>
+									<h4><span>{{ serv.Carrera.Nombre }}</span><a href="/servicios/{{serv.id}}/">{{ serv.Nombre }}</a></h4>
 									<p>{{serv.Descripcion|truncatewords:"30"}} </p>
 									<div class="button">
 										<a href="/servicios/{{serv.id}}/"><i class="fa fa-search"></i></a>

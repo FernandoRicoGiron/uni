@@ -8,46 +8,46 @@
 		<meta name="description" content="">
 		<meta name='copyright' content='codeglim'>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">	
-		
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<!-- Title Tag -->
         <title>Unipymes</title>
-		
+
 		<!-- Favicon -->
-		<link rel="icon"  href="{% static 'images/unipimesicon.jpg'%}">	
-		
+		<link rel="icon"  href="{% static 'images/unipimesicon.jpg'%}">
+
         <!-- Google Font -->
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet"> 
-		
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+
 		<!-- Animate CSS -->
         <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
-		
+
 		<!-- Font Awesome CSS -->
         <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-		
+
 		<!-- Fancy Box CSS -->
         <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
-		
+
 		<!-- Slick Nav CSS -->
         <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}">
-		
+
 		<!-- Animate Text -->
         <link rel="stylesheet" href="{% static 'css/animate-text.css' %}">
-		
+
 		<!-- Owl Carousel CSS -->
 		<link rel="stylesheet" href="{% static 'css/owl.theme.default.css' %}">
         <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
-		
+
 		<!-- Bootstrap Css -->
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/encuesta.css' %}">
-        
-		
+
+
 		<!-- Sufia StyleShet -->
         <link rel="stylesheet" href="{% static 'style.css' %}">
-        <link rel="stylesheet" href="{% static 'css/reset.css' %}">	
-        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">	
-		
+        <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
 		<!-- Maheraj Template Color -->
 		<!-- <link rel="stylesheet" href="{% static 'css/color/color1.css' %}"> -->
 		<link rel="stylesheet" href="{% static 'css/color/color2.css' %}">
@@ -68,10 +68,10 @@
 		<!--BOOSTRAP PARA SECCION QUIENES SOMOS-->
 
 
-		
+
     </head>
     <body>
-	
+
 		<!-- Preloader -->
 		<div class="loader">
 			<div class="loader-inner">
@@ -83,7 +83,7 @@
 			</div>
 		</div>
 		<!-- End Preloader -->
-		
+
 		<!-- Start Header -->
 		<header id="header">
 			<div class="container">
@@ -107,26 +107,26 @@
 										<li><a href="/quienessomos/"><i class="fa fa-rocket"></i>¿Quiénes Somos?</a></li>
 										<li><a href="/servicios/"><i class="fa fa-briefcase"></i>Servicios</a>
 										</li>
-												
+
 										<li><a href="/contactanos/"><i class="fa fa-pencil"></i>Contáctanos</a>
-											
+
 										</li>
-										{% if 'sesion' in request.session %}	
+										{% if 'sesion' in request.session %}
 										<li><a href="#contact"><i class="fa fa-address-book"></i>{{ request.session.sesion }}</a>
 											<ul>
 												<li><a href="/estadosoli/"><i class="fa fa-angle-double-right"></i>Estado de Solicitudes</a></li>
 
 												<li><a href="/moddatos/"><i class="fa fa-angle-double-right"></i>Editar Perfil</a></li>
-												
+
 												<li><a href="/cerrarsesion/"><i class="fa fa-angle-double-right"></i>Salir</a></li>
-												
+
 											</ul>
 										</li>
 										{% else %}
 										<li><a href="/inisiarsesion/"><i class="fa fa-pencil"></i>Iniciar Sesión</a>
-											
-										</li>	
-										{% endif %}	
+
+										</li>
+										{% endif %}
 									</ul>
 									<!-- <ul class="social-icon">
 										<li><a href="#header"><i class="fa fa-plus"></i></a></li>
@@ -151,7 +151,7 @@
 {% block content %}
 
 {% endblock %}
-		
+
 		<br><br>
 
 
@@ -162,10 +162,10 @@
 
 	<!-- Start Footer -->
 		<footer id="footer">
-			<!-- Arrow -->
+			<!-- Arrow
 			<div class="arrow">
 				<a href="#personal-area" class="btn"><i class="fa fa-angle-up"></i></a>
-			</div>
+			</div>-->
 			<!--/ End Arrow -->
 			<div class="container">
 				<div class="row">
@@ -190,34 +190,34 @@
 			</div>
 		</footer>
 		<!--/ End Footer -->
-		
+
 		<!-- Jquery -->
 		<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
-		
+
 		<!-- Modernizr JS -->
 		<script type="text/javascript" src="{% static 'js/modernizr.min.js' %}"></script>
-			
+
 		<!-- WOW JS -->
 		<script type="text/javascript" src="{% static 'js/wow.min.js' %}"></script>
-		
+
 		<!-- Fancybox js -->
 		<script type="text/javascript" src="{% static 'js/jquery.fancybox.min.js' %}"></script>
-		
+
 		<!-- Animate Text JS -->
 		<script type="text/javascript" src="{% static 'js/animate-text.js' %}"></script>
-		
+
 		<!-- Mobile Menu JS -->
     	<script type="text/javascript" src="{% static 'js/jquery.slicknav.min.js' %}"></script>
-		
+
 		<!-- Jquery Parallax -->
     	<script type="text/javascript" src="{% static 'js/jquery.stellar.min.js' %}"></script>
-		
+
 		<!-- Jquery Easing -->
     	<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
-		
+
 		<!-- One Page Nav JS -->
     	<script type="text/javascript" src="{% static 'js/jquery.nav.js' %}"></script>
-		
+
 		<!-- Slider Carousel JS -->
 		<script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
 
@@ -226,22 +226,22 @@
 
 		<!-- Particle JS -->
 		<script type="text/javascript" src="{% static 'js/particles.min.js' %}"></script>
-		
+
 		<!-- Counter JS -->
 		<script type="text/javascript" src="{% static 'js/waypoints.min.js' %}"></script>
 		<script type="text/javascript" src="{% static 'js/jquery.counterup.min.js' %}"></script>
-		
+
 		<!-- Mixitup JS -->
 		<script type="text/javascript" src="{% static 'js/isotope.pkgd.min.js' %}"></script>
-		
+
 		<!-- Bootstrap JS -->
 		<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-		
+
 		<!-- Main JS -->
 		<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 
 
-		
+
 		<!--BOOSTRAP PARA LA SECCION DE QUIENES SOMOS-->
 		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
