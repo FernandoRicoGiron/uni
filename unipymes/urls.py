@@ -26,4 +26,5 @@ urlpatterns = [
     path('moddatos/', views.modificarperfil),
     path('editperfil/', views.editar_perfil),
     path('estadosoli/', views.estadosoli),
+    path('validarusuyemp/', views.validarusuyemp),
 ]

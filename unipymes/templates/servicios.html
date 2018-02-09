@@ -34,8 +34,9 @@
 						<div class="isotop-active">
 							{% for serv in servicio %}
 							<!-- Single portfolio -->
+							
 							<div class="mix {{serv.Carrera.id}} col-md-4 col-sm-6 col-xs-12 col-fix ">
-								
+								<a href="/servicios/{{serv.id}}/">
 								<div class="portfolio-single">
 									<div class="portfolio-head">
 										<img style="z-index:1" width="1500" height="350" src="{{serv.Convocatoria.url}}" alt=""/>
@@ -59,8 +60,9 @@
 
 										</div>
 									</div>
-								</div>
+								</div></a>
 							</div>
+							
 							<!--/ End portfolio -->
 							{% endfor %}
 
