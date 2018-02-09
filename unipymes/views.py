@@ -83,6 +83,20 @@ def iniciarsesion(request):
 		usucon = "El usuario o la contraseña es incorrecto"
 		return render(request, 'login.html', {'usucon':usucon})
 
+def validarusuyemp(request):
+	data={}
+	usuario = Usuario.objects.filter(Usuario=request.POST.get("usuario")).exists()
+	empresa = Empresa.objects.filter(DenominacionSocial=request.POST.get("empresa")).exists()
+	if usuario==False:
+		data["usu"]="bien"
+	else:
+		data["usu"]="mal"
+	if empresa==False:
+		data["denso"]="bien"
+	else:
+		data["denso"]="mal"
+	return JsonResponse(data)
+
 def cerrarsesion(request):
 	request.session.flush()
 	return render(request, 'index.html', {})

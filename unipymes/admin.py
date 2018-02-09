@@ -88,7 +88,7 @@ class Esperas(admin.ModelAdmin):
 	 
 	class Meta:
 		model = Espera
-				
+			
 
 admin.site.register(Usuario, Usuarios)
 admin.site.register(Empresa, Empresas)
