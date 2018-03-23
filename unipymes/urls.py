@@ -27,4 +27,5 @@ urlpatterns = [
     path('editperfil/', views.editar_perfil),
     path('estadosoli/', views.estadosoli),
     path('validarusuyemp/', views.validarusuyemp),
+    path('googleb8e411affc4ac215.html', views.google)
 ]

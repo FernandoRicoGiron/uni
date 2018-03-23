@@ -18,9 +18,9 @@
 						<!-- portfolio Nav -->
 						<div class="portfolio-nav">
 							<ul>
-								<li class="active" data-filter="*"><span>05</span><i class="fa fa-tasks"></i>Todos Nuestros Servicios</li>
+								<li class="active" data-filter="*"><span>{{numserv}}</span><i class="fa fa-tasks"></i>Todos Nuestros Servicios</li>
 								{% for carr in carreras %}
-								<li data-filter=".{{carr.id}}"><span>05</span><i class="fa fa-pencil"></i>{{carr.Nombre}}</li>
+								<li data-filter=".{{carr.id}}"><i class="fa fa-pencil"></i>{{carr.Nombre}}</li>
 								{% endfor %}
 
 							</ul>

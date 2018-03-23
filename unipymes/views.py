@@ -8,6 +8,9 @@ from django.http import JsonResponse
 def index(request):
 	return render(request, 'index.html', {})
 
+def google(request):
+	return render(request, 'googleb8e411affc4ac215.html', {})
+
 def contactanos(request):
 	return render(request, 'contacto.html', {})
 def evaluacion(request):
@@ -16,9 +19,12 @@ def evaluacion(request):
 @csrf_exempt
 def servicios(request):
 	servicio = Servicio.objects.all()
+	sumaserv=0
+	for serv in servicio:
+	    sumaserv+=1
 	escuela = Escuela.objects.all()
 	carreras = Carrera.objects.all()
-	return render(request, 'servicios.html', {'servicio':servicio, 'escuela':escuela, 'carreras':carreras})
+	return render(request, 'servicios.html', {'servicio':servicio, 'escuela':escuela, 'carreras':carreras, "numserv":sumaserv})
 
 def quienessomos(request):
 	return render(request, 'services.html', {})

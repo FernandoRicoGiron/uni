@@ -30,7 +30,7 @@
 			<div class="col-md-5">
 				<h3>NOSOTROS SOMOS UNIPYMES</h3>
 				<br><b>
-				<p>Inspirado en las experiencias laborales de los alumnos universitarios</p><br></b>
+				<p>Inspirado en las experiencias laborales de jovenes egresados</p><br></b>
 				<ul>
 					<li><i style="color: #eb8984;" class="fa fa-home fa-2x"></i> KM 29020, Carr. Panamericana 1080, Boulevares, Tuxtla Gutiérrez, Chis.</li>
 					<li><i style="color: #eb8984;" class="fa fa-phone fa-2x"></i> +52 961 1002890</li>
@@ -47,23 +47,23 @@
 
                 <form action="/mensaje/" method="post" role="form" class="contactForm">
                     <div class="form-group">
-                        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Tu Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Tu Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required />
                         <div class="validation"></div>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" name="correo" id="correo" placeholder="Tu Correo" data-rule="email" data-msg="Please enter a valid email" />
+                        <input type="email" class="form-control" name="correo" id="correo" placeholder="Tu Correo" data-rule="email" data-msg="Please enter a valid email" required />
                         <div class="validation"></div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="empresa" id="empresa" placeholder="Empresa" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                        <input type="text" class="form-control" name="empresa" id="empresa" placeholder="Empresa" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" required />
                         <div class="validation"></div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="asunto" id="asunto" placeholder="Asunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                        <input type="text" class="form-control" name="asunto" id="asunto" placeholder="Asunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" required/>
                         <div class="validation"></div>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" name="mensaje" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Describe en que podemos ayudarte"></textarea>
+                        <textarea class="form-control" name="mensaje" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Describe en que podemos ayudarte" required></textarea>
                         <div class="validation"></div>
                     </div>
 
