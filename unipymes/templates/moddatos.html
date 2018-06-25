@@ -1,0 +1,235 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load tags %}
+{% csrf_token %}
+   {% block content %}
+   <section id="portfolio" class="section">
+	<div class="contact">
+		<div class="container">
+			<div class="text-center">
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
+					<h2>Modificar Perfil</h2>
+				</div>
+                <br>
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.6s">
+					<h3>Modifica los datos de tu Perfil</h3>
+				</div><br>
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.6s">
+					<h2>Datos Personales</h2>
+				</div><br>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="contact-form">
+		<div class="container">
+		    <div class="col-md-8 col-md-offset-2">
+    		    
+                <form action="/editperfil/" method="POST" role="form" class="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{user.first_name}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido Paterno" data-rule="apellido" data-msg="Please enter a valid apellido" value="{{user.last_name}}" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="fecha" id="fecha" placeholder="Fecha de nacimiento" data-rule="minlen:4" data-msg="Ingrese una fecha correcta" onfocus="(this.type='date')" onblur="(this.type='text')" value="{{usuario.FechaNacimiento|date:'Y-m-d'}}" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Numero de Telefono" data-rule="minlen:4" data-msg="Ingrese un numero de telefono valido" value="{{usuario.Telefono|nu}}" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <select name="ecivil" selected="" class="form-control" id="ecivil" >
+                          <option value="" disabled selected>Estado civil</option>
+						  <option value="soltero" {% if "soltero" == usuario.EstadoCivil %}selected="selected"{% endif %}>Soltero</option>
+						  <option value="casado" {% if "casado" == usuario.EstadoCivil %}selected="selected"{% endif %}>Casado</option>
+						  <option value="divorsiado" {% if "divorsiado" == usuario.EstadoCivil %}selected="selected"{% endif %}>Divorciado</option>
+						  <option value="viudo" {% if "viudo" == usuario.EstadoCivil %}selected="selected"{% endif %}>Viudo</option>
+						</select>
+                    </div>
+                    <div class="form-group">
+                        <select name="sexo" class="form-control" id="sexo" >
+                          <option value="" disabled selected>Sexo</option>
+						  <option value="masculino" {% if "masculino" == usuario.Sexo %}selected="selected"{% endif %}>Masculino</option>
+						  <option value="femenino" {% if "femenino" == usuario.Sexo %}selected="selected"{% endif %}>Femenino</option>
+						</select>
+                    </div>
+                   <div class="form-group">
+                        <select name="escolaridad" class="form-control" id="escolaridad" >
+                          <option value="" disabled selected>Escolaridad</option>
+						  <option value="ninguna" {% if "ninguna" == usuario.Escolaridad %}selected="selected"{% endif %}>Ninguna</option>
+						  <option value="primaria" {% if "primaria" == usuario.Escolaridad %}selected="selected"{% endif %}>Primaria</option>
+						  <option value="secundaria" {% if "secundaria" == usuario.Escolaridad %}selected="selected"{% endif %}>Secundaria</option>
+						  <option value="preparatoria" {% if "preparatoria" == usuario.Escolaridad %}selected="selected"{% endif %}>Preparatoria</option>
+						  <option value="carrtecnica" {% if "carrtecnica" == usuario.Escolaridad %}selected="selected"{% endif %}>Carrera Técnica</option>
+						  <option value="universidad" {% if "universidad" == usuario.Escolaridad %}selected="selected"{% endif %}>Universidad</option>
+						  <option value="maestria" {% if "maestria" == usuario.Escolaridad %}selected="selected"{% endif %}>Maestría</option>
+						  <option value="doctorado" {% if "doctorado" == usuario.Escolaridad %}selected="selected"{% endif %}>Doctorado</option>
+						</select>
+                    </div>
+                    <div class="form-group">
+                        <select name="estado" class="form-control" id="estado" >
+                        	<option value="" disabled selected>Estado</option>
+                          	<option value="Aguascalientes" {% if "Aguascalientes" == usuario.Estado %}selected="selected"{% endif %}>Aguascalientes</option>
+							<option value="BajaCalifornia" {% if "BajaCalifornia" == usuario.Estado %}selected="selected"{% endif %}>Baja California </option>
+							<option value="BajaCaliforniaSur" {% if "BajaCaliforniaSur" == usuario.Estado %}selected="selected"{% endif %}>Baja California Sur </option>
+							<option value="Campeche" {% if "Campeche" == usuario.Estado %}selected="selected"{% endif %}>Campeche </option>
+							<option value="Chiapas" {% if "Chiapas" == usuario.Estado %}selected="selected"{% endif %}>Chiapas </option>
+							<option value="Chihuahua" {% if "Chihuahua" == usuario.Estado %}selected="selected"{% endif %}>Chihuahua </option>
+							<option value="Coahuila" {% if "Coahuila" == usuario.Estado %}selected="selected"{% endif %}>Coahuila </option>
+							<option value="Colima" {% if "Colima" == usuario.Estado %}selected="selected"{% endif %}>Colima </option>
+							<option value="DistritoFederal" {% if "DistritoFederal" == usuario.Estado %}selected="selected"{% endif %}>Distrito Federal</option>
+							<option value="Durango" {% if "Durango" == usuario.Estado %}selected="selected"{% endif %}>Durango </option>
+							<option value="EstadodeMexico" {% if "EstadodeMexico" == usuario.Estado %}selected="selected"{% endif %}>Estado de México </option>
+							<option value="Guanajuato" {% if "Guanajuato" == usuario.Estado %}selected="selected"{% endif %}>Guanajuato </option>
+							<option value="Guerrero" {% if "Guerrero" == usuario.Estado %}selected="selected"{% endif %}>Guerrero </option>
+							<option value="Hidalgo" {% if "Hidalgo" == usuario.Estado %}selected="selected"{% endif %}>Hidalgo </option>
+							<option value="Jalisco" {% if "Jalisco" == usuario.Estado %}selected="selected"{% endif %}>Jalisco </option>
+							<option value="Michoacán" {% if "Michoacán" == usuario.Estado %}selected="selected"{% endif %}>Michoacán </option>
+							<option value="Morelos" {% if "Morelos" == usuario.Estado %}selected="selected"{% endif %}>Morelos </option>
+							<option value="Nayarit" {% if "Nayarit" == usuario.Estado %}selected="selected"{% endif %}>Nayarit </option>
+							<option value="NuevoLeon" {% if "NuevoLeon" == usuario.Estado %}selected="selected"{% endif %}>Nuevo León </option>
+							<option value="Oaxaca" {% if "Oaxaca" == usuario.Estado %}selected="selected"{% endif %}>Oaxaca </option>
+							<option value="Puebla" {% if "Puebla" == usuario.Estado %}selected="selected"{% endif %}>Puebla </option>
+							<option value="Querétaro" {% if "Querétaro" == usuario.Estado %}selected="selected"{% endif %}>Querétaro </option>
+							<option value="QuintanaRoo" {% if "QuintanaRoo" == usuario.Estado %}selected="selected"{% endif %}>Quintana Roo </option>
+							<option value="SanLuisPotosí" {% if "SanLuisPotosí" == usuario.Estado %}selected="selected"{% endif %}>San Luis Potosí </option>
+							<option value="Sinaloa" {% if "Sinaloa" == usuario.Estado %}selected="selected"{% endif %}>Sinaloa </option>
+							<option value="Sonora" {% if "Sonora" == usuario.Estado %}selected="selected"{% endif %}>Sonora </option>
+							<option value="Tabasco" {% if "Tabasco" == usuario.Estado %}selected="selected"{% endif %}>Tabasco </option>
+							<option value="Tamaulipas" {% if "Tamaulipas" == usuario.Estado %}selected="selected"{% endif %}>Tamaulipas </option>
+							<option value="Tlaxcala" {% if "Tlaxcala" == usuario.Estado %}selected="selected"{% endif %}>Tlaxcala </option>
+							<option value="Veracruz" {% if "Veracruz" == usuario.Estado %}selected="selected"{% endif %}>Veracruz </option>
+							<option value="Yucatán" {% if "Yucatán" == usuario.Estado %}selected="selected"{% endif %}>Yucatán </option>
+							<option value="Zacatecas" {% if "Zacatecas" == usuario.Estado %}selected="selected"{% endif %}>Zacatecas</option>
+						</select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="municipio" id="municipio" placeholder="Municipio" data-rule="minlen:4" data-msg="Ingrese un municipio valido" value="{{usuario.Municipio|nu}}" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="domicilio" id="domicilio" placeholder="Domicilio" data-rule="minlen:4" data-msg="Por favor ingrese un domicilio valido" value="{{usuario.Domicilio|nu}}" />
+                        <div class="validation" ></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="numexterior" id="numexterior" placeholder="Numero exterior" data-rule="minlen:4" value="{{usuario.NumExterior|nu}}" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="numinterior" id="numinterior" placeholder="Numero interior" data-rule="minlen:4" value="{{usuario.NumInterior|nu}}"/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="codigopostal" id="codigopostal" placeholder="Codigo Postal" data-rule="minlen:4" value="{{usuario.CodigoPostal|nu}}" />
+                        <div class="validation"></div>
+                    </div>
+
+
+							<div class="text-center">
+								<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.6s">
+									<h2>Datos de la Empresa</h2>
+								</div><br>
+							</div>
+
+
+                   <div class="form-group">
+                        <input type="text" name="densocial" class="form-control" id="densocial" placeholder=" Nombre, Denominación o Razón Social" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{empresa.DenominacionSocial|nu}}" required />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="rfc" class="form-control" id="rfc" pattern="^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))((-)?([A-Z\d]{3}))?$" placeholder="RFC" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{empresa.RFC|nu}}" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="telempresa" class="form-control" id="telempresa" placeholder="Teléfono" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{empresa.Telefono|nu}}" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="calleempresa" class="form-control" id="calleempresa" placeholder="Calle" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{empresa.Calle|nu}}" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="numexteemp" class="form-control" id="numexteemp" placeholder="Número Exterior" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{empresa.NumExterior|nu}}" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="numinteemp" class="form-control" id="numinteemp" placeholder="Número Interior" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{empresa.NumInterior|nu}}" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="codigopostalemp" class="form-control" id="codigopostalemp" placeholder="Código Postal" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{empresa.CodigoPostal|nu}}" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="sitio" class="form-control" id="sitio" placeholder="Sitio Web" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="{{empresa.SitioWeb|nu}}" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="button"><button type="submit" class="btn btn-primary btn-lg">Actualizar</button></div>
+                </form><br><br>
+
+                <form action="/modpassword/" method="POST">
+                    <div class="text-center">
+                        <div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.6s">
+                            <h2>Modificar contraseña</h2>
+                        </div>
+                    </div><br>
+                    <div class="form-group">
+                        <input type="password" name="oldpassword" class="form-control" placeholder="Contraseña antigua" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="newpassword" class="form-control" id="password" placeholder="Nueva contraseña" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="confirmpassword" class="form-control" id="confirm_password" placeholder="Confirmar Contraseña" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="button"><button type="submit" class="btn btn-primary btn-lg">Actualizar</button></div>
+                </form>
+            </div>
+        </div>
+	</div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
+        var correo = document.getElementById("correo"), correo2 = document.getElementById("correo2");
+
+        function validatePassword(){
+          if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Las contraseñas no coinciden");
+          } else {
+            confirm_password.setCustomValidity('');
+          }
+        }
+
+        function validateCorreo(){
+          if(correo.value != correo2.value) {
+            correo2.setCustomValidity("Los correos no coinciden");
+          } else {
+            correo2.setCustomValidity('');
+          }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+        correo.onchange = validateCorreo;
+        correo2.onkeyup = validateCorreo;
+
+        
+        $(document).ready(function() {
+            $("#ecivil > option[value='{{usuario.EstadoCivil}}']").attr('selected',true);
+            $("#sexo > option[value='{{usuario.Sexo}}']").attr('selected',true);
+            $("#escolaridad > option[value='{{usuario.Escolaridad}}']").attr('selected',true);
+            $("#estado > option[value='{{usuario.Estado}}']").attr('selected',true);
+        });
+    </script>
+
+	{% endblock %}

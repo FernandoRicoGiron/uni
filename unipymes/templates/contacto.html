@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% csrf_token %}
+
+   {% block content %}
+   <section id="portfolio" class="section">
+	<div class="contact">
+		<div class="container">
+			<div class="text-center">
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
+					<h2>Contáctanos</h2>
+				</div>
+				<br>
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.6s">
+					<p>Gracias por mantenerte en contácto con nosotros, esperamos que nuestros servicios esten cumpliendo con tus espectativas.</p>
+				</div>
+				<br><br>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="col-md-7">
+			<div class="map">
+				<div style="width: 100%; height: 350px" id="map" data-latitude="16.75706406788453" data-longitude="-93.17240953445435"></div>
+			</div>
+		</div>
+
+		<div class="contact-info">
+			<div class="col-md-5">
+				<h3>NOSOTROS SOMOS UNIPYMES</h3>
+				<br><b>
+				<p>Inspirado en las experiencias laborales de jovenes egresados</p><br></b>
+				<ul>
+					<li><i style="color: #eb8984;" class="fa fa-home fa-2x"></i> KM 29020, Carr. Panamericana 1080, Boulevares, Tuxtla Gutiérrez, Chis.</li>
+					<li><i style="color: #eb8984;" class="fa fa-phone fa-2x"></i> +52 961 1002890</li>
+					<li><i style="color: #eb8984;" class="fa fa-envelope fa-2x"></i> unipymes.tec@gmail.com</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<br><br>
+	<div class="contact-form">
+		<div class="container">
+		    <div class="col-md-8 col-md-offset-2">
+
+                <form action="/mensaje/" method="post" role="form" class="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Tu Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="correo" id="correo" placeholder="Tu Correo" data-rule="email" data-msg="Please enter a valid email" required />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="empresa" id="empresa" placeholder="Empresa" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" required />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="asunto" id="asunto" placeholder="Asunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="mensaje" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Describe en que podemos ayudarte" required></textarea>
+                        <div class="validation"></div>
+                    </div>
+
+                    <div class="text-center"><button style="background: #E74C3C" type="submit" class="btn btn-primary btn-lg">Enviar Mensaje</button></div>
+                </form>
+            </div>
+        </div>
+	</div>
+	</section>
+	<script>
+
+      var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+      function initMap() {
+      	var myLatLng = {lat: 16.756961, lng: -93.172565};
+        var map = new google.maps.Map(document.getElementById('map'), {
+		    zoom: 16,
+		    center: myLatLng
+		  });
+
+		  var marker = new google.maps.Marker({
+		    position: myLatLng,
+		    map: map,
+		    title: 'Unipymes'
+		  });
+
+
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4SgYd_ggHfdR2Prxx3PAg9zX04JDBJY&callback=initMap"
+    async defer></script>
+	{% endblock %}

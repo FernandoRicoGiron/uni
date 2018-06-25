@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+   {% block content %}
+   		<!-- Start portfolio -->
+		<section id="portfolio" class="section">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="section-title">
+							<h1><span>Nuestros</span> Servicios<i class="fa fa-briefcase"></i></h1>
+							<!-- <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using</p> -->
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<!-- portfolio Nav -->
+						<div class="portfolio-nav">
+							<ul>
+								<li class="active" data-filter="*"><span>{{numserv}}</span><i class="fa fa-tasks"></i>Todos Nuestros Servicios</li>
+								{% for area in areas %}
+								<li data-filter=".{{area.id}}"><i class="fa fa-pencil"></i>{{area.Area}}</li>
+								{% endfor %}
+
+							</ul>
+						</div>
+						<!--/ End portfolio Nav -->
+					</div>
+				</div>
+
+				<div class="portfolio-inner">
+					<div class="row stylex">
+						<div class="isotop-active">
+							{% for serv in servicio %}
+							<!-- Single portfolio -->
+
+							<div class="mix {{serv.Area.id}} col-md-4 col-sm-6 col-xs-12 col-fix ">
+								<a href="/servicios/{{serv.id}}/">
+								<div class="portfolio-single">
+									<div class="portfolio-head">
+										<img style="z-index:1" width="1500" height="350" src="{{serv.Imagen.url}}" alt=""/>
+
+									</div>
+									<div style="position:absolute;
+										 z-index:1;
+										 color:#FFFFFF;
+										 background: rgba(0, 0, 0, 0.2);
+										 top:0px;
+										 width:100%;
+										 height:100%;">
+										 <center>
+										<h2 style="margin-top:150px">{{serv.Nombre}}</h2></center>
+									</div>
+									<div style="display:block" class="portfolio-hover">
+										<h4><span>{{serv.Area.Area}}</span><a href="/servicios/{{serv.id}}/">{{serv.Nombre}}</a></h4>
+										<p>{{serv.Descripcion|truncatewords:"50"}}. </p>
+										<div class="button">
+											<a  href="/servicios/{{serv.id}}/"><i class="fa fa-search"></i></a>
+
+										</div>
+									</div>
+								</div></a>
+							</div>
+
+							<!--/ End portfolio -->
+							{% endfor %}
+
+
+
+
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<!-- Button -->
+					<div class="button">
+						<!-- <a href="portfolio-archive.html" class="btn">More Portfolio<i class="fa fa-angle-double-right"></i></a> -->
+					</div>
+					<!-- End Button -->
+				</div>
+			</div>
+		</section>
+		<!--/ End portfolio -->
+
+
+   {% endblock %}

@@ -1,0 +1,461 @@
+
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+    <head>
+        <!-- Meta tag -->
+		<meta charset="utf-8">
+
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="description" content="">
+		<meta name='copyright' content='codeglim'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="description" content="Todo lo que necesitas para que tu empresa cresca">
+
+            <meta property="og:site_name" content="Unipymes"/>
+            <meta property="og:locale" content="es_MX"/>
+            <meta property="og:type" content="services"/>
+            <meta property="fb:app_id"          content="291577254702688" />
+            <meta property="og:type"            content="services" />
+            <meta property="og:url"             content="https://www.unipymes.com.mx/" />
+            <meta property="og:title"           content="Unipymes" />
+            <meta property="og:image"           content="https://www.unipymes.com.mx/static/imgages/uni.png" />
+            <meta property="og:description"    content="Vinculando ideas y negocios" />
+            <meta property="article:published_time" content="">
+            <meta property="article:author" content="https://www.facebook.com/karlozriico">
+
+            <meta name="p:domain_verify" content="">
+
+		<!-- Title Tag -->
+        <title>Unipymes</title>
+
+		<!-- Favicon -->
+		<link rel="icon"  href="{% static 'images/unipimesicon.jpg'%}">
+
+        <!-- Google Font -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+
+		<!-- Animate CSS -->
+        <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+
+		<!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+		<!-- Fancy Box CSS -->
+        <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+
+		<!-- Slick Nav CSS -->
+        <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}">
+
+		<!-- Animate Text -->
+        <link rel="stylesheet" href="{% static 'css/animate-text.css' %}">
+
+		<!-- Owl Carousel CSS -->
+		<link rel="stylesheet" href="{% static 'css/owl.theme.default.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+		<!-- Bootstrap Css -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/encuesta.css' %}">
+
+
+		<!-- Sufia StyleShet -->
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+		<!-- Maheraj Template Color -->
+		<!-- <link rel="stylesheet" href="{% static 'css/color/color1.css' %}"> -->
+		<link rel="stylesheet" href="{% static 'css/color/color2.css' %}">
+		<!--<link rel="stylesheet" href="{% static 'css/color/color3.css">-->
+		<!--<link rel="stylesheet" href="{% static 'css/color/color4.css">-->
+		<!--<link rel="stylesheet" href="{% static 'css/color/color5.css">-->
+		<!--<link rel="stylesheet" href="{% static 'css/color/color6.css">-->
+		<!--<link rel="stylesheet" href="{% static 'css/color/color7.css">-->
+		<!--<link rel="stylesheet" href="{% static 'css/color/color8.css">-->
+		<!--<link rel="stylesheet" href="{% static 'css/color/color9.css">-->
+		<!--<link rel="stylesheet" href="{% static 'css/color/color10.css">-->
+
+		<!--[if lt IE 9]>
+           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<!--BOOSTRAP PARA SECCION QUIENES SOMOS-->
+
+
+
+    </head>
+    <body>
+
+		<!-- Preloader -->
+		<div class="loader">
+			<div class="loader-inner">
+				<div class="k-line k-line11-1"></div>
+				<div class="k-line k-line11-2"></div>
+				<div class="k-line k-line11-3"></div>
+				<div class="k-line k-line11-4"></div>
+				<div class="k-line k-line11-5"></div>
+			</div>
+		</div>
+		<!-- End Preloader -->
+
+		<!-- Start Header -->
+		<header id="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-sm-12 col-xs-12">
+						<!-- Logo -->
+						<div class="logo">
+							<img id="logounipy" src="{% static 'images/uni.png' %}">
+						</div>
+						<!--/ End Logo -->
+						<div class="mobile-nav"></div>
+					</div>
+					<div class="col-md-10 col-sm-12 col-xs-12">
+						<div class="nav-area">
+							<!-- Main Menu -->
+							<nav class="mainmenu">
+								<div class="collapse navbar-collapse">
+									<ul class="nav navbar-nav menu">
+										<li ><a href="/"><i class="fa fa-home"></i>Inicio</a>
+										</li>
+										<li><a href="/quienessomos/"><i class="fa fa-rocket"></i>¿Quiénes Somos?</a></li>
+										<li><a href="/servicios/"><i class="fa fa-briefcase"></i>Servicios</a>
+										</li>
+
+										<li><a href="/contactanos/"><i class="fa fa-pencil"></i>Contáctanos</a>
+
+										</li>
+										{% if user.is_authenticated %}
+										<li><a href="#contact"><i class="fa fa-address-book"></i>{{ user.username }}</a>
+											<ul>
+												<li><a href="/estadosoli/"><i class="fa fa-angle-double-right"></i>Estado de Solicitudes</a></li>
+
+												<li><a href="/moddatos/"><i class="fa fa-angle-double-right"></i>Editar Perfil</a></li>
+
+												<li><a href="/cerrarsesion/"><i class="fa fa-angle-double-right"></i>Salir</a></li>
+
+											</ul>
+										</li>
+										{% else %}
+										<li><a href="#" data-toggle="modal" data-target="#iniciosesion"><i class="fa fa-pencil"></i>Iniciar Sesión</a>
+
+										</li>
+										{% endif %}
+									</ul>
+									<!-- <ul class="social-icon">
+										<li><a href="#header"><i class="fa fa-plus"></i></a></li>
+									</ul>
+									<ul class="social">
+										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fa fa-behance"></i></a></li>
+										<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+									</ul> -->
+								</div>
+							</nav>
+							<!--/ End Main Menu -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--/ End Header -->
+
+
+{% block content %}
+
+{% endblock %}
+
+		<br><br>
+
+
+
+
+
+
+
+	<!-- Start Footer -->
+		<footer style="bottom: 0;" id="footer">
+			<!-- Arrow
+			<div class="arrow">
+				<a href="#personal-area" class="btn"><i class="fa fa-angle-up"></i></a>
+			</div>-->
+			<!--/ End Arrow -->
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<!-- Copyright -->
+						<div class="copyright">
+							<p>&copy; Copyright 2017 Derechos Reservados.</p>
+						</div>
+						<!--/ End Copyright -->
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<!-- Social -->
+						 <ul class="social">
+							<li><a href="https://www.facebook.com/unipymesoficial/"><i class="fa fa-facebook"></i></a></li>
+						<!--	<li class="active"><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>-->
+						</ul>
+						<!--/ End Social -->
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!--/ End Footer -->
+
+		<div class="modal fade" id="iniciosesion" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h1 class="modal-title">Inicio de sesion</h1>
+        </div>
+        <div style="color:#000" class="modal-body">
+          
+        	<div class="container">
+    	<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-login">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-6">
+								<a href="#" class="active" id="login-form-link" style="color: #E74C3C">Iniciar sesión</a>
+							</div>
+							<div class="col-xs-6">
+								<a href="#" class="register-form-link" style="color: #E74C3C">Regístrate ahora</a>
+							</div>
+						</div>
+						<hr>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<form id="login-form" action="/iniciosesion/" method="post" role="form" style="display: block;">
+									{% csrf_token %}
+				                    <div class="form-group">
+				                        <input type="text" name="usuario" class="form-control" id="usuario" placeholder="Usuario" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+				                        <div class="validation"></div>
+				                    </div>
+				                    <div class="form-group">
+				                        <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" data-rule="password" data-msg="Please enter a valid password" />
+				                        <div class="validation"></div>
+				                    </div>
+
+				                    {%if sesion%}
+									<input type="hidden" name="regreso" value="regreso"></input>
+									{%endif%}
+									
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3 button">
+												<input style="background: #E74C3C; border: 0" type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn-primary" value="Iniciar sesión">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-lg-12">
+												<div class="text-center">
+													<a href="#" tabindex="5" class="forgot-password" id="recuperar-form-link">¿Has olvidado tu contraseña?</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+								<form id="register-form" action="/registrar/" method="post" role="form" style="display: none;">
+									<div class="form-group">
+				                        <input type="text" name="nombre" class="form-control" id="name" placeholder="Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
+				                        <div class="validation"></div>
+				                    </div>
+				                    <div class="form-group">
+				                        <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" data-rule="apellido" data-msg="Please enter a valid apellido" required/>
+				                        <div class="validation"></div>
+				                    </div>
+
+				                    <div class="form-group">
+				                        <input type="text" name="densocial" class="form-control" id="densocial" placeholder=" Nombre, Denominación o Razón Social" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
+				                        <div class="validation"></div>
+				                    </div>
+				                    
+				                    <div class="form-group">
+				                        <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo Electrónico" data-rule="minlen:4" required/>
+				                        <div class="validation"></div>
+				                    </div>
+				                    <div class="form-group">
+				                        <input type="email" class="form-control" name="correo2" id="correo2" placeholder="Confirmar Correo Electrónico" data-rule="minlen:4" required/>
+				                        <div class="validation"></div>
+				                    </div>
+				                    
+									          <div class="form-group">
+				                        <input type="text" name="usuario" class="form-control" id="usuario" placeholder="Usuario" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
+				                        <div class="validation"></div>
+				                    </div>
+				                    <div id="usuval" class="form-group">
+				                        <p style="color:red">{{error}}</p>
+				                    </div>
+				                    <div class="form-group">
+				                        <input type="password" name="contraseña" class="form-control" id="password" placeholder="Contraseña" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
+				                        <div class="validation"></div>
+				                    </div>
+				                    <div class="form-group">
+				                        <input type="password" name="contraseña2" class="form-control" id="confirm_password" placeholder="Confirmar Contraseña" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
+				                        <div class="validation"></div>
+				                    </div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="register-submit" id="register-submit" tabindex="4" style="background: #E74C3C; border: 0" class="form-control btn-primary " value="Crear cuenta">
+											</div>
+										</div>
+									</div>
+								</form>
+
+								<form id="recuperar-form" action="/recuperarcontraseña/" method="post" role="form" style="display: none;">
+									<div class="form-group">
+										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Usuario" value="">
+									</div>
+									<div class="form-group">
+										<input type="email" name="email" id="nombre" tabindex="1" class="form-control" placeholder="Email" value="">
+									</div>
+									<input type="hidden" name="token" value="{{csrf_token}}">
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="register-submit" id="register-submit" tabindex="4" style="background: #E74C3C; border: 0" class="form-control btn-primary " value="Recuperar Contraseña">
+											</div>
+										</div>
+									</div>
+								</form>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+		<!-- Jquery -->
+		<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+
+		<!-- Modernizr JS -->
+		<script type="text/javascript" src="{% static 'js/modernizr.min.js' %}"></script>
+
+		<!-- WOW JS -->
+		<script type="text/javascript" src="{% static 'js/wow.min.js' %}"></script>
+
+		<!-- Fancybox js -->
+		<script type="text/javascript" src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+
+		<!-- Animate Text JS -->
+		<script type="text/javascript" src="{% static 'js/animate-text.js' %}"></script>
+
+		<!-- Mobile Menu JS -->
+    	<script type="text/javascript" src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+
+		<!-- Jquery Parallax -->
+    	<script type="text/javascript" src="{% static 'js/jquery.stellar.min.js' %}"></script>
+
+		<!-- Jquery Easing -->
+    	<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+
+		<!-- One Page Nav JS -->
+    	<script type="text/javascript" src="{% static 'js/jquery.nav.js' %}"></script>
+
+		<!-- Slider Carousel JS -->
+		<script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+		<!-- Youtube Player JS -->
+		<script type="text/javascript" src="{% static 'js/ytplayer.min.js' %}"></script>
+
+		<!-- Particle JS -->
+		<script type="text/javascript" src="{% static 'js/particles.min.js' %}"></script>
+
+		<!-- Counter JS -->
+		<script type="text/javascript" src="{% static 'js/waypoints.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.counterup.min.js' %}"></script>
+
+		<!-- Mixitup JS -->
+		<script type="text/javascript" src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+
+		<!-- Bootstrap JS -->
+		<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+
+		<!-- Main JS -->
+		<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+		
+
+
+
+		<!--BOOSTRAP PARA LA SECCION DE QUIENES SOMOS-->
+		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+		 <script type="text/javascript">
+		 $(function() {
+		$("#register-form").submit(function(){
+		  var password = document.getElementById("pass");
+		  var confirm = document.getElementById("confirm-pass");
+		  if (password.value == confirm.value) {
+		    return true;
+		  }
+		  else{
+		    alert("Las contraseñas no coinciden")
+		    return false;
+		  }    
+		});
+
+    $('#login-form-link').click(function(e) {
+		$("#login-form").delay(100).fadeIn(100);
+ 		$("#register-form").fadeOut(100);
+		$('.register-form-link').removeClass('active');
+		$("#recuperar-form").fadeOut(100);
+		$('#recuperar-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+	$('.register-form-link').click(function(e) {
+		$("#register-form").delay(100).fadeIn(100);
+ 		$("#login-form").fadeOut(100);
+		$('#login-form-link').removeClass('active');
+		$("#recuperar-form").fadeOut(100);
+		$('#recuperar-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+	$('#recuperar-form-link').click(function(e) {
+		$("#recuperar-form").delay(100).fadeIn(100);
+ 		$("#login-form").fadeOut(100);
+		$('#login-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+
+	
+});
+		 </script>
+
+<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
+<script src="{% static 'js/sweet.js' %}"></script>
+    {% load sweetify %}
+		{% sweetify %}
+    </body>
+</html>

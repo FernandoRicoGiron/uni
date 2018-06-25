@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+   {% block content %}
+<section id="portfolio" class="section">
+	<div class="contact">
+		<div class="container">
+			<div class="text-center">
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
+					<h2>Ingresa tu Nueva Contraseña {{usuario}}</h2>
+                    <br>
+                    <br>
+					{%if sesion%}
+					<h2>{{sesion}}</h2>
+					{%elif usucon%}
+					<h2>{{usucon}}</h2>
+					{%endif%}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="contact-form">
+		<div class="container">
+		    <div class="col-md-8 col-md-offset-2">
+    		    
+                <form action="/modificarcontraseña/" method="POST" role="form" class="contactForm">{% csrf_token %}
+                	 <div class="form-group">
+                        <input type="hidden" name="usuario" value="{{usuario}}" class="form-control" id="usuario" placeholder="Nueva Contraseña" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="nuevacontraseña" class="form-control" id="nuevacontraseña" placeholder="Nueva Contraseña" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="confirmacontraseña" id="password" placeholder="Confirmar Contraseña" data-rule="password" data-msg="Please enter a valid password" />
+                        <div class="validation"></div>
+                    </div>
+
+
+                    <div class="button"><button type="submit" class="btn btn-primary btn-lg">Enviar</button></div>
+
+                </form>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+	</div>
+    </section>
+
+	<script type="text/javascript">
+        var password = document.getElementById("nuevacontraseña"), confirm_password = document.getElementById("password");
+
+        function validatePassword(){
+          if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Las contraseñas no coinciden");
+          } else {
+            confirm_password.setCustomValidity('');
+          }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
+	{% endblock %}

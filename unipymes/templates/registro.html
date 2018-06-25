@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% csrf_token %}
+   {% block content %}
+   <section id="portfolio" class="section">
+	<div class="contact">
+		<div class="container">
+			<div class="text-center">
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
+					<h2>Regístrate</h2>
+				</div>
+                <br>
+				<div class="wow bounceInDown" data-wow-offset="0" data-wow-delay="0.6s">
+					<h3>Ingresa lo siguiente</h3>
+				</div><br>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="contact-form">
+		<div class="container">
+		    <div class="col-md-8 col-md-offset-2">
+
+                <form action="/registrar/" id="Formregistro" method="POST" role="form" class="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" data-rule="apellido" data-msg="Please enter a valid apellido" required/>
+                        <div class="validation"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="densocial" class="form-control" id="densocial" placeholder=" Nombre, Denominación o Razón Social" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
+                        <div class="validation"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo Electrónico" data-rule="minlen:4" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="correo2" id="correo2" placeholder="Confirmar Correo Electrónico" data-rule="minlen:4" required/>
+                        <div class="validation"></div>
+                    </div>
+                    
+					          <div class="form-group">
+                        <input type="text" name="usuario" class="form-control" id="usuario" placeholder="Usuario" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div id="usuval" class="form-group">
+                        <p style="color:red">{{error}}</p>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="contraseña" class="form-control" id="password" placeholder="Contraseña" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="contraseña2" class="form-control" id="confirm_password" placeholder="Confirmar Contraseña" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
+                        <div class="validation"></div>
+                    </div>
+
+
+                    <div class="button"><button type="submit" class="btn btn-primary btn-lg">Registrarse</button></div>
+                </form>
+            </div>
+        </div>
+	</div>
+    </section>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
+        var correo = document.getElementById("correo"), correo2 = document.getElementById("correo2");
+
+        function validatePassword(){
+          if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Las contraseñas no coinciden");
+          } else {
+            confirm_password.setCustomValidity('');
+          }
+        }
+
+        function validateCorreo(){
+          if(correo.value != correo2.value) {
+            correo2.setCustomValidity("Los correos no coinciden");
+          } else {
+            correo2.setCustomValidity('');
+          }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+        correo.onchange = validateCorreo;
+        correo2.onkeyup = validateCorreo;
+
+        $("#Formregistro").on("submit",function (e) {
+            e.preventDefault();
+            var csrftoken = getCookie('csrftoken');
+            usuario = $("#usuario").val()
+            empresa = $("#densocial").val()
+            $.ajax({
+                 url : '/validarusuyemp/', // the endpoint,commonly same url
+                 type : "POST", // http method
+                 data : { csrfmiddlewaretoken : csrftoken,
+                 usuario : usuario,
+                 empresa : empresa
+         }, // data sent with the post request
+
+         // handle a successful response
+         success : function(json) {
+              console.log(json); // another sanity check
+              //On success show the data posted to server as a message
+              //alert('Hi '+json['email'] +'!.' + ' You have entered password:'+      json['password']);
+              if (json['usu'] == 'mal') {
+                  var html = '<p style="color:red">El usuario ya existe<p>'
+                  $('#usuval').html(html);
+                  var t = $('#usuario').offset().top;
+                   $('html,body').animate({scrollTop: t}, 500);
+                   return false;
+                }
+                else{
+                    $('#usuval').html("");
+                }
+            if(json["denso"] == "mal"){
+                    var html = '<p style="color:red">La empresa ya existe<p>'
+                  $('#empval').html(html);
+                  var t = $('#densocial').offset().top;
+                   $('html,body').animate({scrollTop: t}, 500);
+                   return false;
+                }
+            else{
+                $('#empval').html("");
+            }
+            if (json["usu"]=="bien" & json["denso"]=="bien") {
+                $('#Formregistro').submit()
+            }
+         },
+
+         // handle a non-successful response
+         error : function(xhr,errmsg,err) {
+         console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+         }
+         });
+        });
+
+        function getCookie(name) {
+               var cookieValue = null;
+               if (document.cookie && document.cookie != '') {
+                 var cookies = document.cookie.split(';');
+                 for (var i = 0; i < cookies.length; i++) {
+                 var cookie = jQuery.trim(cookies[i]);
+                 // Does this cookie string begin with the name we want?
+                 if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                     break;
+                  }
+             }
+         }
+         return cookieValue;
+        }
+    </script>
+	{% endblock %}
