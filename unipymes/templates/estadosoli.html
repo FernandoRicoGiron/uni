@@ -500,14 +500,16 @@ a {
 						<div class="be-large-post">
 							<div class="col-sm-4">
 								<div>
-									<h4>Archivos</h4>
-								</div>
-								<div>
+									<ul class="list-group list-group-flush">
+										<a href="#" class="list-group-item list-group-item-action active">
+									    Archivos
+									  </a>
 									{% for mensaje in soli.Mensaje_Solicitud.all %}	
-									<ul>
-										<li>
+									{% if mensaje.Archivo %}
+										<li  class='list-group-item'>
 											<span><a href="#" id="ar" onclick="descarchivo('{{mensaje.Archivo.url}}')">{{mensaje.Archivo.name|replacefilename}}</a></span> 
 										</li>
+									{% endif %}
 									{% endfor %}
 									</ul>
 
@@ -531,7 +533,9 @@ a {
 										<div class="message-box__item outgoing">
 											<div class="name">{{ mensaje.Usuario.username }}</div>
 						                    <div class="box-text">
+						                    	{% if mensaje.Archivo %}
 						                    	<span><a href="#" id="ar" onclick="descarchivo('{{mensaje.Archivo.url}}')">{{mensaje.Archivo.name|replacefilename}}</a></span><br>
+						                    	{% endif %}
 						                            {{ mensaje.Mensaje|safe}}
 
 						                        <div class="time">{{ mensaje.date|date:"m-d h:i a"}}</div>
@@ -544,7 +548,11 @@ a {
 						                    <div class="name">{{ mensaje.Usuario.username }}</div>
 
 						                    <div class="box-text">
+						                    	{% if mensaje.Archivo %}
 						                        <span><a href="#" id="ar" onclick="descarchivo('{{mensaje.Archivo.url}}')">{{mensaje.Archivo.name|replacefilename}}</a></span><br>
+
+						                        {%endif%}
+
 						                            {{ mensaje.Mensaje|safe}}
 
 						                        <div class="time">{{ mensaje.date|date:"m-d h:i a"}}</div>
