@@ -269,12 +269,23 @@ def estadosoli(request):
 
 @csrf_exempt
 def MensajeSoli(request):
-	mensaje = Mensaje_Solicitud.objects.create(
-		Mensaje = request.POST.get("mensaje"),
-		Usuario = request.user,
-		Archivo = request.FILES["file"])
+	print(request.FILES)
+	if request.FILES:
+		mensaje = Mensaje_Solicitud.objects.create(
+			Mensaje = request.POST.get("mensaje"),
+			Usuario = request.user,
+			Archivo = request.FILES["file"])
+	else:
+		mensaje = Mensaje_Solicitud.objects.create(
+			Mensaje = request.POST.get("mensaje"),
+			Usuario = request.user,)
 	solicitud = Solicitude.objects.get(id=request.POST.get("solicitud"))
 	solicitud.Mensaje_Solicitud.add(mensaje)
+	if request.user == solicitud.Encargado:
+		email = EmailMessage('Mensaje de Unipymes', 'Tienes un mensaje en el sitio de unipymes para verificarlo visita\nwww.unipymes.com.mx',to = [request.user.email])
+	else:
+		email = EmailMessage('Mensaje de Unipymes', 'El cliente '+request.user.username+' te ha enviado un mensaje en\nwww.unipymes.com.mx',to = [solicitud.Encargado.email])
+	email.send()
 	sweetify.success(request, 'Genial!', text="Su mensaje a sido enviado correctamente", persistent=':)')
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
 
@@ -284,9 +295,17 @@ def solicitud_es(request):
 	solicitud = Solicitude.objects.get(id = request.POST.get("id"))
 	data = {"id":solicitud.id, "servicio":solicitud.Servicio.Nombre, "mensajes":{}}
 	for x in solicitud.Mensaje_Solicitud.all():
-		data["mensajes"][x.id] = {"mensaje":x.Mensaje,
-		"url":x.Archivo.url,
-		"nombrearchivo":x.Archivo.name,
-		"date":x.date.strftime("%Y-%m-%d %H:%M"),
-		"usuario":x.Usuario.username}
+		if x.Archivo:
+			data["mensajes"][x.id] = {"mensaje":x.Mensaje,
+			"url":x.Archivo.url,
+			"nombrearchivo":x.Archivo.name,
+			"date":x.date.strftime("%Y-%m-%d %H:%M"),
+			"usuario":x.Usuario.username}	
+		else:
+			data["mensajes"][x.id] = {"mensaje":x.Mensaje,
+			"url":"",
+			"nombrearchivo":"",
+			"date":x.date.strftime("%Y-%m-%d %H:%M"),
+			"usuario":x.Usuario.username}	
+	
 	return JsonResponse(data)

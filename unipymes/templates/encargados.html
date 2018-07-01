@@ -328,7 +328,8 @@ a {
               var archivos = "";
               $.each(json.mensajes, function(idx, mensaje){
 	              if (mensaje.usuario == "{{request.user.username}}") {
-	              	mensajehtml = "<div class='message-box__item outgoing'><div class='name'>"+
+	              	if (mensaje.nombrearchivo != "") {
+	              		mensajehtml = "<div class='message-box__item outgoing'><div class='name'>"+
 	              	 mensaje.usuario +
 	              	 "</div><div class='box-text'>"+
 	              	  "<span><a href='#' id='ar' onclick='descarchivo("+'"'+mensaje.url+'"'+")'>"+
@@ -337,17 +338,37 @@ a {
 	              	  mensaje.mensaje +
 	              	  "<div class='time'>"+ mensaje.date +
 	              	  "</div></div></div>";
+	              	}
+	              	else{
+	              		mensajehtml = "<div class='message-box__item outgoing'><div class='name'>"+
+	              	 mensaje.usuario +
+	              	 "</div><div class='box-text'>"+
+	              	  mensaje.mensaje +
+	              	  "<div class='time'>"+ mensaje.date +
+	              	  "</div></div></div>";
+	              	}
+	              	
 	              	
 	              }
 	              else{
-	              	mensajehtml = "<div class='message-box__item incoming'><div class='name'>"+
+	              	if (mensaje.nombrearchivo != "") {
+	              		mensajehtml = "<div class='message-box__item incoming'><div class='name'>"+
+		              	 mensaje.usuario +"</div><div class='box-text'>"+
+		              	 "<span><a href='#' id='ar' onclick='descarchivo("+'"'+mensaje.url+'"'+")'>"+
+		              	 mensaje.nombrearchivo.replace("Mensajes/","")+
+		              	 "</a></span><br>"+
+		              	 mensaje.mensaje +
+		              	 "<div class='time'>"+ mensaje.date +
+		              	 "</div></div></div>";
+	              	}
+	              	else{
+	              		mensajehtml = "<div class='message-box__item incoming'><div class='name'>"+
 	              	 mensaje.usuario +"</div><div class='box-text'>"+
-	              	 "<span><a href='#' id='ar' onclick='descarchivo("+'"'+mensaje.url+'"'+")'>"+
-	              	 mensaje.nombrearchivo.replace("Mensajes/","")+
-	              	 "</a></span><br>"+
 	              	 mensaje.mensaje +
 	              	 "<div class='time'>"+ mensaje.date +
 	              	 "</div></div></div>";
+	              	}
+	              	
 	              }
 
 	              archivos += "<li class='list-group-item'><a href='#' id='ar' onclick='descarchivo("+
