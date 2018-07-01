@@ -1,9 +1,240 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load tags %}
 {% csrf_token %}
 
    {% block content %}
+<style type="text/css">
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+	img {
+  max-width: 100%; }
 
+ul {
+  padding-left: 0; }
+
+li {
+  list-style-type: none; }
+
+a {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease; }
+  a:hover {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+
+#wrapper {
+  width: 1024px;
+  height: 768px;
+  /*max-width: 90%;*/
+  max-height: 90%;
+  padding: 15px;
+  border-radius: 7px;
+  /*position: absolute;*/
+  /*left: 50%;*/
+  /*top: 50%;*/
+  /*transform: translate(-50%, -50%);*/
+  margin: auto;
+  background-image: -moz-linear-gradient(135deg, #fafaff 0%, #f7f7fc 100%);
+  background-image: -webkit-linear-gradient(135deg, #fafaff 0%, #f7f7fc 100%);
+  background-image: -ms-linear-gradient(135deg, #fafaff 0%, #f7f7fc 100%);
+  box-shadow: 0px 12px 30px 0px rgba(1, 50, 101, 0.07); }
+
+.sidebar {
+  width: 70px;
+  height: 100%;
+  border-radius: 7px;
+  float: left;
+  background-image: -moz-linear-gradient(90deg, #117ee7 0%, #108ef2 100%);
+  background-image: -webkit-linear-gradient(90deg, #117ee7 0%, #108ef2 100%);
+  background-image: -ms-linear-gradient(90deg, #117ee7 0%, #108ef2 100%);
+  box-shadow: 15px 15px 30px 0px rgba(1, 50, 101, 0.21);
+  padding: 35px 0;
+  position: relative; }
+  .sidebar .profile-img {
+    padding: 0 12px;
+    margin-bottom: 40px; }
+    .sidebar .profile-img img {
+      border-radius: 50%;
+      border: 3px solid #fff; }
+  .sidebar .sidebar-menu {
+    display: block; }
+    .sidebar .sidebar-menu .sidebar-menu__links {
+      display: block;
+      height: 55px;
+      border-left: 0px solid #fff;
+      text-align: center;
+      padding-top: 15px;
+      margin-bottom: 10px; }
+      .sidebar .sidebar-menu .sidebar-menu__links.active, .sidebar .sidebar-menu .sidebar-menu__links:hover {
+        background-color: #43a4f3;
+        border-left: 4px solid #fff; }
+  .sidebar .btn-menu {
+    position: absolute;
+    bottom: 25px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    opacity: 1; }
+    .sidebar .btn-menu:hover {
+      opacity: .7; }
+
+.messages {
+  width: 345px;
+  height: 100%;
+  float: left;
+  margin-left: 15px;
+  position: relative;
+  /*overflow: auto;
+  padding-right: 15px;*/ }
+  .messages .seacrh-bar {
+    border-radius: 7px;
+    background: #f0f2f4;
+    box-shadow: 9px 9px 30px 0px rgba(1, 50, 101, 0.21);
+    width: 100%;
+    height: 45px;
+    margin-bottom: 15px; }
+    .messages .seacrh-bar img {
+      margin: 14px 10px 15px 15px; }
+    .messages .seacrh-bar input {
+      background: none;
+      border: none;
+      height: 45px;
+      width: calc(100% - 50px); }
+      .messages .seacrh-bar input:focus {
+        outline: none; }
+  .messages .messages__item {
+    background: #fff;
+    box-shadow: 9px 9px 30px 0px rgba(1, 50, 101, 0.21);
+    border-radius: 7px;
+    width: 100%;
+    height: 115px;
+    margin-bottom: 15px;
+    padding: 20px 15px;
+    display: block;
+    position: relative;
+    overflow: hidden; }
+    .messages .messages__item:hover, .messages .messages__item.active {
+      text-decoration: none;
+      box-shadow: 9px 9px 30px 10px rgba(1, 50, 101, 0.21);
+      background: #f0f2f4; }
+    .messages .messages__item .name {
+      color: #4a4a4a;
+      font-size: 16px;
+      font-weight: 500;
+      float: left; }
+    .messages .messages__item .date {
+      float: right;
+      color: #c0c0c0; }
+    .messages .messages__item .content {
+      float: left;
+      padding: 10px 0;
+      color: #565656;
+      font-size: 15px; }
+    .messages .messages__item.unread:after {
+      content: '';
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      right: -12px;
+      top: 50px;
+      border-radius: 50%;
+      background-image: -moz-linear-gradient(90deg, #117ee7 0%, #108ef2 100%);
+      background-image: -webkit-linear-gradient(90deg, #117ee7 0%, #108ef2 100%);
+      background-image: -ms-linear-gradient(90deg, #117ee7 0%, #108ef2 100%);
+      box-shadow: 5px 5px 30px 0px rgba(1, 50, 101, 0.21); }
+
+.message-content {
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 9px 9px 30px 0px rgba(1, 50, 101, 0.21);
+  /*max-width: 550px;*/
+  width: 100%;
+  height: 100%;
+  float: right;
+  position: relative;
+  /* margin-left: 15px;*/ }
+  .message-content .message-content__item .message-content-header {
+    border-bottom: 1px solid #e0e2e4;
+    padding: 20px 15px;
+    position: relative;
+    height: 95px; }
+    .message-content .message-content__item .message-content-header .name {
+      font-size: 21px;
+      color: #535357;
+      font-weight: 500; }
+    .message-content .message-content__item .message-content-header .phone {
+      font-size: 16px;
+      color: #a3a3a7; }
+    .message-content .message-content__item .message-content-header img {
+      position: absolute;
+      top: 30px;
+      right: 15px; }
+  .message-content .message-box {
+    padding: 25px;
+    height: calc(100% - 175px); }
+    .message-content .message-box .message-box__item {
+      margin-bottom: 15px; }
+      .message-content .message-box .message-box__item.incoming {
+        text-align: left; }
+        .message-content .message-box .message-box__item.incoming .time {
+          right: 0; }
+      .message-content .message-box .message-box__item.outgoing {
+        text-align: right; }
+        .message-content .message-box .message-box__item.outgoing .time {
+          left: 0; }
+      .message-content .message-box .message-box__item .name {
+        color: #535357;
+        font-size: 16px;
+        font-weight: 400; }
+      .message-content .message-box .message-box__item .box-text {
+        background: #f0f2f4;
+        display: inline-block;
+        padding: 20px 15px;
+        padding-right: 50px;
+        font-size: 16px;
+        color: #535357;
+        border-radius: 7px;
+        max-width: 90%;
+        margin-top: 10px;
+        text-align: left;
+        position: relative;
+        margin-bottom: 20px; }
+        .message-content .message-box .message-box__item .box-text .time {
+          position: absolute;
+          bottom: -25px;
+          font-size: 13px;
+          color: #939397; }
+  .message-content .message-form {
+    height: 75px;
+    border-top: 1px solid #e0e2e4;
+    padding: 20px 15px; }
+    .message-content .message-form input {
+      width: calc(100% - 50px);
+      border: none;
+      font-size: 16px;
+      margin-top: 5px; }
+    .message-content .message-form img {
+      float: right;
+      margin-top: 10px; }
+
+/*# sourceMappingURL=style.css.map */
+
+</style>
 
 <section id="about-me" class="section default" id="personal-area" class="slider">
 			<div class="container">
@@ -86,7 +317,7 @@
 										{% endif %}
 										<div class="text-center" class="contenedor-modal" style="padding-top: 1px; margin-right:5px">
 															
-										<button data-toggle="modal" data-target="#encuesta" style="background: #E74C3C; padding:3px; float:left; font-size: 12px;" type="submit" class="btn btn-primary btn-lg">Comunicacion</button>
+										<button data-toggle="modal" data-target="#comunicacion{{soli.id}}" style="background: #E74C3C; padding:3px; float:left; font-size: 12px;" type="submit" class="btn btn-primary btn-lg">Comunicacion</button>
 										
 									</div>
 												</div>
@@ -134,6 +365,7 @@
 	      		<div class="modal-body">
 						<div class="sec" data-sec="basic-information">
 						<div class="be-large-post">
+							
 							<div class="be-large-post-align">
 
 									<form action="/mensaje_encuesta/" method="post">
@@ -245,8 +477,126 @@
 	                </div>
 	    		</div>
 	 		 </div>
-		</div>	</div></div>
+		</div>	
+	</div>
+</div>
 	
   		<!--/ Termina el modal -->
 
+
+<!-- Comienza el modal para encuesta -->
+	{% for soli in solicitudes %}
+	<div class="modal fade bd-example-modal-lg" id="comunicacion{{soli.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div  class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          	<span aria-hidden="true">&times;</span>
+	        </button>
+
+	      		<div>
+	        		<center><font color="black" ><h4 class="modal-title" id="myModalLabel">Comunicacion</h4> </font></center>
+	    		</div>
+
+	      		<div class="modal-body">
+						<div class="sec" data-sec="basic-information">
+						<div class="be-large-post">
+							<div class="col-sm-4">
+								<div>
+									<h4>Archivos</h4>
+								</div>
+								<div>
+									{% for mensaje in soli.Mensaje_Solicitud.all %}	
+									<ul>
+										<li>
+											<span><a href="#" id="ar" onclick="descarchivo('{{mensaje.Archivo.url}}')">{{mensaje.Archivo.name|replacefilename}}</a></span> 
+										</li>
+									{% endfor %}
+									</ul>
+
+									<br>			
+								</div>
+							</div>
+							<div  class="be-large-post-align col-sm-8">
+								<div class="message-content chat" style="height: 400px; overflow-y: scroll;">
+
+						            <div class="message-content__item">
+						                <div class="message-content-header">
+						                    <div class="name">{{ soli.Encargado.username}}</div>
+						                    <div class="phone">unipymes.tec@gmail.com</div>
+						                    <img src="img/message-more.png" alt="">
+						                </div>
+						            </div>
+									<div class="message-box">
+										{% for mensaje in soli.Mensaje_Solicitud.all %}
+
+										{% if mensaje.Usuario == user %}
+										<div class="message-box__item outgoing">
+											<div class="name">{{ mensaje.Usuario.username }}</div>
+						                    <div class="box-text">
+						                    	<span><a href="#" id="ar" onclick="descarchivo('{{mensaje.Archivo.url}}')">{{mensaje.Archivo.name|replacefilename}}</a></span><br>
+						                            {{ mensaje.Mensaje|safe}}
+
+						                        <div class="time">{{ mensaje.date|date:"m-d h:i a"}}</div>
+						                    </div>
+						                </div>
+
+						                {% else %}
+
+						                <div class="message-box__item incoming">
+						                    <div class="name">{{ mensaje.Usuario.username }}</div>
+
+						                    <div class="box-text">
+						                        <span><a href="#" id="ar" onclick="descarchivo('{{mensaje.Archivo.url}}')">{{mensaje.Archivo.name|replacefilename}}</a></span><br>
+						                            {{ mensaje.Mensaje|safe}}
+
+						                        <div class="time">{{ mensaje.date|date:"m-d h:i a"}}</div>
+						                    </div>
+						                </div>
+						                {% endif %}
+
+						                
+						                {% endfor %}
+						                
+						            </div>
+
+						            
+
+						        </div>
+						        <form action="/MensajeSoli/" method="POST" enctype="multipart/form-data">
+						        	{% csrf_token %}
+						        	<input type="hidden" name="solicitud" value="{{soli.id}}">
+						        	<div class="message-form">
+						                <input name="mensaje" type="text" placeholder="Escribe tu mensaje" style="width: 100%; height: 40px;">
+						            </div>
+									<div class="input-group mb-3">
+									  Seleccione un archivo: <input class="" type="file" name="file">
+											<input class="btn btn-primary btn-lg" value="enviar" type="submit">
+									</div>
+								</form>		
+						    </div>
+											
+																
+							</div> 
+						</div>
+	                </div>
+	    		</div>
+	 		 </div>
+		</div>	
+	</div>
+</div>
+	{% endfor %}
+  		<!--/ Termina el modal -->
+<!-- Jquery -->
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript">
+	function descarchivo(e) {
+      //stop the browser from following
+    window.open(e);
+}
+$(function() {
+	$(".chat").scrollTop($(".chat")[0].scrollHeight);
+});
+
+</script>
 {% endblock %}

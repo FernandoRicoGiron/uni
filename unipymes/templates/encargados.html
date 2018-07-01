@@ -1,0 +1,377 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load tags %}
+{% csrf_token %}
+{% block content %}
+<style type="text/css">
+body {
+  background: url(../img/bg.png) center no-repeat;
+  background-size: cover;
+  background-color: #b9c1d4;
+  margin: 0;
+  padding: 3vh 0;
+  font-family: 'Roboto', sans-serif; }
+	img {
+  max-width: 100%; }
+
+ul {
+  padding-left: 0; }
+
+li {
+  list-style-type: none; }
+
+a {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease; }
+  a:hover {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+
+#wrapper {
+  width:100%;
+  height: 650px;
+  /*max-width: 90%;*/
+  max-height: 90%;
+  padding: 10px;
+  border-radius: 7px;
+  /*position: absolute;*/
+  /*left: 50%;*/
+  /*top: 50%;*/
+  /*transform: translate(-50%, -50%);*/
+  margin: auto;
+  background-image: -moz-linear-gradient(135deg, #fafaff 0%, #f7f7fc 100%);
+  background-image: -webkit-linear-gradient(135deg, #fafaff 0%, #f7f7fc 100%);
+  background-image: -ms-linear-gradient(135deg, #fafaff 0%, #f7f7fc 100%);
+  box-shadow: 0px 12px 30px 0px rgba(1, 50, 101, 0.07); }
+
+.sidebar {
+  width: 70px;
+  height: 100%;
+  border-radius: 7px;
+  float: left;
+  background-image: -moz-linear-gradient(90deg, #117ee7 0%, #108ef2 100%);
+  background-image: -webkit-linear-gradient(90deg, #117ee7 0%, #108ef2 100%);
+  background-image: -ms-linear-gradient(90deg, #117ee7 0%, #108ef2 100%);
+  box-shadow: 15px 15px 30px 0px rgba(1, 50, 101, 0.21);
+  padding: 35px 0;
+  position: relative; }
+  .sidebar .profile-img {
+    padding: 0 12px;
+    margin-bottom: 40px; }
+    .sidebar .profile-img img {
+      border-radius: 50%;
+      border: 3px solid #fff; }
+  .sidebar .sidebar-menu {
+    display: block; }
+    .sidebar .sidebar-menu .sidebar-menu__links {
+      display: block;
+      height: 55px;
+      border-left: 0px solid #fff;
+      text-align: center;
+      padding-top: 15px;
+      margin-bottom: 10px; }
+      .sidebar .sidebar-menu .sidebar-menu__links.active, .sidebar .sidebar-menu .sidebar-menu__links:hover {
+        background-color: #43a4f3;
+        border-left: 4px solid #fff; }
+  .sidebar .btn-menu {
+    position: absolute;
+    bottom: 25px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    opacity: 1; }
+    .sidebar .btn-menu:hover {
+      opacity: .7; }
+
+.messages {
+  width: 345px;
+  height: 100%;
+  float: left;
+  margin-left: 15px;
+  position: relative;
+  /*overflow: auto;
+  padding-right: 15px;*/ }
+  .messages .seacrh-bar {
+    border-radius: 7px;
+    background: #f0f2f4;
+    box-shadow: 9px 9px 30px 0px rgba(1, 50, 101, 0.21);
+    width: 100%;
+    height: 45px;
+    margin-bottom: 15px; }
+    .messages .seacrh-bar img {
+      margin: 14px 10px 15px 15px; }
+    .messages .seacrh-bar input {
+      background: none;
+      border: none;
+      height: 45px;
+      width: calc(100% - 50px); }
+      .messages .seacrh-bar input:focus {
+        outline: none; }
+  .messages .messages__item {
+    background: #fff;
+    box-shadow: 9px 9px 30px 0px rgba(1, 50, 101, 0.21);
+    border-radius: 7px;
+    width: 100%;
+    height: 115px;
+    margin-bottom: 15px;
+    padding: 20px 15px;
+    display: block;
+    position: relative;
+    overflow: hidden; }
+    .messages .messages__item:hover, .messages .messages__item.active {
+      text-decoration: none;
+      box-shadow: 9px 9px 30px 10px rgba(1, 50, 101, 0.21);
+      background: #f0f2f4; }
+    .messages .messages__item .name {
+      color: #4a4a4a;
+      font-size: 16px;
+      font-weight: 500;
+      float: left; }
+    .messages .messages__item .date {
+      float: right;
+      color: #c0c0c0; }
+    .messages .messages__item .content {
+      float: left;
+      padding: 10px 0;
+      color: #565656;
+      font-size: 15px; }
+    .messages .messages__item.unread:after {
+      content: '';
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      right: -12px;
+      top: 50px;
+      border-radius: 50%;
+      background-image: -moz-linear-gradient(90deg, #117ee7 0%, #108ef2 100%);
+      background-image: -webkit-linear-gradient(90deg, #117ee7 0%, #108ef2 100%);
+      background-image: -ms-linear-gradient(90deg, #117ee7 0%, #108ef2 100%);
+      box-shadow: 5px 5px 30px 0px rgba(1, 50, 101, 0.21); }
+
+.message-content {
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 9px 9px 30px 0px rgba(1, 50, 101, 0.21);
+  /*max-width: 550px;*/
+  width: 100%;
+  height: 100%;
+  float: right;
+  position: relative;
+  /* margin-left: 15px;*/ }
+  .message-content .message-content__item .message-content-header {
+    border-bottom: 1px solid #e0e2e4;
+    padding: 20px 15px;
+    position: relative;
+    height: 95px; }
+    .message-content .message-content__item .message-content-header .name {
+      font-size: 21px;
+      color: #535357;
+      font-weight: 500; }
+    .message-content .message-content__item .message-content-header .phone {
+      font-size: 16px;
+      color: #a3a3a7; }
+    .message-content .message-content__item .message-content-header img {
+      position: absolute;
+      top: 30px;
+      right: 15px; }
+  .message-content .message-box {
+    padding: 25px;
+    height: calc(100% - 175px); }
+    .message-content .message-box .message-box__item {
+      margin-bottom: 15px; }
+      .message-content .message-box .message-box__item.incoming {
+        text-align: left; }
+        .message-content .message-box .message-box__item.incoming .time {
+          right: 0; }
+      .message-content .message-box .message-box__item.outgoing {
+        text-align: right; }
+        .message-content .message-box .message-box__item.outgoing .time {
+          left: 0; }
+      .message-content .message-box .message-box__item .name {
+        color: #535357;
+        font-size: 16px;
+        font-weight: 400; }
+      .message-content .message-box .message-box__item .box-text {
+        background: #f0f2f4;
+        display: inline-block;
+        padding: 20px 15px;
+        padding-right: 50px;
+        font-size: 16px;
+        color: #535357;
+        border-radius: 7px;
+        max-width: 90%;
+        margin-top: 10px;
+        text-align: left;
+        position: relative;
+        margin-bottom: 20px; }
+        .message-content .message-box .message-box__item .box-text .time {
+          position: absolute;
+          bottom: -25px;
+          font-size: 13px;
+          color: #939397; }
+  .message-content .message-form {
+    height: 75px;
+    border-top: 1px solid #e0e2e4;
+    padding: 20px 15px; }
+    .message-content .message-form input {
+      width: calc(100% - 50px);
+      border: none;
+      font-size: 16px;
+      margin-top: 5px; }
+    .message-content .message-form img {
+      float: right;
+      margin-top: 10px; }
+
+/*# sourceMappingURL=style.css.map */
+
+</style>
+<section id="about-me" class="section default" id="personal-area" class="slider">
+<div class="container">
+<div id="wrapper">
+        
+
+		<div class="message-content col-sm-12" >
+	        <div style="overflow-y: scroll; height: 400px">
+
+	            <div class="message-content__item">
+	                <div class="message-content-header">
+	                    <div class="name">Mensajes</div>
+	                    <div class="phone"></div>
+	                    <img src="img/message-more.png" alt="">
+	                </div>
+	            </div>
+
+	            <div class="message-box">
+	                
+
+	                
+	                
+	            </div>
+
+	            
+
+	        </div>
+	        <div style="display: none" class="message-form">
+                <form action="/MensajeSoli/" method="POST" enctype="multipart/form-data">
+		        	{% csrf_token %}
+		        	<input id="idsolicitud" type="hidden" name="solicitud" value="">
+		        	<div class="message-form">
+		                <input name="mensaje" type="text" placeholder="Escribe tu mensaje" style="width: 100%; height: 40px;">
+		            </div>
+					<div class="input-group mb-3">
+					  Seleccione un archivo: <input class="" type="file" name="file">
+							<input class="btn btn-primary btn-lg" value="enviar" type="submit">
+					</div>
+				</form>	
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="col-sm-6" style="">
+			
+			<div>
+				<ul class="list-group list-group-flush">
+					<a href="#" class="list-group-item list-group-item-action active">
+					    Clientes
+					  </a>
+				{% for soli in solicitudes %}	
+				
+					<li class="list-group-item">
+						<a href="#" id="ar" onclick="Servicio({{soli.id}})">{{soli.Empresa.DenominacionSocial}}: {{soli.Servicio.Nombre}}</a>
+					</li>
+				{% endfor %}
+				</ul>
+
+				<br>			
+			</div>
+		</div>
+
+        <div class="col-sm-6" style="">
+			
+			<div>
+				<ul id="archivos" class="list-group list-group-flush">
+					<a href="#" class="list-group-item list-group-item-action active">
+					    Archivos
+					  </a>
+				
+				</ul>
+
+				<br>			
+			</div>
+		</div>
+
+</div>
+</section>
+
+<script type="text/javascript">
+	function Servicio(id) {
+		$("#idsolicitud").attr("value",id)
+		$(".message-box").html("");
+		$("#archivos").html("<a href='#' class='list-group-item list-group-item-action active'>					    Archivos</a>")
+		$.ajax({
+                 url : '/solicitud_es/', // the endpoint,commonly same url
+                 type : "POST", // http method
+                 data : {id : id,
+         }, // data sent with the post request
+
+         // handle a successful response
+         success : function(json) {
+              var archivos = "";
+              $.each(json.mensajes, function(idx, mensaje){
+	              if (mensaje.usuario == "{{request.user.username}}") {
+	              	mensajehtml = "<div class='message-box__item outgoing'><div class='name'>"+
+	              	 mensaje.usuario +
+	              	 "</div><div class='box-text'>"+
+	              	  "<span><a href='#' id='ar' onclick='descarchivo("+'"'+mensaje.url+'"'+")'>"+
+	              	 mensaje.nombrearchivo.replace("Mensajes/","")+
+	              	 "</a></span><br>"+
+	              	  mensaje.mensaje +
+	              	  "<div class='time'>"+ mensaje.date +
+	              	  "</div></div></div>";
+	              	
+	              }
+	              else{
+	              	mensajehtml = "<div class='message-box__item incoming'><div class='name'>"+
+	              	 mensaje.usuario +"</div><div class='box-text'>"+
+	              	 "<span><a href='#' id='ar' onclick='descarchivo("+'"'+mensaje.url+'"'+")'>"+
+	              	 mensaje.nombrearchivo.replace("Mensajes/","")+
+	              	 "</a></span><br>"+
+	              	 mensaje.mensaje +
+	              	 "<div class='time'>"+ mensaje.date +
+	              	 "</div></div></div>";
+	              }
+
+	              archivos += "<li class='list-group-item'><a href='#' id='ar' onclick='descarchivo("+
+	              '"'+mensaje.url+'"'+")'>"+
+	              mensaje.nombrearchivo.replace("Mensajes/","")+
+	              "</a></li>";
+	              $(".message-box").append(mensajehtml);
+	              
+	              $(".message-form").show()
+	              
+	          });
+	          $("#archivos").append(archivos)
+         },
+
+         // handle a non-successful response
+         error : function(xhr,errmsg,err) {
+         alert("error"); // provide a bit more info about the error to the console
+         }
+         });
+        }
+
+        function descarchivo(e) {
+      //stop the browser from following
+    window.open(e);
+}
+</script>
+{% endblock %}

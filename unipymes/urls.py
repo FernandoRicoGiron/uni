@@ -5,6 +5,8 @@ from django.urls import path, re_path
 
 urlpatterns = [
     path('', views.index),
+    path('MensajeSoli/', views.MensajeSoli),
+    path('solicitud_es/', views.solicitud_es),
     path('contactanos/', views.contactanos),
     path('modpassword/', views.modpassword),
     path('evaluacion/', views.evaluacion),

@@ -9,6 +9,7 @@ from django.dispatch import receiver
 from django.contrib.auth.models import User, AbstractUser
 from django.conf import settings
 import json
+from django.utils import timezone
 
 ESTADO_SOLICITUDES = (
 	('0','Solicitud Enviada'),
@@ -40,6 +41,7 @@ class Dato(models.Model):
 	NumInterior = models.CharField(max_length=50, blank=True, null=True)
 	CodigoPostal = models.CharField(max_length=50, blank=True, null=True)
 	Correo = models.EmailField(blank=True, null=True)
+	Encargado = models.BooleanField(default=False)
 
 	@receiver(post_save, sender=User)
 	def create_user_profile(sender, instance, created, **kwargs):
@@ -80,14 +82,30 @@ class Servicio(models.Model):
 	def __str__(self):
 		return self.Nombre
 
-class Solicitude(models.Model):
+class Mensaje_Solicitud(models.Model):
+	Mensaje = models.TextField()
+	Archivo = models.FileField(upload_to = 'Mensajes', blank=True, null=True)
 	Usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+	date = models.DateTimeField(default=timezone.now)
+
+	def filename(self):
+		return os.path.basename(self.Archivo.name)
+
+	def __str__(self):
+		return self.Usuario.username
+
+class Solicitude(models.Model):
+	Usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='cliente')
+	Encargado = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='encargado')
 	Empresa = models.ForeignKey('Empresa', on_delete=models.CASCADE)
 	Servicio = models.ForeignKey('Servicio', on_delete=models.CASCADE)
 	Estado = models.CharField(max_length=50, choices=ESTADO_SOLICITUDES)
+	Mensaje_Solicitud = models.ManyToManyField(Mensaje_Solicitud, blank=True)
 
 	def __str__(self):
 		return self.Servicio.Nombre
+
+
 
 class Mensaje(models.Model):
 	Nombre = models.CharField(max_length=50)

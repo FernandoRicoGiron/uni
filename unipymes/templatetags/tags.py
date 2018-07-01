@@ -14,8 +14,13 @@ register = template.Library()
 
 @register.filter
 def nu(val):
-    if val == None:
-       return ""
-    else: 
-        return val
+	if val == None:
+	   return ""
+	else: 
+		return val
+
+@register.filter
+def replacefilename(val):
+	val = val.replace("Mensajes/", "")
+	return val
 

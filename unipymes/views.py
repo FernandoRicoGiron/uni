@@ -257,6 +257,36 @@ def editar_perfil(request):
 	sweetify.success(request, 'Genial!', text='Sus datos han sido modificados correctamente', persistent=':)')
 	return render(request, 'index.html', {})
 
+@login_required(login_url='/')
 def estadosoli(request):
 	solicitudes = Solicitude.objects.filter(Usuario=request.user)
-	return render(request, 'estadosoli.html', {"solicitudes":solicitudes})
+	dato = Dato.objects.get(Usuario=request.user)
+	if dato.Encargado == True:
+		solicitudes = Solicitude.objects.filter(Encargado = request.user)
+		return render(request, "encargados.html", {"solicitudes":solicitudes})
+	else:
+		return render(request, 'estadosoli.html', {"solicitudes":solicitudes})
+
+@csrf_exempt
+def MensajeSoli(request):
+	mensaje = Mensaje_Solicitud.objects.create(
+		Mensaje = request.POST.get("mensaje"),
+		Usuario = request.user,
+		Archivo = request.FILES["file"])
+	solicitud = Solicitude.objects.get(id=request.POST.get("solicitud"))
+	solicitud.Mensaje_Solicitud.add(mensaje)
+	sweetify.success(request, 'Genial!', text="Su mensaje a sido enviado correctamente", persistent=':)')
+	return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
+
+@csrf_exempt
+def solicitud_es(request):
+	data = {}
+	solicitud = Solicitude.objects.get(id = request.POST.get("id"))
+	data = {"id":solicitud.id, "servicio":solicitud.Servicio.Nombre, "mensajes":{}}
+	for x in solicitud.Mensaje_Solicitud.all():
+		data["mensajes"][x.id] = {"mensaje":x.Mensaje,
+		"url":x.Archivo.url,
+		"nombrearchivo":x.Archivo.name,
+		"date":x.date.strftime("%Y-%m-%d %H:%M"),
+		"usuario":x.Usuario.username}
+	return JsonResponse(data)
