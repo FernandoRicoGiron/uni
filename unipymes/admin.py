@@ -16,7 +16,7 @@ class Servicios(admin.ModelAdmin):
 	search_fields = ['Nombre']
 	 
 	class Meta:
-		model = Servicio		
+		model = Servicio
 
 class Mensajes(admin.ModelAdmin):
 	list_display = ["id","Nombre","Empresa","Estado"]
@@ -68,7 +68,6 @@ class Esperas(admin.ModelAdmin):
 	class Meta:
 		model = Espera
 			
-
 admin.site.register(Dato)
 admin.site.register(Empresa, Empresas)
 admin.site.register(Encuesta)

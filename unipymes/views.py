@@ -22,7 +22,6 @@ def min_length(a, b):
 		raise ValueError("Asegurece de que ingresa los datos correctamente")
 	else:
 		return True
-		
 
 def index(request):
 	return render(request, 'index.html', {})
@@ -115,8 +114,6 @@ def registrar(request):
 	else:
 		sweetify.error(request, 'Oops!', text='El usuario ya existe', persistent=':´(')
 		return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
-	
-
 
 def validarusuyemp(request):
 	data={}
@@ -234,7 +231,6 @@ def editar_perfil(request):
 	empresa.CodigoPostal=request.POST.get("codigopostalemp")
 	empresa.SitioWeb=request.POST.get("sitio")
 	empresa.save()
-
 	usuario = request.user
 	usuario.first_name=request.POST.get("name")
 	usuario.last_name=request.POST.get("apellido")
