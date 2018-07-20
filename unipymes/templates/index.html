@@ -313,29 +313,24 @@
 							<div class="single-testimonial">
 								<div class="testimonial-content">
 									<i class="fa fa-quote-left"></i>
-									<p>¡Wow! conocer UNIPYMES y trabajar con ellos ha hecho de mi empresa la mejor del mundo, de verdad se los recomiendo. Chiapas</p>
+									<p>Gracias a los empresarios por sus buenos comentarios</p>
 								</div>
 								<div class="testimonial-info">
-									<img src="{% static 'images/adrian.jpg' %}" class="img-circle" alt="">
-									<ul class="rating">
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-									</ul>
-									<h6>Adrián De la Torre<span>Micro-Empresario</span></h6>
+									
+									
+									<h6>Unipymes<span></span></h6>
 								</div>
 							</div>
 							<!--/ End Single Testimonial -->
+							{% for resena in resenas %}
 							<!-- Single Testimonial-->
 							<div class="single-testimonial">
 								<div class="testimonial-content">
 									<i class="fa fa-quote-left"></i>
-									<p>Me encanto trabajar con Unipymes son un gran equipo y me proporcionaron un muy buen servicio.</p>
+									<p>{{ resena.Reseña }}</p>
 								</div>
 								<div class="testimonial-info">
-									<img src="https://music.unm.edu/wp-content/uploads/juan-hernandez.jpg" class="img-circle" alt="">
+									<img src="{{resena.Imagen.url}}" class="img-circle" alt="">
 									<ul class="rating">
 										<li><i class="fa fa-star"></i></li>
 										<li><i class="fa fa-star"></i></li>
@@ -343,10 +338,11 @@
 										<li><i class="fa fa-star"></i></li>
 										<li><i class="fa fa-star"></i></li>
 									</ul>
-									<h6>Juan Hernández<span>Micro-Empresario</span></h6>
+									<h6>{{resena.Empresario}}<span>{{resena.Empresa}}</span></h6>
 								</div>
 							</div>
 							<!--/ End Single Testimonial -->
+							{% endfor %}
 						</div>
 					</div>
 				</div>

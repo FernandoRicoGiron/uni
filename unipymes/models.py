@@ -137,3 +137,12 @@ class Encuesta(models.Model):
 
 	def __str__(self):
 		return self.Empresa.DenominacionSocial
+
+class Reseña(models.Model):
+	Empresa = models.CharField(max_length=50)
+	Empresario = models.CharField(max_length=50)
+	Imagen = models.ImageField(upload_to="Reseñas")
+	Reseña = models.TextField()
+
+	def __str__(self):
+		return self.Empresa

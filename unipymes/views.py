@@ -24,7 +24,8 @@ def min_length(a, b):
 		return True
 
 def index(request):
-	return render(request, 'index.html', {})
+	reseñas = Reseña.objects.all()
+	return render(request, 'index.html', {"resenas":reseñas})
 
 def google(request):
 	return render(request, 'googleb8e411affc4ac215.html', {})
@@ -250,8 +251,9 @@ def editar_perfil(request):
 	datos.CodigoPostal=request.POST.get("codigopostal")
 	usuario.save()
 	datos.save()
+	reseñas = Reseña.objects.all()
 	sweetify.success(request, 'Genial!', text='Sus datos han sido modificados correctamente', persistent=':)')
-	return render(request, 'index.html', {})
+	return render(request, 'index.html', {"resenas":reseñas})
 
 @login_required(login_url='/')
 def estadosoli(request):
