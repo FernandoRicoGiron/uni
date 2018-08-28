@@ -1,0 +1,7 @@
+Django==2.0.7
+django-jet==1.0.7
+django-progressive-web-app==0.1.1
+Pillow==5.2.0
+psycopg2==2.7.5
+pytz==2018.5
+sweetify==1.0.3
