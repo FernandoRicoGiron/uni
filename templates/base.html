@@ -448,6 +448,9 @@
 });
 		 </script>
 
+		 {% block script %}
+		 {% endblock %}
+
 <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
 <script src="{% static 'js/sweet.js' %}"></script>
     {% load sweetify %}

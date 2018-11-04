@@ -99,7 +99,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'unipymes',
-        'USER': 'postgres',
+        'USER': 'unipymes',
         'PASSWORD': 'rockmax28',
         'HOST': 'localhost',
         'PORT': ''

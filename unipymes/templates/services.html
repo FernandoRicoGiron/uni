@@ -2,9 +2,10 @@
 {% load staticfiles %}
 
    {% block content %}
+   
 
 <section id="portfolio" class="section">
-	<div class="services">
+	<div class="">
 
 		<div class="container">
 			<div style="text-align: center;" class="text-center">
@@ -16,55 +17,84 @@
 					<p>Enfocados a generar grandes cambios como equipo multidisciplinario, integrando fuerzas de conocimiento para la resolución de problemas, ayudando así a las MiPyMes en su desarrollo.</p>
 				</div>
 				<br><br>
-
-				<div class="wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="col-md-3">
-						<a type="button" href="" data-toggle="modal"  data-target="#Carla"><img style="margin-left: 30px; border-radius: 50%;" width="200" height="194" src="{% static 'personas/carla2.jpg' %}" alt="" ></a>
-						<h3>Carla Marin</h3>
-
+				<div class="row">
+					<div class="col-md-12" onmouseover="hover(this);" onmouseout="unhover(this);" style="width:100%; height:800px;">
+						<img id="imagentodos" class="center-block" style="width:80%; border-radius:30%" src="{% static 'images/Todos1.jpg' %}">
 					</div>
 				</div>
+				<br>
 
-				<div class="wow fadeInRight" data-wow-offset="0" data-wow-delay="0.6s">
+				<div class="row">
 					<div class="col-md-3">
-						<a href="" data-toggle="modal" data-target="#Erika"><img style="margin-left: 30px; border-radius: 50%;" width="200" height="194" src="{% static 'personas/erika.jpg' %}" alt="" ></a>
-						<h3>Erika Bolaños</h3>
+						<div class="col-md-12 ">
+							<a href="" data-toggle="modal" data-target="#Erika"><img class="center-block" class="center-block" style=" border-radius: 50%; width:100%;"  height="250" src="{% static 'personas/erika.jpg' %}" alt="" ></a>
+							<h3>Erika Bolaños</h3>
 
+						</div>
+						<div class="col-md-12 ">
+							<a href="" data-toggle="modal" data-target="#Wilder"><img class="center-block" style=" border-radius: 50%; width:100%;"  height="250" src="{% static 'personas/wilder2.jpeg' %}" alt="" ></a>
+							<h3>Wilder Colmenares</h3>
+
+						</div>
 					</div>
-				</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-6 ">
+								<a type="button" href="" data-toggle="modal"  data-target="#Carla"><img class="center-block" style=" border-radius: 50%; width:65%;" src="{% static 'images/Carla.jpg' %}" alt="" ></a>
+								<h3>Carla Marin</h3>
+							</div>
 
+							<div class="col-md-6 ">
+								<a href="" data-toggle="modal" data-target="#Rico"><img class="center-block" style=" border-radius: 50%; width:65%;" src="{% static 'images/Yo.jpg' %}" alt="" ></a>
+								<h3>Fernando Rico</h3>
 
-				<div class="wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
+							</div>
+							
+
+							<div class="col-md-6 ">
+								<a href="" data-toggle="modal" data-target="#Julio"><img class="center-block" style=" border-radius: 50%; width:65%;" src="{% static 'images/Julio.jpg' %}" alt="" ></a>
+								<h3>Julio Guzmán</h3>
+
+							</div>
+
+							<div class="col-md-6 ">
+								<a href="" data-toggle="modal" data-target="#Caro"><img class="center-block" style=" border-radius: 50%; width:65%;" src="{% static 'images/Caro.jpg' %}" alt="" ></a>
+								<h3>Calorina Cueto</h3>
+
+							</div>
+						</div>
+					</div>
 					<div class="col-md-3">
-						<a href="" data-toggle="modal" data-target="#Lulu"><img style="margin-left: 30px; border-radius: 50%;" width="200" height="194" src="{% static 'personas/lulu.jpg' %}" alt="" ></a>
-						<h3>Lourdes Constantino</h3>
+						<div class="col-md-12 ">
+							<a href="" data-toggle="modal" data-target="#Lulu"><img class="center-block" style=" border-radius: 50%; width:100%;"  height="250" src="{% static 'personas/lulu.jpg' %}" alt="" ></a>
+							<h3>Lourdes Constantino</h3>
 
+						</div>
 					</div>
-				</div>
 
-				<div class="wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.6s">
-					<div class="col-md-3">
-						<a href="" data-toggle="modal" data-target="#Rico"><img style="margin-left: 30px; border-radius: 50%;" width="200" height="194" src="{% static 'personas/rico.jpg' %}" alt="" ></a>
-						<h3>Fernando Rico</h3>
+					
 
-					</div>
-				</div>
-
-				<div class="wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.6s">
-					<div class="col-md-3" style="float: inline-end;">
-						<a href="" data-toggle="modal" data-target="#Wilder"><img style="margin-left: 30px; border-radius: 50%;" width="200" height="194" src="{% static 'personas/wilder2.jpeg' %}" alt="" ></a>
-						<h3>Wilder Colmenares</h3>
-
-					</div>
-				</div>
+				
+					
+				
 
 
-				<div class="wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.6s">
-					<div class="col-md-3">
-						<a href="" data-toggle="modal" data-target="#Julio"><img style="margin-left: 30px; border-radius: 50%;" width="200" height="194" src="{% static 'personas/julio2.JPG' %}" alt="" ></a>
-						<h3>Julio Guzmán</h3>
+				
+					
+				
 
-					</div>
+				
+					
+				
+
+				
+					
+				
+
+
+				
+					
+				
 				</div>
 
 			</div>
@@ -107,7 +137,7 @@
 								<div class="row">
 									<br>
 
-                    						<img style="border-radius: 50%;" width="200" height="194" src="{% static 'personas/rico.jpg' %}" alt="" >
+                    						<img class="center-block" style="border-radius: 50%; width:30%;"  src="{% static 'images/Yo.jpg' %}" alt="" >
                                             <br><br>
                     						<p style="color: black; padding-left: 20px; padding-right: 20px;">Hola mi nombre es Fernando Rico tengo 23 años, soy estudiante de Ingeniería en Sistemas Computacionales, me gusta mucho hacer ejercicio mi deporte es la calistenia, amo los videojuegos y el anime, tengo un gran gusto por la programación y siempre busco ser mejor persona</p>
 								</div>
@@ -141,7 +171,7 @@
 								<div class="row">
 									<br>
 
-                    						<img style="border-radius: 50%;" width="200" height="194" src="{% static 'personas/carla2.jpg' %}" alt="" >
+                    						<img class="center-block" style="border-radius: 50%; width:30%;"  src="{% static 'images/Carla.jpg' %}" alt="" >
                                             <br><br>
                     						<p style="color: black; padding-left: 20px; padding-right: 20px;">Soy Carla de 21 años, estudiante de Ingeniería en Gestión Empresarial, me gusta la musica, hacer deporte y sobre todo el desarrollo de proyectos en pro de la sociedad con la aplicación de mis conocimientos</p>
 								</div>
@@ -175,7 +205,7 @@
 								<div class="row">
 									<br>
 
-                    						<img style="border-radius: 50%;" width="200" height="194" src="{% static 'personas/wilder2.jpeg' %}" alt="" >
+                    						<img class="center-block" style="border-radius: 50%; width:200px;"  height="194" src="{% static 'personas/wilder2.jpeg' %}" alt="" >
                                             <br><br>
                     						<p style="color: black; padding-left: 20px; padding-right: 20px;">Mi nombre Wilder tengo 21 años, actualmente estudio Ingeniería en Sistemas Computacionales en el Instituto Tecnológico de Tuxtla Gutiérrez, Chiapas.
 Creo en Dios, amo leer libros de desarrollo personal y PNL. Me encanta los negocios, soy emprendedor online y cuento con tres negocios propios.</p>
@@ -210,9 +240,42 @@ Creo en Dios, amo leer libros de desarrollo personal y PNL. Me encanta los negoc
 								<div class="row">
 									<br>
 
-                    						<img style="border-radius: 50%;" width="200" height="194" src="{% static 'personas/julio2.JPG' %}" alt="" >
+                    						<img class="center-block" style="border-radius: 50%; width:30%;"  src="{% static 'images/Julio.jpg' %}" alt="" >
                                             <br><br>
                     						<p style="color: black; padding-left: 20px; padding-right: 20px;">Soy Julio Guzmán de 23 años, egresado de la carrera de Ingeniería en Gestión Empresarial, he asesorado proyectos empresariales y emprendimientos a favor del Desarrollo Económico, Ambiental y Social del país.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</center>
+        <div class="modal-footer"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!--Modal-->
+	<div class="modal fade" id="Caro" role="dialog" >
+    <div class="modal-dialog" >
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <center><h4 class="modal-title">Carolina Cueto Dominguez</h4></center>
+        </div>
+        <center>
+
+					<div class="sec"  data-sec="basic-information">
+						<div class="be-large-post">
+
+							<div class="be-large-post-align">
+								<div class="row">
+									<br>
+
+                    						<img class="center-block" style="border-radius: 50%; width:30%;"  src="{% static 'images/Caro.jpg' %}" alt="" >
+                                            <br><br>
+                    						<p style="color: black; padding-left: 20px; padding-right: 20px;"></p>
 								</div>
 							</div>
 						</div>
@@ -244,7 +307,7 @@ Creo en Dios, amo leer libros de desarrollo personal y PNL. Me encanta los negoc
 								<div class="row">
 									<br>
 
-                    						<img style="border-radius: 50%;" width="200" height="194" src="{% static 'personas/erika.jpg' %}" alt="" >
+                    						<img class="center-block" style="border-radius: 50%; width:30%;"  height="194" src="{% static 'personas/erika.jpg' %}" alt="" >
                                             <br><br>
                     						<p style="color: black; padding-left: 20px; padding-right: 20px;">Hola, mi nombre es Rosa Erika Bolaños Hernández,
                     						estudiante del 7° semestre de la carrera de Ingeniería en Gestión Empresarial, me considero una persona emprendedora de
@@ -279,7 +342,7 @@ Creo en Dios, amo leer libros de desarrollo personal y PNL. Me encanta los negoc
 								<div class="row">
 									<br>
 
-                    						<img style="border-radius: 50%;" width="200" height="194" src="{% static 'personas/lulu.jpg' %}" alt="" >
+                    						<img class="center-block" style="border-radius: 50%; width:30%;"  height="194" src="{% static 'personas/lulu.jpg' %}" alt="" >
                                             <br><br>
                     						<p style="color: black; padding-left: 20px; padding-right: 20px;">Hola soy Lourdes Constantino, estudio Ingeniería Industrial, me gustan las matemáticas, leer y tocar la guitarra. Me considero una persona analítica y comprometida, estoy abierta a nuevos retos, me atrae la innovación, la tecnología, el emprendimiento y el trabajo en equipo. Considero que los buenos cambios se dan cuando unimos diversos conocimientos, talentos y habilidades.</p>
 								</div>
@@ -293,7 +356,29 @@ Creo en Dios, amo leer libros de desarrollo personal y PNL. Me encanta los negoc
     </div>
   </div>
 
+{% block script %}
+<script type="text/javascript">
+	$("#imagentodos").hover(function (element) {
+			$("#imagentodos").fadeTo("slow", 0.5,function () {
+				
+			}).attr('src', '{% static "images/Todos2.jpg" %}').fadeTo("slow", 1);
+			// $("#imagentodos").fadeIn("slow");
+		});
 
+	$("#imagentodos").mouseout(function (element) {
+			$("#imagentodos").fadeTo("slow", 0.5,function () {
+			}).attr('src', '{% static "images/Todos1.jpg" %}').fadeTo("slow", 1);
+			
+			// $("#imagentodos").fadeIn("slow");
+		});
+
+	// function unhover(element) {
+	// 	$("#imagentodos").fadeOut();
+	//   	$("#imagentodos").attr('src', '{% static "images/Todos1.jpg" %}');
+	//   	$("#imagentodos").fadeIn();
+	// }
+</script>
+{% endblock %}
 
 
 {% endblock %}
