@@ -3,7 +3,12 @@
 
    {% block content %}
    
-
+<style type="text/css">
+	[class^='imghvr-'],
+[class*=' imghvr-'] {
+  background-color: #D14233;
+}
+</style>
 <section id="portfolio" class="section">
 	<div class="">
 
@@ -18,58 +23,47 @@
 				</div>
 				<br><br>
 				<div class="row">
-					<div class="col-md-12" onmouseover="hover(this);" onmouseout="unhover(this);" style="width:100%; height:800px;">
-						<img id="imagentodos" class="center-block" style="width:80%; border-radius:30%" src="{% static 'images/Todos1.jpg' %}">
-					</div>
+					<figure class="imghvr-fade">
+					    <img style="width:100%; border-radius:30%" src="{% static 'images/Todos1.jpg' %}">
+					    <figcaption style="padding:0px; background-color: #D14233;">
+					        <img  class="center-block" style="width:100%; border-radius:30%" src="{% static 'images/Todos2.jpg' %}">
+					    </figcaption>
+					</figure>
+					<!--<div class="col-md-12" onmouseover="hover(this);" onmouseout="unhover(this);" style="width:100%; height:800px;">
+						<img id="imagentodos" class="center-block" style="width:100%; border-radius:30%" src="{% static 'images/Todos1.jpg' %}">
+					</div>-->
 				</div>
 				<br>
 
 				<div class="row">
 					<div class="col-md-3">
+						
 						<div class="col-md-12 ">
-							<a href="" data-toggle="modal" data-target="#Erika"><img class="center-block" class="center-block" style=" border-radius: 50%; width:100%;"  height="250" src="{% static 'personas/erika.jpg' %}" alt="" ></a>
-							<h3>Erika Bolaños</h3>
-
-						</div>
-						<div class="col-md-12 ">
-							<a href="" data-toggle="modal" data-target="#Wilder"><img class="center-block" style=" border-radius: 50%; width:100%;"  height="250" src="{% static 'personas/wilder2.jpeg' %}" alt="" ></a>
+							<a href="" data-toggle="modal" data-target="#Wilder"><img class="center-block" style=" border-radius: 50%; width:65%;"  height="226" src="{% static 'personas/wilder2.jpeg' %}" alt="" ></a>
 							<h3>Wilder Colmenares</h3>
 
 						</div>
 					</div>
-					<div class="col-md-6">
-						<div class="row">
-							<div class="col-md-6 ">
-								<a type="button" href="" data-toggle="modal"  data-target="#Carla"><img class="center-block" style=" border-radius: 50%; width:65%;" src="{% static 'images/Carla.jpg' %}" alt="" ></a>
-								<h3>Carla Marin</h3>
-							</div>
-
-							<div class="col-md-6 ">
+					<div class="col-md-3">
+						<div class="col-md-12 ">
 								<a href="" data-toggle="modal" data-target="#Rico"><img class="center-block" style=" border-radius: 50%; width:65%;" src="{% static 'images/Yo.jpg' %}" alt="" ></a>
 								<h3>Fernando Rico</h3>
 
 							</div>
-							
-
-							<div class="col-md-6 ">
+					</div>
+					<div class="col-md-3">
+						<div class="col-md-12 ">
 								<a href="" data-toggle="modal" data-target="#Julio"><img class="center-block" style=" border-radius: 50%; width:65%;" src="{% static 'images/Julio.jpg' %}" alt="" ></a>
 								<h3>Julio Guzmán</h3>
 
 							</div>
-
-							<div class="col-md-6 ">
-								<a href="" data-toggle="modal" data-target="#Caro"><img class="center-block" style=" border-radius: 50%; width:65%;" src="{% static 'images/Caro.jpg' %}" alt="" ></a>
-								<h3>Calorina Cueto</h3>
-
-							</div>
-						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="col-md-12 ">
-							<a href="" data-toggle="modal" data-target="#Lulu"><img class="center-block" style=" border-radius: 50%; width:100%;"  height="250" src="{% static 'personas/lulu.jpg' %}" alt="" ></a>
-							<h3>Lourdes Constantino</h3>
+								<a href="" data-toggle="modal" data-target="#Caro"><img class="center-block" style=" border-radius: 50%; width:65%;" src="{% static 'images/caro cueto.png' %}" alt="" height="226"></a>
+								<h3>Carolina Cueto</h3>
 
-						</div>
+							</div>
 					</div>
 
 					
@@ -273,7 +267,7 @@ Creo en Dios, amo leer libros de desarrollo personal y PNL. Me encanta los negoc
 								<div class="row">
 									<br>
 
-                    						<img class="center-block" style="border-radius: 50%; width:30%;"  src="{% static 'images/Caro.jpg' %}" alt="" >
+                    						<img class="center-block" style="border-radius: 50%; width:30%;"  src="{% static 'images/caro cueto.png' %}" alt="" >
                                             <br><br>
                     						<p style="color: black; padding-left: 20px; padding-right: 20px;"></p>
 								</div>

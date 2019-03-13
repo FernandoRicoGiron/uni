@@ -82,7 +82,7 @@
 		<![endif]-->
 
 		<!--BOOSTRAP PARA SECCION QUIENES SOMOS-->
-
+		<link rel="stylesheet" href="{% static 'imagehover.min.css' %}">
 
 		<style type="text/css">
 			i{
@@ -124,7 +124,8 @@
 									<ul class="nav navbar-nav menu">
 										<li ><a href="/"><i class="fa fa-home"></i>Inicio</a>
 										</li>
-										<li><a href="/quienessomos/"><i class="fa fa-rocket"></i>¿Quiénes Somos?</a></li>
+										<!--
+										<li><a href="/quienessomos/"><i class="fa fa-rocket"></i>¿Quiénes Somos?</a></li>-->
 										<li><a href="/servicios/"><i class="fa fa-briefcase"></i>Servicios</a>
 										</li>
 
@@ -195,7 +196,13 @@
 							<p>&copy; Copyright 2017 Derechos Reservados.</p>
 						</div>
 						<!--/ End Copyright -->
+						<div class="collapse navbar-collapse">
+						<ul  class="nav navbar-nav menu">
+							<li><a style="color:#fff" href="/quienessomos/"><i class="fa fa-rocket"></i>¿Quiénes Somos?</a></li>
+						</ul>
 					</div>
+					</div>
+
 					<div class="col-md-6 col-sm-6 col-xs-12">
 						<!-- Social -->
 						 <ul class="social">
