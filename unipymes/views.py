@@ -144,7 +144,7 @@ def solicitado(request):
 			Espera.objects.create(Usuario=usuario, Empresa = empresa, Servicio=servicio)
 		else:
 			Solicitude.objects.create(Usuario=usuario, Empresa = empresa,Servicio=servicio, Estado="0")
-		email = EmailMessage('Solicitud de Servicio', 'El usuario '+ usuario.username +' a solicitado un ' + request.POST.get('nombreser'), to = ['unipymes.tec@gmail.com'])
+		email = EmailMessage('Solicitud de Servicio', 'El usuario '+ usuario.username +' a solicitado un ' + request.POST.get('nombreser'), to = ['contacto@unipymes.com.mx'])
 		email.send()
 		return render(request, 'solicitado.html', {})
 	else:
@@ -165,7 +165,7 @@ def mensaje(request):
 			Asunto=request.POST.get("asunto"),
 			Texto=request.POST.get("mensaje"))
 
-		email = EmailMessage('Contacto', 'La persona '+ request.POST.get("nombre") +' de la empresa ' + request.POST.get("empresa") + ' con el correo '+request.POST.get("correo")+" desea saber la siguiente informacion:\n"+request.POST.get("asunto") +'\n' +request.POST.get("mensaje"),to = ['unipymes.tec@gmail.com'])
+		email = EmailMessage('Contacto', 'La persona '+ request.POST.get("nombre") +' de la empresa ' + request.POST.get("empresa") + ' con el correo '+request.POST.get("correo")+" desea saber la siguiente informacion:\n"+request.POST.get("asunto") +'\n' +request.POST.get("mensaje"),to = ['contacto@unipymes.com.mx'])
 		email.send()
 		return render(request, 'mensaje.html', {})
 	except Exception as e:
