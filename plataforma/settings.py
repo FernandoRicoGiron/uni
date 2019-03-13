@@ -164,12 +164,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_USE_TLS = True
 
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'mail.wservices.ch'
 
-EMAIL_HOST_USER = 'unipymes.tec@gmail.com'
+EMAIL_HOST_USER = 'contacto@unipymes.com.mx'
 
 #Must generate specific password for your app in [gmail settings][1]
-EMAIL_HOST_PASSWORD = 'P4$$_JERLCCW'
+EMAIL_HOST_PASSWORD = 'FAiXWuYpA5'
 
 EMAIL_PORT = 587
 
