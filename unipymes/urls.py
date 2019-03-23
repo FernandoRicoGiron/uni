@@ -12,6 +12,8 @@ urlpatterns = [
     path('evaluacion/', views.evaluacion),
     path('servicios/', views.servicios),
     path('quienessomos/', views.quienessomos),
+    path('blog/', views.blog),
+    re_path('blog/(?P<id>\d+)', views.blog_detalle),
     path('inisiarsesion/', views.logint),
     path('registro/', views.registro),
     path('registrar/', views.registrar),

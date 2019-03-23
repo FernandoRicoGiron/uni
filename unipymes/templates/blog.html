@@ -1,0 +1,311 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+   {% block content %}
+
+
+	
+<div class="header" id="ban">
+		<div class="container">
+			<!-- <div class="head-left wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+				<div class="header-search">
+						<div class="search">
+							<input class="search_box" type="checkbox" id="search_box">
+							<label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
+							<div class="search_form">
+								<form action="#" method="post">
+									<input type="text" name="Search" placeholder="Search...">
+									<input type="submit" value="Send">
+								</form>
+							</div>
+						</div>
+				</div>
+			</div> -->
+			<!-- <div class="header_right wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+			<nav class="navbar navbar-default">
+				
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+
+				
+				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+					<nav class="link-effect-7" id="link-effect-7">
+						<ul class="nav navbar-nav">
+							<li class="active act"><a href="index.html">Home</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="features.html">Features</a></li>
+							<li><a href="travel.html">Travel</a></li>
+							<li><a href="fashion.html">Fashion</a></li>
+							<li><a href="music.html">Music</a></li>
+							<li><a href="codes.html">Codes</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</nav>
+				</div>
+				
+			</nav>
+			</div> -->
+			<!-- <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;">
+					<ul>
+						<li><a href="#"> </a></li>
+						<li><a href="#" class="pin"> </a></li>
+						<li><a href="#" class="in"> </a></li>
+						<li><a href="#" class="be"> </a></li>
+						
+						<li><a href="#" class="vimeo"> </a></li>
+					</ul>
+				</div> -->
+			<div class="clearfix"> </div>	
+		</div>
+	</div> 
+	<!--start-main-->
+	<div style="margin-top: 50px;" class="header-bottom">
+		<div class="container">
+			<div class="logo wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+				<h1><a href="index.html">¡Bienvenido a nuestro Blog!</a></h1>
+				<p><label class="of"></label> EMPRENDIMIENTO <label class="on"></label></p>
+			</div>
+		</div>
+	</div>
+<!-- banner -->
+
+<!-- <div class="banner">
+	<div class="container">	
+		<h2>Contrary to popular belief, Lorem Ipsum simply</h2>
+		<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+		<a href="singlepage.html">READ MORE</a>
+	</div>
+</div> -->
+
+
+<div class="services w3l wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+		<div class="container">
+			<div class="grid_3 grid_5">
+				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+					<!-- <ul id="myTab" class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#expeditions" id="expeditions-tab" role="tab" data-toggle="tab" aria-controls="expeditions" aria-expanded="true">FASHION</a></li>
+						<li role="presentation" class=""><a href="#safari" role="tab" id="safari-tab" data-toggle="tab" aria-controls="safari">TRAVEL</a></li>
+						<li role="presentation" class=""><a href="#trekking" role="tab" id="trekking-tab" data-toggle="tab" aria-controls="trekking">MUSIC</a></li>
+					</ul> -->
+					<div id="myTabContent" class="tab-content">
+						<div role="tabpanel" class="tab-pane fade" id="expeditions" aria-labelledby="expeditions-tab">
+							
+							<div class="col-md-4 col-sm-5 tab-image">
+								<img src="{% static 'images/f2.jpg' %}" class="img-responsive" alt="Wanderer">
+							</div>
+							<div class="col-md-4 col-sm-5 tab-image">
+								<img src="{% static 'images/f1.jpg' %}" class="img-responsive" alt="Wanderer">
+							</div>
+							<div class="col-md-4 col-sm-5 tab-image">
+								<img src="{% static 'images/f3.jpg' %}" class="img-responsive" alt="Wanderer">
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						
+						
+						<div role="tabpanel" class="tab-pane fade" id="safari" aria-labelledby="safari-tab">
+							<div class="col-md-4 col-sm-5 tab-image">
+								<img src="{% static 'images/t1.jpg' %}" class="img-responsive" alt="Wanderer">
+							</div>
+							<div class="col-md-4 col-sm-5 tab-image">
+								<img src="{% static 'images/t2.jpg' %}" class="img-responsive" alt="Wanderer">
+							</div>
+							<div class="col-md-4 col-sm-5 tab-image">
+								<img src="{% static 'images/t3.jpg' %}" class="img-responsive" alt="Wanderer">
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade active in" id="trekking" aria-labelledby="trekking-tab">
+
+							<div class="col-md-4 col-sm-5 tab-image">
+								<img src="{% static 'images/m2.jpg' %}" class="img-responsive" alt="Wanderer">
+							</div>
+							<div class="col-md-4 col-sm-5 tab-image">
+								<img src="{% static 'images/m1.jpg' %}" class="img-responsive" alt="Wanderer">
+							</div>
+							<div class="col-md-4 col-sm-5 tab-image">
+								<img src="{% static 'images/m3.jpg' %}" class="img-responsive" alt="Wanderer">
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- technology-left -->
+	<div class="technology">
+
+	<div style="margin-top: 20px;" class="container">
+
+		
+		<div class="col-md-9 technology-left">
+		<div class="tech-no">
+			<!-- technology-top -->
+
+			{% for post in posts %}
+			
+			 <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+				
+					<div class="tch-img">
+						<a href="singlepage.html"><img width="750" height="350" src="{{post.imagenPrincipal.url }}" class="img-responsive" alt=""></a>
+					</div>
+					
+					<h3><a href="/blog/{{post.id}}">{{ post.titulo }}</a></h3>
+					<h6>De <a href="#">{{ post.autor }} </a>{{ post.fecha }}</h6>
+						<p>{{post.contenido | safe }}</p>
+						<div class="bht1">
+							<a href="/blog/{{post.id}}">Leer más</a>
+						</div>
+						<div class="soci">
+							<ul>
+								<div class="fb-share-button" data-href="https://www.unipymes.com.mx/blog/{{post.id}}" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.unipymes.com.mx%2Fblog&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
+
+								<!--<li class="hvr-rectangle-out"><a class="fb" href="#"></a></li>-->
+								<!-- <li class="hvr-rectangle-out"><a class="twit" href="#"></a></li>
+								<li class="hvr-rectangle-out"><a class="goog" href="#"></a></li>
+								<li class="hvr-rectangle-out"><a class="pin" href="#"></a></li>
+								<li class="hvr-rectangle-out"><a class="drib" href="#"></a></li> -->
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+
+						
+			</div>
+
+			<div class="clearfix"></div>
+
+			{% endfor %}
+			<!--
+			<div class="w3ls">
+				<div class="col-md-6 w3ls-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+					 <div class="tc-ch">
+						<div class="tch-img">
+							<a href="singlepage.html">
+							<img src="{{post.imagenPrincipal.url }}" class="img-responsive" alt=""></a>
+						</div>
+					
+						<h3><a href="singlepage.html">{{post.titulo }}</a></h3>
+						<h6>De <a href="singlepage.html">{{post.autor }}</a>{{post.fecha}}</h6>
+							<p>{{post.contenido | safe }}</p>
+							<div class="bht1">
+								<a href="singlepage.html">Leer más</a>
+							</div>
+							<div class="soci">
+								<ul>
+									<li class="hvr-rectangle-out"><a class="fb" href="#"></a></li>
+									<li class="hvr-rectangle-out"><a class="pin" href="#"></a></li>
+								</ul>
+							</div>
+							<div class="clearfix"></div>
+					</div>
+				</div>
+
+				<div class="col-md-6 w3ls-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+					 <div class="tc-ch">
+						<div class="tch-img">
+							<a href="singlepage.html"><img src="{{post.imagenPrincipal.url }}" class="img-responsive" alt=""></a>
+						</div>
+					
+						<h3><a href="singlepage.html">{{post.titulo}}</a></h3>
+						<h6>De <a href="singlepage.html">{{post.autor }} </a>{{post.fecha }}</h6>
+							<p>{{post.contenido | safe }}</p>
+							<div class="bht1">
+								<a href="singlepage.html">Leer más</a>
+							</div>
+							<div class="soci">
+								<ul>
+									<li class="hvr-rectangle-out"><a class="twit" href="#"></a></li>
+									<li class="hvr-rectangle-out"><a class="drib" href="#"></a></li>
+								</ul>
+							</div>
+							<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+	
+
+
+			<div class="wthree">
+				 <div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+					<div class="tch-img">
+							<a href="singlepage.html"><img src="{{post.imagenPrincipal.url }}" class="img-responsive" alt=""></a>
+						</div>
+				 </div>
+				 <div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<h3><a href="singlepage.html">{{post.titulo}}</a></h3>
+						<h6>De <a href="singlepage.html">{{post.autor}}</a>{{post.fecha</h6>
+							<p>{{post.contenido | safe }}</p>
+							<div class="bht1">
+								<a href="singlepage.html">Leer más</a>
+							</div>
+							<div class="soci">
+								<ul>
+									
+									<li class="hvr-rectangle-out"><a class="twit" href="#"></a></li>
+									<li class="hvr-rectangle-out"><a class="pin" href="#"></a></li>
+								</ul>
+							</div>
+							<div class="clearfix"></div>
+					
+				 </div>
+					<div class="clearfix"></div>
+			</div> -->
+
+	
+
+			</div> 
+		</div>
+		<!-- technology-right -->
+		<div class="col-md-3 technology-right">
+				
+				<div class="blo-top1">
+							
+					<div class="tech-btm">
+						<!-- BUSCAR UN ARTICULO -->
+					<div class="search-1 wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+							<form action="#" method="post">
+								<input type="search" name="Search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
+								<input type="submit" value=" ">
+							</form>
+					</div>
+
+					<h4>Posts Publicados</h4>
+
+					{% for recientes in posts %}
+
+						<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+							<div class="blog-grid-left">
+								<a href="/blog/{{recientes.id}}"><img src="{{recientes.imagenPrincipal.url}}" class="img-responsive" alt=""></a>
+							</div>
+							<div class="blog-grid-right">
+								
+								<h5><a href="/blog/{{recientes.id}}">{{ recientes.titulo }}</a> </h5>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+
+					{% endfor %}
+
+					</div>
+				</div>
+		</div>
+		<div class="clearfix"></div>
+		<!-- technology-right -->
+	</div>
+
+
+</div>
+
+
+
+   {% endblock %}

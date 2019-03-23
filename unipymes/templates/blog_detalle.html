@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+   {% block content %}
+
+
+   <!--start-main-->
+	<div style="margin-top: 50px;" class="header-bottom">
+		<div class="container">
+			<div class="logo">
+				<h1><a href="index.html">¡Bienvenido a nuestro Blog!</a></h1>
+				<p><label class="of"></label> EMPRENDIMIENTO <label class="on"></label></p>
+			</div>
+		</div>
+	</div>
+<!-- banner -->
+
+<!-- <div class="banner-1">
+
+
+</div> -->
+
+	<!-- technology-left -->
+	<div class="technology">
+	<div class="container">
+		<div class="col-md-9 technology-left">
+			<div class="agileinfo">
+
+		  <h2 class="w3">{{ post.titulo }}</h2>
+			<div class="single">
+			   <img  width="750" height="200" src="{{ post.imagenPrincipal.url }}" class="img-responsive" alt="">
+			    <div class="b-bottom"> 
+			      <h5 class="top">{{ post.titulo }}</h5>
+			      <p class="sub">{{post.contenidoDetalle | safe }}</p> <span> <div style="margin-top: 15px;" class="fb-share-button" data-href="https://www.unipymes.com.mx/blog/{{post.id}}" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.unipymes.com.mx%2Fblog&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div></span> 
+
+				   <!-- <p class="sub">{{post.contenidoDetalle | safe }}<a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p> -->
+				 
+				</div>
+			 </div>
+			  
+
+			  <span>
+
+			<div class="response">
+					<h4>Respuestas</h4>
+					
+					<div class="fb-comments" data-href="https://www.unipymes.com.mx/blog/{{post.id}}" data-numposts="5"></div>
+
+					<!-- <div class="media response-info">
+						<div class="media-left response-text-left">
+							<a href="#">
+								<img src="images/sin1.jpg" class="img-responsive" alt="">
+							</a>
+						</div>
+						<div class="media-body response-text-right">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, 
+								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							<ul>
+								<li>Jun 21, 2016</li>
+								<li><a href="#">Reply</a></li>
+							</ul>
+							<div class="media response-info">
+								<div class="media-left response-text-left">
+									<a href="#">
+										<img src="images/sin2.jpg" class="img-responsive" alt="">
+									</a>
+								</div>
+								<div class="media-body response-text-right">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, 
+										sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									<ul>
+										<li>July 17, 2016</li>
+										<li><a href="#">Reply</a></li>
+									</ul>		
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="media response-info">
+						<div class="media-left response-text-left">
+							<a href="#">
+								<img src="images/sin1.jpg" class="img-responsive" alt="">
+							</a>
+						</div>
+						<div class="media-body response-text-right">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, 
+								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							<ul>
+								<li>Jul 22, 2016</li>
+								<li><a href="#">Reply</a></li>
+							</ul>
+							<div class="media response-info">
+								<div class="media-left response-text-left">
+									<a href="#">
+										<img src="images/sin2.jpg" class="img-responsive" alt="">
+									</a>
+								</div>
+								<div class="media-body response-text-right">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, 
+										sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									<ul>
+										<li>Aug 01, 2016</li>
+										<li><a href="#">Reply</a></li>
+									</ul>		
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div> -->
+			</div>	 
+
+
+			<!-- <div class="coment-form">
+					<h4>Dejanos tu comentario</h4>
+					<form action="#" method="post">
+						<input type="text" value="Name " name="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+						<input type="email" value="Email" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+						<input type="text" value="Website" name="websie" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Website';}" required="">
+						<textarea onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Comment...';}" required="">Your Comment...</textarea>
+						<input type="submit" value="Submit Comment">
+					</form>
+			</div>	 -->
+
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!-- technology-right -->
+		<div class="col-md-3 technology-right">
+				
+				
+				<div class="blo-top1">
+							
+					<div class="tech-btm">
+
+					<div class="search-1">
+							<form action="#" method="post">
+								<input type="search" name="Search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
+								<input type="submit" value=" ">
+							</form>
+					</div>
+
+					<h4>Posts Publicados</h4>
+
+					{% for recientes in posts %}
+
+						<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+							<div class="blog-grid-left">
+								<a href="/blog/{{recientes.id}}"><img src="{{recientes.imagenPrincipal.url}}" class="img-responsive" alt=""></a>
+							</div>
+							<div class="blog-grid-right">
+								
+								<h5><a href="/blog/{{recientes.id}}">{{ recientes.titulo }}</a> </h5>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+
+					{% endfor %}
+					
+					</div>
+					
+					
+					
+				</div>
+				
+			
+		</div>
+		<div class="clearfix"></div>
+		<!-- technology-right -->
+	</div>
+</div>
+
+
+
+   {% endblock %}

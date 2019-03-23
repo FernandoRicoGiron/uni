@@ -307,3 +307,20 @@ def solicitud_es(request):
 			"usuario":x.Usuario.username}	
 	
 	return JsonResponse(data)
+
+
+############# BLOG ####################
+def blog(request):
+	obtener_posts = Post.objects.all()
+	posts = obtener_posts[::-1]
+
+	return render(request, "blog.html",{"posts":posts})
+
+
+def blog_detalle(request,id):
+	post = Post.objects.get(id=id)
+	mis_post = Post.objects.all()
+	posts = mis_post[::-1]
+
+	return render(request, "blog_detalle.html", {"post":post,"posts":posts})
+	

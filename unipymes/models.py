@@ -10,6 +10,8 @@ from django.contrib.auth.models import User, AbstractUser
 from django.conf import settings
 import json
 from django.utils import timezone
+from ckeditor_uploader.fields import  RichTextUploadingField
+from ckeditor.fields import RichTextField
 
 ESTADO_SOLICITUDES = (
 	('0','Solicitud Enviada'),
@@ -146,3 +148,30 @@ class Reseña(models.Model):
 
 	def __str__(self):
 		return self.Empresa
+
+
+
+
+"""
+MODELOS BLOG
+"""
+class Post(models.Model):
+	imagenPrincipal = models.ImageField(upload_to = 'Post')
+	titulo = models.CharField(max_length=255, blank= True, null=True)
+	autor = models.CharField(max_length=255, blank= True, null=True)
+	contenido = RichTextUploadingField( blank=True, null=True)
+	contenidoDetalle = RichTextUploadingField( blank=True, null=True)
+	fecha = models.DateTimeField()
+	
+
+	def __str__(self):
+		return self.titulo
+
+
+class Comentarios_blog(models.Model):
+	nombre = models.CharField(max_length=255, blank= True, null=True)
+	email = models.CharField(max_length=255, blank= True, null=True)
+	comentario = models.TextField(blank=True, null=True)
+
+	def __str__(self):
+		return self.nombre

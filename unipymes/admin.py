@@ -67,6 +67,25 @@ class Esperas(admin.ModelAdmin):
 	 
 	class Meta:
 		model = Espera
+
+
+
+class Posts(admin.ModelAdmin):
+	list_display = ["id","titulo"]
+	list_display_links = ["titulo"]
+	search_fields = ['titulo']
+	 
+	class Meta:
+		model = Post
+
+class Comentarios(admin.ModelAdmin):
+	list_display = ["id","nombre"]
+	list_display_links = ["nombre"]
+	search_fields = ['nombre']
+	 
+	class Meta:
+		model = Comentarios_blog
+
 			
 admin.site.register(Dato)
 admin.site.register(Empresa, Empresas)
@@ -78,3 +97,5 @@ admin.site.register(Mensaje, Mensajes)
 admin.site.register(Espera, Esperas)
 admin.site.register(Mensaje_Solicitud)
 admin.site.register(Reseña)
+admin.site.register(Post,Posts)
+admin.site.register(Comentarios_blog,Comentarios)
