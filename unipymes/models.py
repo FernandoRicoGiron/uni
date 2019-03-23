@@ -167,11 +167,3 @@ class Post(models.Model):
 	def __str__(self):
 		return self.titulo
 
-
-class Comentarios_blog(models.Model):
-	nombre = models.CharField(max_length=255, blank= True, null=True)
-	email = models.CharField(max_length=255, blank= True, null=True)
-	comentario = models.TextField(blank=True, null=True)
-
-	def __str__(self):
-		return self.nombre
