@@ -28,7 +28,7 @@
 
 		  <h2 class="w3">{{ post.titulo }}</h2>
 			<div class="single">
-			   <img  width="750" height="200" src="{{ post.imagenPrincipal.url }}" class="img-responsive" alt="">
+			   <img width="750" height="300" style="max-height: 300px; max-width: 750px;" src="{{ post.imagenPrincipal.url }}" class="img-responsive" alt="">
 			    <div class="b-bottom"> 
 			      <h5 class="top">{{ post.titulo }}</h5>
 			      <p class="sub">{{post.contenidoDetalle | safe }}</p> <span> <div style="margin-top: 15px;" class="fb-share-button" data-href="https://www.unipymes.com.mx/blog/{{post.id}}" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.unipymes.com.mx%2Fblog&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div></span> 
