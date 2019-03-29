@@ -210,10 +210,12 @@ def crearnuevacontra(request):
 
 
 def modificarcontraseña(request):
-	usuario = Dato.objects.get(Usuario=request.POST.get('usuario'))
-	usuario.Contraseña = request.POST.get("nuevacontraseña")
-	usuario.save()
-	return render(request, 'login.html', {'usuario':usuario})
+	mi_usuario = User.objects.get(username = request.POST.get('usuario'))
+	mi_usuario.set_password(request.POST.get("nuevacontraseña"))
+	mi_usuario.save()
+
+	sweetify.success(request, '¡Felicidades!', text="Su contraseña ha sido recuperada", persistent=':)')
+	return HttpResponseRedirect('/')
 
 def modificarperfil(request):
 	usuario = Dato.objects.get(Usuario=request.user)
