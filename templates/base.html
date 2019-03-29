@@ -365,7 +365,8 @@
 									</div>
 								</form>
 
-								<form id="recuperar-form" action="/recuperarcontraseña/" method="post" role="form" style="display: none;">
+								<form id="recuperar-form" action="/nuevacontraseña/" method="post" role="form" style="display: none;">
+									{% csrf_token %}
 									<div class="form-group">
 										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Usuario" value="">
 									</div>

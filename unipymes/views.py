@@ -186,11 +186,11 @@ def encuesta(request):
 	return render(request, 'mensaje_encuesta.html', {})
 
 def nuevacontraseña(request):
-	correo = Usuario.objects.filter(Correo=request.POST.get("email")).exists()
+	correo = Dato.objects.filter(Correo=request.POST.get("email")).exists()
 	if correo==True:
-		usuario = Usuario.objects.get(Correo=request.POST.get("email"))
+		usuario = Dato.objects.get(Correo=request.POST.get("email"))
 		sesion = "Se ha enviado un enlace a su correo para que recupere su contraseña"
-		email = EmailMessage('Recuperar contraseña de Unipymes', 'Para poder ingresar de nuevo a unipymes de click en el siguiente enlace\nhttp://www.unipymes.com.mx/salto/'+usuario.Usuario+"/",to = [request.POST.get("email")])
+		email = EmailMessage('Recuperar contraseña de Unipymes', 'Para poder ingresar de nuevo a unipymes de click en el siguiente enlace\nhttp://www.unipymes.com.mx/salto/'+usuario.Usuario.username+"/",to = [request.POST.get("email")])
 		email.send()
 		return render(request, 'olvidocontra.html', {'sesion':sesion,})
 	else:
@@ -210,7 +210,7 @@ def crearnuevacontra(request):
 
 
 def modificarcontraseña(request):
-	usuario = Usuario.objects.get(Usuario=request.POST.get('usuario'))
+	usuario = Dato.objects.get(Usuario=request.POST.get('usuario'))
 	usuario.Contraseña = request.POST.get("nuevacontraseña")
 	usuario.save()
 	return render(request, 'login.html', {'usuario':usuario})
