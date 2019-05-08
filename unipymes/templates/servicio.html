@@ -32,7 +32,17 @@
 
 					{% if servicio.Disponible != 0 %}
 					<div class="button">
+
+
+					
+
+					{% if user.is_authenticated %}
 					<input type="submit" class="btn" value="Solicitar Cotización"></input>
+					{% else %}
+
+					<a id="registrarservicio" class="btn" data-toggle="modal" data-target="#iniciosesion">Regístrate para cotización</a>
+					{% endif %}
+
 					</div>
 					{% else %}<div class="button">
 					<input type="hidden" name="espera" value="espera">
@@ -78,4 +88,12 @@
 
 
 
+   {% endblock %}
+
+   {% block script %}
+   <script type="text/javascript">
+   	$("#registrarservicio").on("click",function () {
+   		$("#botonregistrar").click();
+   	})
+   </script>
    {% endblock %}
